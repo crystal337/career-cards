@@ -395,6 +395,7 @@ document.addEventListener('touchend',e=>{
 
 // HOLLAND
 let hDragId=null;
+let hTouchGhost=null,hTouchCardId=null,hTouchLastZone=null;
 function initHolland(){hSorted={};renderH()}
 function makeHCard(c){
   const d=document.createElement('div');
@@ -402,7 +403,56 @@ function makeHCard(c){
   d.innerHTML=`<div class="hcard-letter">${c.letter}</div><div class="hcard-label">${c.label}</div>`;
   d.addEventListener('dragstart',()=>{hDragId=c.id;setTimeout(()=>d.classList.add('dragging'),0)});
   d.addEventListener('dragend',()=>d.classList.remove('dragging'));
+  d.addEventListener('touchstart',hTouchStart,{passive:false});
+  d.addEventListener('touchmove',hTouchMove,{passive:false});
+  d.addEventListener('touchend',hTouchEnd,{passive:false});
   return d;
+}
+function hTouchStart(e){
+  e.preventDefault();
+  const card=e.currentTarget;
+  hTouchCardId=card.dataset.id;
+  const ghost=card.cloneNode(true);
+  const r=card.getBoundingClientRect();
+  ghost.style.cssText=`position:fixed;pointer-events:none;opacity:0.75;z-index:9999;width:${r.width}px;left:${r.left}px;top:${r.top}px;transform:scale(1.08);transition:none;`;
+  document.body.appendChild(ghost);
+  hTouchGhost=ghost;
+  card.classList.add('dragging');
+}
+function hTouchMove(e){
+  e.preventDefault();
+  if(!hTouchGhost)return;
+  const t=e.touches[0];
+  hTouchGhost.style.left=(t.clientX-40)+'px';
+  hTouchGhost.style.top=(t.clientY-30)+'px';
+  // highlight zone under finger
+  hTouchGhost.style.pointerEvents='none';
+  const el=document.elementFromPoint(t.clientX,t.clientY);
+  ['pool','sim','neu','dif'].forEach(z=>{
+    const zone=z==='pool'?document.getElementById('h-pool'):document.getElementById('hz-'+z)?.closest('.h-zone');
+    if(zone)zone.classList.remove('drag-over');
+  });
+  const zone=el?.closest('.h-zone, .h-pool');
+  if(zone)zone.classList.add('drag-over');
+}
+function hTouchEnd(e){
+  e.preventDefault();
+  if(!hTouchGhost)return;
+  hTouchGhost.remove();hTouchGhost=null;
+  document.querySelectorAll('.hcard.dragging').forEach(x=>x.classList.remove('dragging'));
+  ['pool','sim','neu','dif'].forEach(z=>{
+    const zone=z==='pool'?document.getElementById('h-pool'):document.getElementById('hz-'+z)?.closest('.h-zone');
+    if(zone)zone.classList.remove('drag-over');
+  });
+  const t=e.changedTouches[0];
+  const el=document.elementFromPoint(t.clientX,t.clientY);
+  hDragId=hTouchCardId;
+  if(el?.closest('.z-sim'))hDrop({preventDefault:()=>{}},'sim');
+  else if(el?.closest('.z-neu'))hDrop({preventDefault:()=>{}},'neu');
+  else if(el?.closest('.z-dif'))hDrop({preventDefault:()=>{}},'dif');
+  else if(el?.closest('.h-pool'))hDrop({preventDefault:()=>{}},'pool');
+  else{hDragId=null;}
+  hTouchCardId=null;
 }
 function renderH(){
   const pool=document.getElementById('h-pool');pool.innerHTML='';
