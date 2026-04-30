@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>職遊牌卡工具</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang TC','Microsoft JhengHei',sans-serif;background:#f8f7f4;color:#1a1a18;min-height:100vh}
+.container{max-width:720px;margin:0 auto;padding:2rem 1.25rem}
+.top-bar{display:flex;align-items:center;gap:10px;margin-bottom:2rem;padding-bottom:1rem;border-bottom:0.5px solid #e0ded8}
+.logo{font-size:16px;font-weight:500;color:#1a1a18}
+.logo span{color:#1D9E75}
+.screen{display:none}.screen.active{display:block}
+.badge{display:inline-block;font-size:11px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:#888780;border:0.5px solid #d3d1c7;border-radius:8px;padding:3px 10px;margin-bottom:10px}
+.title{font-size:22px;font-weight:500;color:#1a1a18;margin-bottom:6px}
+.desc{font-size:14px;color:#5f5e5a;line-height:1.6;margin-bottom:1.5rem}
+.btn{padding:9px 20px;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;transition:all .15s;border:0.5px solid #c8c6be;background:#fff;color:#1a1a18}
+.btn:hover{background:#f1efe8}
+.btn-primary{background:#1D9E75;color:#fff;border-color:#1D9E75}
+.btn-primary:hover{background:#0F6E56}
+.action-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:1.25rem}
+.divider{border:none;border-top:0.5px solid #e0ded8;margin:1.5rem 0}
+
+/* Home */
+.deck-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:1.5rem}
+@media(max-width:480px){.deck-grid{grid-template-columns:1fr}}
+.deck-btn{background:#fff;border:0.5px solid #e0ded8;border-radius:12px;padding:1rem 1.25rem;cursor:pointer;transition:all .18s;text-align:left}
+.deck-btn:hover{border-color:#aaa;transform:translateY(-1px);box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.deck-icon{font-size:24px;margin-bottom:8px}
+.deck-name{font-size:14px;font-weight:500;color:#1a1a18;margin-bottom:3px}
+.deck-meta{font-size:11px;color:#888780}
+.deck-flow{font-size:11px;color:#1D9E75;margin-top:5px;line-height:1.4}
+
+/* Holland */
+.holland-zones{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:1rem}
+@media(max-width:480px){.holland-zones{grid-template-columns:1fr}}
+.h-zone{border:1.5px dashed;border-radius:12px;padding:12px;min-height:100px;transition:all .15s}
+.h-zone.z-sim{border-color:#5DCAA5}.h-zone.z-sim.drag-over{background:#E1F5EE}
+.h-zone.z-neu{border-color:#B4B2A9}.h-zone.z-neu.drag-over{background:#f1efe8}
+.h-zone.z-dif{border-color:#F0997B}.h-zone.z-dif.drag-over{background:#FAECE7}
+.h-zone-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.h-zone-title{font-size:12px;font-weight:500}
+.z-sim .h-zone-title{color:#0F6E56}.z-neu .h-zone-title{color:#5F5E5A}.z-dif .h-zone-title{color:#993C1D}
+.h-zone-cnt{font-size:11px;color:#888}
+.h-zone-cards{display:flex;flex-wrap:wrap;gap:5px}
+.h-pool{display:flex;flex-wrap:wrap;gap:8px;padding:10px;border:1.5px dashed #d3d1c7;border-radius:12px;min-height:56px;margin-bottom:.875rem;transition:background .15s}
+.h-pool.drag-over{background:#f1efe8}
+.hcard{background:#fff;border:0.5px solid #e0ded8;border-radius:8px;padding:10px 14px;cursor:grab;user-select:none;transition:all .15s;text-align:center}
+.hcard:hover{border-color:#aaa}
+.hcard.dragging{opacity:.3}
+.hcard-letter{font-size:22px;font-weight:600;color:#1a1a18}
+.hcard-label{font-size:11px;color:#888780;margin-top:2px}
+.z-sim .hcard{background:#E1F5EE;border-color:#9FE1CB}.z-sim .hcard .hcard-letter{color:#085041}
+.z-neu .hcard{background:#f1efe8;border-color:#D3D1C7}.z-neu .hcard .hcard-letter{color:#2C2C2A}
+.z-dif .hcard{background:#FAECE7;border-color:#F5C4B3}.z-dif .hcard .hcard-letter{color:#4A1B0C}
+
+/* Tinder */
+.tinder-wrap{display:flex;flex-direction:column;align-items:center;margin-bottom:1.5rem}
+.tinder-stack{position:relative;width:280px;height:165px;margin-bottom:1rem}
+.tcard{position:absolute;inset:0;background:#fff;border:0.5px solid #e0ded8;border-radius:16px;padding:1.5rem;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:10px;user-select:none;transition:transform .2s,opacity .2s;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.tcard.behind{transform:scale(.95) translateY(8px);z-index:0;box-shadow:none}
+.tcard.front{z-index:1}
+.tcard.sw-right{transform:rotate(10deg) translateX(50px);opacity:0}
+.tcard.sw-left{transform:rotate(-10deg) translateX(-50px);opacity:0}
+.tcard-stamp{position:absolute;top:12px;right:12px;font-size:11px;font-weight:500;padding:3px 8px;border-radius:4px;opacity:0;transition:opacity .1s}
+.tcard.hint-right .tcard-stamp.s-yes{opacity:1;background:#E1F5EE;color:#0F6E56}
+.tcard.hint-left .tcard-stamp.s-no{opacity:1;background:#FAECE7;color:#993C1D}
+.tcard-emoji{font-size:28px}
+.tcard-label{font-size:16px;font-weight:500;color:#1a1a18;text-align:center}
+.tcard-sub{font-size:12px;color:#888780;text-align:center}
+.tinder-btns{display:flex;gap:20px;align-items:center}
+.t-btn{width:56px;height:56px;border-radius:50%;border:none;cursor:pointer;font-size:22px;transition:all .15s;display:flex;align-items:center;justify-content:center}
+.t-btn-no{background:#FAECE7;color:#D85A30}.t-btn-no:hover{background:#F5C4B3;transform:scale(1.05)}
+.t-btn-yes{background:#E1F5EE;color:#1D9E75}.t-btn-yes:hover{background:#9FE1CB;transform:scale(1.05)}
+.t-btn-star{background:#FAEEDA;color:#BA7517;width:46px;height:46px;font-size:18px}.t-btn-star:hover{background:#FAC775}
+.tinder-progress{font-size:12px;color:#888;margin-bottom:.5rem}
+.tinder-counts{display:flex;gap:20px;font-size:12px;margin-top:.625rem}
+.tc-good{color:#1D9E75;font-weight:500}.tc-weak{color:#D85A30;font-weight:500}.tc-star{color:#BA7517;font-weight:500}
+.keyboard-hint{font-size:11px;color:#aaa;margin-top:.5rem}
+
+/* Passion pick */
+.pp-layout{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:1rem}
+@media(max-width:560px){.pp-layout{grid-template-columns:1fr}}
+.pp-rank-zone{border:1.5px dashed #5DCAA5;border-radius:12px;padding:12px;min-height:220px;transition:background .15s}
+.pp-rank-zone.drag-over{background:#E1F5EE}
+.pp-rank-header{font-size:12px;font-weight:500;color:#0F6E56;margin-bottom:8px}
+.rank-item{display:flex;align-items:center;gap:8px;background:#fff;border:0.5px solid #e0ded8;border-radius:8px;padding:8px 10px;margin-bottom:5px;cursor:grab;user-select:none;transition:all .15s}
+.rank-item:hover{border-color:#aaa}
+.rank-item.dragging{opacity:.3}
+.rank-item.drag-over-item{border-top:2px solid #1D9E75}
+.rank-num{font-size:12px;color:#888;min-width:20px;font-weight:500}
+.rank-label{font-size:13px;font-weight:500;flex:1;color:#1a1a18}
+.rank-remove{font-size:11px;color:#aaa;padding:2px 6px;border-radius:4px;cursor:pointer}
+.rank-remove:hover{background:#f1efe8;color:#888}
+.pp-pool-zone{border:0.5px solid #e0ded8;border-radius:12px;padding:12px;max-height:300px;overflow-y:auto}
+.pp-pool-header{font-size:12px;font-weight:500;color:#888;margin-bottom:8px}
+.pcard{background:#fff;border:0.5px solid #e0ded8;border-radius:8px;padding:7px 10px;cursor:pointer;font-size:13px;font-weight:500;color:#1a1a18;transition:all .15s;margin-bottom:5px;display:flex;align-items:center;gap:6px}
+.pcard:hover{border-color:#aaa;background:#fafaf8}
+.pcard.picked{opacity:.35;pointer-events:none;background:#f1efe8}
+.info-box{background:#E1F5EE;border:0.5px solid #9FE1CB;border-radius:8px;padding:9px 13px;font-size:12px;color:#0F6E56;margin-bottom:1rem;line-height:1.5}
+
+/* Skill pick */
+.sp-layout{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:1rem}
+@media(max-width:560px){.sp-layout{grid-template-columns:1fr}}
+.sp-slot{border:1.5px dashed;border-radius:12px;padding:12px;min-height:180px;transition:all .15s}
+.sp-slot-best{border-color:#5DCAA5}.sp-slot-best.drag-over{background:#E1F5EE;transform:scale(1.01)}
+.sp-slot-weak{border-color:#F0997B}.sp-slot-weak.drag-over{background:#FAECE7;transform:scale(1.01)}
+.sp-slot-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.sp-slot-title{font-size:12px;font-weight:500}
+.sp-slot-best .sp-slot-title{color:#0F6E56}
+.sp-slot-weak .sp-slot-title{color:#993C1D}
+.sp-slot-cnt{font-size:11px;color:#888}
+.sp-slot-cards{display:flex;flex-wrap:wrap;gap:5px}
+.sp-pools{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:560px){.sp-pools{grid-template-columns:1fr}}
+.sp-pool{border:0.5px solid #e0ded8;border-radius:12px;padding:10px;max-height:240px;overflow-y:auto}
+.sp-pool-label{font-size:11px;font-weight:500;margin-bottom:8px}
+.sp-pool-best-label{color:#1D9E75}.sp-pool-weak-label{color:#D85A30}
+.scard{background:#fff;border:0.5px solid #e0ded8;border-radius:8px;padding:6px 9px;cursor:grab;font-size:12px;font-weight:500;color:#1a1a18;display:flex;align-items:center;gap:5px;margin-bottom:5px;user-select:none;transition:all .15s}
+.scard:hover{border-color:#aaa}
+.scard.dragging{opacity:.3}
+.scard.picked{opacity:.35;pointer-events:none}
+.sp-slot-best .scard{background:#E1F5EE;border-color:#9FE1CB;color:#085041}
+.sp-slot-weak .scard{background:#FAECE7;border-color:#F5C4B3;color:#4A1B0C}
+.scard-remove{font-size:10px;color:#aaa;margin-left:auto;cursor:pointer;padding:1px 4px;border-radius:3px}
+.scard-remove:hover{background:#f1efe8}
+
+/* Result */
+.res-section{background:#f8f7f4;border-radius:12px;padding:1rem 1.25rem;margin-bottom:10px}
+.res-title{font-size:13px;font-weight:500;margin-bottom:10px}
+.res-chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:12px;font-weight:500;padding:4px 11px;border-radius:20px}
+.chip-green{background:#E1F5EE;color:#0F6E56}
+.chip-coral{background:#FAECE7;color:#993C1D}
+.chip-amber{background:#FAEEDA;color:#BA7517}
+.chip-gray{background:#f1efe8;color:#444441}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="top-bar">
+    <div class="logo">職遊<span> 牌卡工具</span></div>
+  </div>
+
+  <!-- HOME -->
+  <div id="s-home" class="screen active">
+    <div class="badge">開始</div>
+    <div class="title">選擇牌組</div>
+    <div class="desc">諮詢師選好牌組與任務，一起開始</div>
+    <div class="deck-grid">
+      <div class="deck-btn" onclick="go('s-holland')"><div class="deck-icon">🧭</div><div class="deck-name">旅人卡 — Holland Code</div><div class="deck-meta">6 張 · RIASEC 六大性格</div><div class="deck-flow">→ 拖入三堆分類</div></div>
+      <div class="deck-btn" onclick="go('s-passion-tinder')"><div class="deck-icon">🔥</div><div class="deck-name">旅人卡 — 探索熱情</div><div class="deck-meta">108 張 · 職位關鍵字</div><div class="deck-flow">→ 滑卡圈選 → 拖曳排出前 15</div></div>
+      <div class="deck-btn" onclick="go('s-skill-tinder')"><div class="deck-icon">⚡</div><div class="deck-name">職能卡</div><div class="deck-meta">24 張 · 軟硬實力</div><div class="deck-flow">→ Tinder 滑卡 → 拖入最棒 7 + 最弱 3</div></div>
+      <div class="deck-btn" onclick="go('s-value-tinder')"><div class="deck-icon">🌟</div><div class="deck-name">價值導航卡</div><div class="deck-meta">20 張 · 人生與職業價值觀</div><div class="deck-flow">→ 滑卡標記重要 → 查看清單</div></div>
+    </div>
+  </div>
+
+  <!-- HOLLAND -->
+  <div id="s-holland" class="screen">
+    <div class="badge">旅人卡 — Holland Code</div>
+    <div class="title">三堆分類</div>
+    <div class="desc">把 6 張字母卡拖入最符合的區域，可以拖回重放</div>
+    <div style="font-size:12px;font-weight:500;color:#888;margin-bottom:7px">未分類 <span id="h-unsorted">6</span> 張</div>
+    <div class="h-pool" id="h-pool" ondragover="hDragOver(event,'pool')" ondragleave="hDragLeave(event,'pool')" ondrop="hDrop(event,'pool')"></div>
+    <div class="divider"></div>
+    <div class="holland-zones">
+      <div class="h-zone z-sim" ondragover="hDragOver(event,'sim')" ondragleave="hDragLeave(event,'sim')" ondrop="hDrop(event,'sim')">
+        <div class="h-zone-hd"><span class="h-zone-title">相似</span><span class="h-zone-cnt" id="hc-sim">0</span></div>
+        <div class="h-zone-cards" id="hz-sim"></div>
+      </div>
+      <div class="h-zone z-neu" ondragover="hDragOver(event,'neu')" ondragleave="hDragLeave(event,'neu')" ondrop="hDrop(event,'neu')">
+        <div class="h-zone-hd"><span class="h-zone-title">普通</span><span class="h-zone-cnt" id="hc-neu">0</span></div>
+        <div class="h-zone-cards" id="hz-neu"></div>
+      </div>
+      <div class="h-zone z-dif" ondragover="hDragOver(event,'dif')" ondragleave="hDragLeave(event,'dif')" ondrop="hDrop(event,'dif')">
+        <div class="h-zone-hd"><span class="h-zone-title">不相似</span><span class="h-zone-cnt" id="hc-dif">0</span></div>
+        <div class="h-zone-cards" id="hz-dif"></div>
+      </div>
+    </div>
+    <div class="action-row">
+      <button class="btn" onclick="go('s-home')">← 返回</button>
+      <button class="btn btn-primary" id="h-done" onclick="showResult('holland')" style="display:none">查看結果 →</button>
+    </div>
+  </div>
+
+  <!-- PASSION TINDER -->
+  <div id="s-passion-tinder" class="screen">
+    <div class="badge">探索熱情 — 第一步</div>
+    <div class="title">圈選喜歡的職位</div>
+    <div class="desc">右 ✓ 喜歡，左 ✕ 不感興趣，滑完進入排序</div>
+    <div class="tinder-progress">第 <span id="pt-cur">1</span> / <span id="pt-total">0</span> 張</div>
+    <div class="tinder-wrap">
+      <div class="tinder-stack" id="pt-stack"></div>
+      <div class="tinder-counts"><span class="tc-good">✓ 喜歡 <span id="pt-yes-cnt">0</span></span><span class="tc-weak">✕ 跳過 <span id="pt-no-cnt">0</span></span></div>
+      <div style="height:14px"></div>
+      <div class="tinder-btns">
+        <button class="t-btn t-btn-no" onclick="ptSwipe('no')">✕</button>
+        <button class="t-btn t-btn-yes" onclick="ptSwipe('yes')">✓</button>
+      </div>
+      <div class="keyboard-hint">鍵盤：← 跳過 · → 喜歡</div>
+    </div>
+    <div class="action-row">
+      <button class="btn" onclick="go('s-home')">← 返回</button>
+      <button class="btn btn-primary" id="pt-next" onclick="go('s-passion-pick')" style="display:none">從喜歡的裡排序 →</button>
+    </div>
+  </div>
+
+  <!-- PASSION PICK -->
+  <div id="s-passion-pick" class="screen">
+    <div class="badge">探索熱情 — 第二步</div>
+    <div class="title">排出前 15 名</div>
+    <div class="desc">從右側點選加入清單，清單內可上下拖曳調整排名</div>
+    <div class="info-box" id="pp-hint">點選右側職位加入清單，或拖曳到左側排行榜</div>
+    <div class="pp-layout">
+      <div>
+        <div class="pp-rank-zone" id="pp-rank-zone" ondragover="ppRankOver(event)" ondragleave="ppRankLeave(event)" ondrop="ppRankDrop(event)">
+          <div class="pp-rank-header">排行榜 <span id="pp-cnt">0</span>/15</div>
+          <div id="pp-rank-list"></div>
+        </div>
+      </div>
+      <div>
+        <div class="pp-pool-zone">
+          <div class="pp-pool-header">喜歡的職位（<span id="pp-pool-cnt">0</span> 張）</div>
+          <div id="pp-pool"></div>
+        </div>
+      </div>
+    </div>
+    <div class="action-row">
+      <button class="btn" onclick="go('s-passion-tinder')">← 重新滑</button>
+      <button class="btn btn-primary" id="pp-done" onclick="showResult('passion')" style="display:none">查看結果 →</button>
+    </div>
+  </div>
+
+  <!-- SKILL TINDER -->
+  <div id="s-skill-tinder" class="screen">
+    <div class="badge">職能卡 — 第一步</div>
+    <div class="title">滑過所有職能</div>
+    <div class="desc">右 ✓ 擅長，左 ✕ 較弱</div>
+    <div class="tinder-progress">第 <span id="sk-cur">1</span> / <span id="sk-total">0</span> 張</div>
+    <div class="tinder-wrap">
+      <div class="tinder-stack" id="sk-stack"></div>
+      <div class="tinder-counts"><span class="tc-good">擅長 <span id="sk-yes-cnt">0</span></span><span class="tc-weak">較弱 <span id="sk-no-cnt">0</span></span></div>
+      <div style="height:14px"></div>
+      <div class="tinder-btns">
+        <button class="t-btn t-btn-no" onclick="skSwipe('no')">✕</button>
+        <button class="t-btn t-btn-yes" onclick="skSwipe('yes')">✓</button>
+      </div>
+      <div class="keyboard-hint">鍵盤：← 較弱 · → 擅長</div>
+    </div>
+    <div class="action-row">
+      <button class="btn" onclick="go('s-home')">← 返回</button>
+      <button class="btn btn-primary" id="sk-next" onclick="go('s-skill-pick')" style="display:none">精選最棒與最弱 →</button>
+    </div>
+  </div>
+
+  <!-- SKILL PICK -->
+  <div id="s-skill-pick" class="screen">
+    <div class="badge">職能卡 — 第二步</div>
+    <div class="title">拖入最棒 7 個 + 最弱 3 個</div>
+    <div class="desc">從下方牌池拖曳到對應框框，或點選加入</div>
+    <div class="sp-layout">
+      <div class="sp-slot sp-slot-best" id="sp-best" ondragover="spOver(event,'best')" ondragleave="spLeave(event,'best')" ondrop="spDrop(event,'best')">
+        <div class="sp-slot-header"><span class="sp-slot-title">最棒職能</span><span class="sp-slot-cnt" id="best-cnt">0 / 7</span></div>
+        <div class="sp-slot-cards" id="best-cards"></div>
+      </div>
+      <div class="sp-slot sp-slot-weak" id="sp-weak" ondragover="spOver(event,'weak')" ondragleave="spLeave(event,'weak')" ondrop="spDrop(event,'weak')">
+        <div class="sp-slot-header"><span class="sp-slot-title">最弱職能</span><span class="sp-slot-cnt" id="weak-cnt">0 / 3</span></div>
+        <div class="sp-slot-cards" id="weak-cards"></div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="sp-pools">
+      <div class="sp-pool">
+        <div class="sp-pool-label sp-pool-best-label">擅長的 → 拖入左框</div>
+        <div id="sp-yes-pool"></div>
+      </div>
+      <div class="sp-pool">
+        <div class="sp-pool-label sp-pool-weak-label">較弱的 → 拖入右框</div>
+        <div id="sp-no-pool"></div>
+      </div>
+    </div>
+    <div class="action-row">
+      <button class="btn" onclick="go('s-skill-tinder')">← 重新滑</button>
+      <button class="btn btn-primary" id="sp-done" onclick="showResult('skill')" style="display:none">查看結果 →</button>
+    </div>
+  </div>
+
+  <!-- VALUE TINDER -->
+  <div id="s-value-tinder" class="screen">
+    <div class="badge">價值導航卡</div>
+    <div class="title">標記重要的價值觀</div>
+    <div class="desc">⭐ 對我重要，✕ 跳過，滑完查看全部標記</div>
+    <div class="tinder-progress">第 <span id="vt-cur">1</span> / <span id="vt-total">0</span> 張</div>
+    <div class="tinder-wrap">
+      <div class="tinder-stack" id="vt-stack"></div>
+      <div class="tinder-counts"><span class="tc-star">⭐ 重要 <span id="vt-star-cnt">0</span></span><span class="tc-weak">✕ 跳過 <span id="vt-no-cnt">0</span></span></div>
+      <div style="height:14px"></div>
+      <div class="tinder-btns">
+        <button class="t-btn t-btn-no" onclick="vtSwipe('no')">✕</button>
+        <button class="t-btn t-btn-star" onclick="vtSwipe('star')">⭐</button>
+      </div>
+      <div class="keyboard-hint">鍵盤：← 跳過 · → 重要</div>
+    </div>
+    <div class="action-row">
+      <button class="btn" onclick="go('s-home')">← 返回</button>
+      <button class="btn btn-primary" id="vt-done" onclick="showResult('value')" style="display:none">查看標記結果 →</button>
+    </div>
+  </div>
+
+  <!-- RESULT -->
+  <div id="s-result" class="screen">
+    <div class="badge">結果</div>
+    <div class="title" id="res-title">結果</div>
+    <div class="desc">來訪者的選擇，可以截圖或與諮詢師討論</div>
+    <div id="res-body"></div>
+    <div class="action-row">
+      <button class="btn" onclick="go('s-home')">← 選其他牌組</button>
+      <button class="btn btn-primary" onclick="window.print()">列印 / 截圖</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const HOLLAND=[
+  {id:'R',letter:'R',label:'實際型',sub:'動手操作、技術'},
+  {id:'I',letter:'I',label:'研究型',sub:'分析、思考'},
+  {id:'A',letter:'A',label:'藝術型',sub:'創意、表達'},
+  {id:'S',letter:'S',label:'社會型',sub:'幫助他人'},
+  {id:'E',letter:'E',label:'企業型',sub:'領導、說服'},
+  {id:'C',letter:'C',label:'事務型',sub:'組織、細節'},
+];
+const PASSION=['設計師','工程師','教師','醫師','律師','廚師','攝影師','音樂人','作家','行銷人','心理師','社工師','財務分析師','產品經理','數據分析師','顧問','創業家','研究員','記者','人資專員','銷售員','藝術家','建築師','室內設計師','翻譯','公關','品牌經理','社群編輯','活動企劃','運動教練','營養師','藥師','護理師','獸醫','環境工程師','律師助理','法務','股票分析師','投資銀行','會計師','稽核員','供應鏈管理','物流規劃師','採購專員','客服主管','UX研究員','UI設計師','前端工程師','後端工程師','全端工程師','AI工程師','資安專家','雲端架構師','DevOps工程師','遊戲設計師','動畫師','插畫家','影片剪輯','YouTuber','Podcaster','直播主','網紅','策展人','博物館員','圖書館員','考古學家','生物學家','化學家','物理學家','天文學家','地質學家','氣候科學家','政治學家','經濟學家','社會學家','哲學家','歷史學家','外交官','政府官員','NGO工作者','聯合國職員','國際志工','醫療傳教士','消防員','警察','軍人','飛行員','船長','太空人','潛水員','登山嚮導','野外求生教練','農夫','漁夫','茶農','咖啡師','調酒師','烘焙師','糕點師','餐廳主廚','美容師','理髮師','按摩師','瑜伽老師','舞蹈老師','武術教練'].map((l,i)=>({id:i+1,label:l}));
+const SKILLS=[
+  {id:1,label:'溝通表達',emoji:'💬'},{id:2,label:'積極聆聽',emoji:'👂'},{id:3,label:'書面寫作',emoji:'✍️'},{id:4,label:'公開演講',emoji:'🎤'},
+  {id:5,label:'批判思維',emoji:'🧠'},{id:6,label:'問題解決',emoji:'🔧'},{id:7,label:'創意思考',emoji:'💡'},{id:8,label:'數據分析',emoji:'📊'},
+  {id:9,label:'領導力',emoji:'👑'},{id:10,label:'決策能力',emoji:'⚖️'},{id:11,label:'激勵他人',emoji:'🚀'},{id:12,label:'衝突處理',emoji:'🤝'},
+  {id:13,label:'時間管理',emoji:'⏰'},{id:14,label:'專案管理',emoji:'📋'},{id:15,label:'注重細節',emoji:'🔍'},{id:16,label:'多任務處理',emoji:'🌐'},
+  {id:17,label:'適應力',emoji:'🌱'},{id:18,label:'抗壓性',emoji:'💪'},{id:19,label:'自我驅動',emoji:'🎯'},{id:20,label:'同理心',emoji:'❤️'},
+  {id:21,label:'談判技巧',emoji:'🤲'},{id:22,label:'建立關係',emoji:'🌉'},{id:23,label:'跨文化溝通',emoji:'🌍'},{id:24,label:'客戶服務',emoji:'⭐'},
+];
+const VALUES=[
+  {id:1,label:'成就感',emoji:'🏆',sub:'做出影響力的事'},{id:2,label:'自主性',emoji:'🎯',sub:'自己做決定'},
+  {id:3,label:'創意',emoji:'🎨',sub:'有空間發揮想像'},{id:4,label:'安全感',emoji:'🛡️',sub:'穩定可預期'},
+  {id:5,label:'人際連結',emoji:'🤝',sub:'有意義的關係'},{id:6,label:'持續成長',emoji:'📈',sub:'不斷學習進步'},
+  {id:7,label:'社會貢獻',emoji:'🌍',sub:'幫助他人或社會'},{id:8,label:'財務自由',emoji:'💰',sub:'不為錢擔心'},
+  {id:9,label:'平衡',emoji:'⚖️',sub:'工作與生活並重'},{id:10,label:'卓越',emoji:'💎',sub:'追求最高標準'},
+  {id:11,label:'家庭',emoji:'🏡',sub:'家人優先'},{id:12,label:'冒險',emoji:'🗺️',sub:'嘗試新事物'},
+  {id:13,label:'影響力',emoji:'📢',sub:'能影響他人想法'},{id:14,label:'誠信',emoji:'🕊️',sub:'言行一致'},
+  {id:15,label:'多元性',emoji:'🌈',sub:'豐富多樣的體驗'},{id:16,label:'專業深度',emoji:'🔬',sub:'成為領域專家'},
+  {id:17,label:'被認可',emoji:'🏅',sub:'努力獲得肯定'},{id:18,label:'健康',emoji:'🌿',sub:'身心健康優先'},
+  {id:19,label:'樂趣',emoji:'😄',sub:'工作要有樂趣'},{id:20,label:'責任感',emoji:'🎖️',sub:'對承諾負責'},
+];
+
+let hSorted={};
+let ptYes=[],ptNo=[],ptIdx=0,ptRank=[];
+let skYes=[],skNo=[],skIdx=0,skBest=[],skWeak=[];
+let vtStarred=[],vtIdx=0;
+let lastDeck='';
+let dragData={type:null,id:null};
+
+function go(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+  if(id==='s-holland')initHolland();
+  if(id==='s-passion-tinder')initPT();
+  if(id==='s-passion-pick')initPP();
+  if(id==='s-skill-tinder')initSK();
+  if(id==='s-skill-pick')initSP();
+  if(id==='s-value-tinder')initVT();
+}
+
+// Keyboard support
+document.addEventListener('keydown',e=>{
+  const active=document.querySelector('.screen.active')?.id;
+  if(active==='s-passion-tinder'){if(e.key==='ArrowRight')ptSwipe('yes');if(e.key==='ArrowLeft')ptSwipe('no')}
+  if(active==='s-skill-tinder'){if(e.key==='ArrowRight')skSwipe('yes');if(e.key==='ArrowLeft')skSwipe('no')}
+  if(active==='s-value-tinder'){if(e.key==='ArrowRight')vtSwipe('star');if(e.key==='ArrowLeft')vtSwipe('no')}
+});
+
+// Touch swipe support for tinder
+let touchStartX=null;
+document.addEventListener('touchstart',e=>{const s=document.querySelector('.screen.active')?.id;if(['s-passion-tinder','s-skill-tinder','s-value-tinder'].includes(s))touchStartX=e.touches[0].clientX},{passive:true});
+document.addEventListener('touchend',e=>{
+  if(touchStartX===null)return;
+  const dx=e.changedTouches[0].clientX-touchStartX;
+  touchStartX=null;
+  if(Math.abs(dx)<50)return;
+  const active=document.querySelector('.screen.active')?.id;
+  if(active==='s-passion-tinder'){dx>0?ptSwipe('yes'):ptSwipe('no')}
+  if(active==='s-skill-tinder'){dx>0?skSwipe('yes'):skSwipe('no')}
+  if(active==='s-value-tinder'){dx>0?vtSwipe('star'):vtSwipe('no')}
+});
+
+// HOLLAND
+let hDragId=null;
+function initHolland(){hSorted={};renderH()}
+function makeHCard(c){
+  const d=document.createElement('div');
+  d.className='hcard';d.draggable=true;d.dataset.id=c.id;
+  d.innerHTML=`<div class="hcard-letter">${c.letter}</div><div class="hcard-label">${c.label}</div>`;
+  d.addEventListener('dragstart',()=>{hDragId=c.id;setTimeout(()=>d.classList.add('dragging'),0)});
+  d.addEventListener('dragend',()=>d.classList.remove('dragging'));
+  return d;
+}
+function renderH(){
+  const pool=document.getElementById('h-pool');pool.innerHTML='';
+  HOLLAND.filter(c=>!hSorted[c.id]).forEach(c=>pool.appendChild(makeHCard(c)));
+  document.getElementById('h-unsorted').textContent=HOLLAND.filter(c=>!hSorted[c.id]).length;
+  ['sim','neu','dif'].forEach(z=>{
+    const el=document.getElementById('hz-'+z);el.innerHTML='';
+    HOLLAND.filter(c=>hSorted[c.id]===z).forEach(c=>el.appendChild(makeHCard(c)));
+    document.getElementById('hc-'+z).textContent=HOLLAND.filter(c=>hSorted[c.id]===z).length;
+  });
+  document.getElementById('h-done').style.display=HOLLAND.every(c=>hSorted[c.id])?'':'none';
+}
+function hDragOver(e,z){e.preventDefault();const el=z==='pool'?document.getElementById('h-pool'):document.getElementById('hz-'+z)?.closest('.h-zone');if(el)el.classList.add('drag-over')}
+function hDragLeave(e,z){const el=z==='pool'?document.getElementById('h-pool'):document.getElementById('hz-'+z)?.closest('.h-zone');if(el)el.classList.remove('drag-over')}
+function hDrop(e,z){e.preventDefault();hDragLeave(e,z);if(!hDragId)return;if(z==='pool')delete hSorted[hDragId];else hSorted[hDragId]=z;hDragId=null;renderH()}
+
+// TINDER ENGINE
+function makeTCard(c){
+  const d=document.createElement('div');d.className='tcard';
+  d.innerHTML=`<div class="tcard-stamp s-yes">喜歡 ✓</div><div class="tcard-stamp s-no">跳過 ✕</div>${c.emoji?`<div class="tcard-emoji">${c.emoji}</div>`:''}<div class="tcard-label">${c.label}</div>${c.sub?`<div class="tcard-sub">${c.sub}</div>`:''}`;
+  return d;
+}
+function renderStack(cards,idx,stackId){
+  const stack=document.getElementById(stackId);stack.innerHTML='';
+  if(idx>=cards.length){stack.innerHTML='<div class="tcard front" style="justify-content:center;font-size:14px;color:#888">全部滑完！</div>';return}
+  if(idx+1<cards.length){const b=makeTCard(cards[idx+1]);b.classList.add('behind');stack.appendChild(b)}
+  const f=makeTCard(cards[idx]);f.classList.add('front');stack.appendChild(f);
+}
+function animateSwipe(stackId,dir,cb){
+  const f=document.getElementById(stackId)?.querySelector('.front');
+  if(!f){cb();return}
+  f.classList.add(dir==='yes'?'sw-right':'sw-left');
+  setTimeout(cb,200);
+}
+
+// PASSION TINDER
+function initPT(){ptYes=[];ptNo=[];ptIdx=0;renderPT()}
+function renderPT(){
+  renderStack(PASSION,ptIdx,'pt-stack');
+  document.getElementById('pt-cur').textContent=Math.min(ptIdx+1,PASSION.length);
+  document.getElementById('pt-total').textContent=PASSION.length;
+  document.getElementById('pt-yes-cnt').textContent=ptYes.length;
+  document.getElementById('pt-no-cnt').textContent=ptNo.length;
+  document.getElementById('pt-next').style.display=ptIdx>=PASSION.length&&ptYes.length>0?'':'none';
+}
+function ptSwipe(dir){
+  if(ptIdx>=PASSION.length)return;
+  animateSwipe('pt-stack',dir,()=>{if(dir==='yes')ptYes.push(PASSION[ptIdx]);else ptNo.push(PASSION[ptIdx]);ptIdx++;renderPT()});
+}
+
+// PASSION PICK
+let ppDragId=null;
+function initPP(){ptRank=[];renderPP()}
+function renderPP(){
+  document.getElementById('pp-cnt').textContent=ptRank.length;
+  document.getElementById('pp-pool-cnt').textContent=ptYes.length;
+  const list=document.getElementById('pp-rank-list');list.innerHTML='';
+  ptRank.forEach((c,i)=>{
+    const r=document.createElement('div');r.className='rank-item';r.draggable=true;r.dataset.rid=c.id;
+    r.innerHTML=`<span class="rank-num">${i+1}</span><span class="rank-label">${c.label}</span><span class="rank-remove" onclick="ppRemove(${c.id})">✕</span>`;
+    r.addEventListener('dragstart',e=>{ppDragId=c.id;dragData={type:'rank-reorder',id:c.id};setTimeout(()=>r.classList.add('dragging'),0);e.stopPropagation()});
+    r.addEventListener('dragend',()=>{r.classList.remove('dragging');document.querySelectorAll('.rank-item').forEach(x=>x.classList.remove('drag-over-item'));ppDragId=null});
+    r.addEventListener('dragover',e=>{e.preventDefault();e.stopPropagation();document.querySelectorAll('.rank-item').forEach(x=>x.classList.remove('drag-over-item'));r.classList.add('drag-over-item')});
+    r.addEventListener('drop',e=>{e.preventDefault();e.stopPropagation();if(ppDragId&&ppDragId!==c.id){const fi=ptRank.findIndex(x=>x.id===ppDragId);const ti=ptRank.findIndex(x=>x.id===c.id);const[item]=ptRank.splice(fi,1);ptRank.splice(ti,0,item);renderPP()}});
+    list.appendChild(r);
+  });
+  const pool=document.getElementById('pp-pool');pool.innerHTML='';
+  ptYes.forEach(c=>{
+    const inRank=ptRank.find(x=>x.id===c.id);
+    const p=document.createElement('div');p.className='pcard'+(inRank?' picked':'');
+    p.textContent=c.label;p.draggable=!inRank;
+    p.addEventListener('dragstart',e=>{if(inRank)return;dragData={type:'pool-to-rank',id:c.id};setTimeout(()=>p.classList.add('dragging'),0)});
+    p.addEventListener('dragend',()=>p.classList.remove('dragging'));
+    p.onclick=()=>{if(inRank)return;if(ptRank.length<15){ptRank.push(c);renderPP()}};
+    pool.appendChild(p);
+  });
+  const hint=document.getElementById('pp-hint');
+  hint.textContent=ptRank.length>=15?'已選滿 15 張！可查看結果，或拖曳排行榜調整順序':`點選右側職位加入清單（已選 ${ptRank.length}/15）`;
+  document.getElementById('pp-done').style.display=ptRank.length>0?'':'none';
+}
+function ppRemove(id){ptRank=ptRank.filter(c=>c.id!==id);renderPP()}
+function ppRankOver(e){e.preventDefault();document.getElementById('pp-rank-zone').classList.add('drag-over')}
+function ppRankLeave(e){document.getElementById('pp-rank-zone').classList.remove('drag-over')}
+function ppRankDrop(e){
+  e.preventDefault();document.getElementById('pp-rank-zone').classList.remove('drag-over');
+  if(dragData.type==='pool-to-rank'){const c=ptYes.find(x=>x.id===dragData.id);if(c&&!ptRank.find(x=>x.id===c.id)&&ptRank.length<15){ptRank.push(c);renderPP()}}
+}
+
+// SKILL TINDER
+function initSK(){skYes=[];skNo=[];skIdx=0;renderSK()}
+function renderSK(){
+  renderStack(SKILLS,skIdx,'sk-stack');
+  document.getElementById('sk-cur').textContent=Math.min(skIdx+1,SKILLS.length);
+  document.getElementById('sk-total').textContent=SKILLS.length;
+  document.getElementById('sk-yes-cnt').textContent=skYes.length;
+  document.getElementById('sk-no-cnt').textContent=skNo.length;
+  document.getElementById('sk-next').style.display=skIdx>=SKILLS.length?'':'none';
+}
+function skSwipe(dir){
+  if(skIdx>=SKILLS.length)return;
+  animateSwipe('sk-stack',dir,()=>{if(dir==='yes')skYes.push(SKILLS[skIdx]);else skNo.push(SKILLS[skIdx]);skIdx++;renderSK()});
+}
+
+// SKILL PICK
+let spDragId=null;
+function initSP(){skBest=[];skWeak=[];renderSP()}
+function makeSkCard(c,from){
+  const d=document.createElement('div');d.className='scard';d.draggable=true;
+  const inBest=skBest.find(x=>x.id===c.id),inWeak=skWeak.find(x=>x.id===c.id);
+  if(inBest||inWeak)d.classList.add('picked');
+  d.innerHTML=`<span>${c.emoji}</span><span>${c.label}</span>`;
+  d.addEventListener('dragstart',e=>{spDragId=c.id;setTimeout(()=>d.classList.add('dragging'),0)});
+  d.addEventListener('dragend',()=>d.classList.remove('dragging'));
+  d.onclick=()=>{
+    if(inBest||inWeak)return;
+    if(from==='yes-pool'&&skBest.length<7){skBest.push(c);renderSP()}
+    else if(from==='no-pool'&&skWeak.length<3){skWeak.push(c);renderSP()}
+  };
+  return d;
+}
+function makeSlotCard(c,slot){
+  const d=document.createElement('div');d.className='scard';
+  d.innerHTML=`<span>${c.emoji}</span><span>${c.label}</span><span class="scard-remove" onclick="spRemove('${slot}',${c.id})">✕</span>`;
+  return d;
+}
+function renderSP(){
+  const bc=document.getElementById('best-cards');bc.innerHTML='';skBest.forEach(c=>bc.appendChild(makeSlotCard(c,'best')));
+  document.getElementById('best-cnt').textContent=`${skBest.length} / 7`;
+  const wc=document.getElementById('weak-cards');wc.innerHTML='';skWeak.forEach(c=>wc.appendChild(makeSlotCard(c,'weak')));
+  document.getElementById('weak-cnt').textContent=`${skWeak.length} / 3`;
+  const yp=document.getElementById('sp-yes-pool');yp.innerHTML='';skYes.forEach(c=>yp.appendChild(makeSkCard(c,'yes-pool')));
+  const np=document.getElementById('sp-no-pool');np.innerHTML='';skNo.forEach(c=>np.appendChild(makeSkCard(c,'no-pool')));
+  document.getElementById('sp-done').style.display=(skBest.length>0||skWeak.length>0)?'':'none';
+}
+function spRemove(slot,id){if(slot==='best')skBest=skBest.filter(c=>c.id!==id);else skWeak=skWeak.filter(c=>c.id!==id);renderSP()}
+function spOver(e,slot){e.preventDefault();document.getElementById('sp-'+slot).classList.add('drag-over')}
+function spLeave(e,slot){document.getElementById('sp-'+slot).classList.remove('drag-over')}
+function spDrop(e,slot){
+  e.preventDefault();spLeave(e,slot);if(!spDragId)return;
+  const c=SKILLS.find(x=>x.id===spDragId);if(!c)return;
+  skBest=skBest.filter(x=>x.id!==spDragId);skWeak=skWeak.filter(x=>x.id!==spDragId);
+  if(slot==='best'&&skBest.length<7)skBest.push(c);
+  else if(slot==='weak'&&skWeak.length<3)skWeak.push(c);
+  spDragId=null;renderSP();
+}
+
+// VALUE TINDER
+function initVT(){vtStarred=[];vtIdx=0;renderVT()}
+function renderVT(){
+  renderStack(VALUES,vtIdx,'vt-stack');
+  document.getElementById('vt-cur').textContent=Math.min(vtIdx+1,VALUES.length);
+  document.getElementById('vt-total').textContent=VALUES.length;
+  document.getElementById('vt-star-cnt').textContent=vtStarred.length;
+  document.getElementById('vt-no-cnt').textContent=vtIdx-vtStarred.length;
+  document.getElementById('vt-done').style.display=vtIdx>=VALUES.length&&vtStarred.length>0?'':'none';
+}
+function vtSwipe(dir){
+  if(vtIdx>=VALUES.length)return;
+  animateSwipe('vt-stack',dir==='star'?'yes':'no',()=>{if(dir==='star')vtStarred.push(VALUES[vtIdx]);vtIdx++;renderVT()});
+}
+
+// RESULTS
+function showResult(deck){
+  lastDeck=deck;
+  const titles={holland:'Holland Code 結果',passion:'探索熱情 — 前 '+ptRank.length+' 名',skill:'職能卡結果',value:'價值導航 — 重要清單'};
+  document.getElementById('res-title').textContent=titles[deck];
+  let html='';
+  if(deck==='holland'){
+    [['sim','相似','#1D9E75','chip-green'],['neu','普通','#5F5E5A','chip-gray'],['dif','不相似','#D85A30','chip-coral']].forEach(([z,name,clr,cls])=>{
+      const cards=HOLLAND.filter(c=>hSorted[c.id]===z);
+      html+=`<div class="res-section"><div class="res-title" style="color:${clr}">${name}（${cards.length} 張）</div><div class="res-chips">${cards.map(c=>`<div class="chip ${cls}">${c.letter} ${c.label}</div>`).join('')||'<span style="font-size:12px;color:#888">無</span>'}</div></div>`;
+    });
+  } else if(deck==='passion'){
+    html=`<div class="res-section"><div class="res-title" style="color:#1D9E75">最想做的 ${ptRank.length} 個職位</div><div class="res-chips">${ptRank.map((c,i)=>`<div class="chip chip-green">${i+1}. ${c.label}</div>`).join('')}</div></div>`;
+    const rest=ptYes.filter(c=>!ptRank.find(x=>x.id===c.id));
+    if(rest.length)html+=`<div class="res-section"><div class="res-title" style="color:#5F5E5A">其他喜歡的（${rest.length} 張）</div><div class="res-chips">${rest.map(c=>`<div class="chip chip-gray">${c.label}</div>`).join('')}</div></div>`;
+  } else if(deck==='skill'){
+    html=`<div class="res-section"><div class="res-title" style="color:#1D9E75">最棒職能（${skBest.length}）</div><div class="res-chips">${skBest.map(c=>`<div class="chip chip-green">${c.emoji} ${c.label}</div>`).join('')||'<span style="font-size:12px;color:#888">未選</span>'}</div></div><div class="res-section"><div class="res-title" style="color:#D85A30">最弱職能（${skWeak.length}）</div><div class="res-chips">${skWeak.map(c=>`<div class="chip chip-coral">${c.emoji} ${c.label}</div>`).join('')||'<span style="font-size:12px;color:#888">未選</span>'}</div></div>`;
+  } else if(deck==='value'){
+    html=`<div class="res-section"><div class="res-title" style="color:#BA7517">標記為重要（${vtStarred.length} 張）</div><div class="res-chips">${vtStarred.map(c=>`<div class="chip chip-amber">${c.emoji} ${c.label}</div>`).join('')}</div></div>`;
+  }
+  document.getElementById('res-body').innerHTML=html;
+  go('s-result');
+}
+</script>
+</body>
+</html>
