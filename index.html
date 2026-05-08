@@ -21,6 +21,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang TC','Micr
 .btn-primary:hover{background:#0F6E56}
 .action-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:1.25rem}
 .divider{border:none;border-top:0.5px solid #e0ded8;margin:1.5rem 0}
+.info-box{background:#E1F5EE;border:0.5px solid #9FE1CB;border-radius:8px;padding:9px 13px;font-size:12px;color:#0F6E56;margin-bottom:1rem;line-height:1.5}
 
 /* Home */
 .deck-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:1.5rem}
@@ -56,31 +57,30 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang TC','Micr
 .z-neu .hcard{background:#f1efe8;border-color:#D3D1C7}.z-neu .hcard .hcard-letter{color:#2C2C2A}
 .z-dif .hcard{background:#FAECE7;border-color:#F5C4B3}.z-dif .hcard .hcard-letter{color:#4A1B0C}
 
-/* Tinder */
+/* Passion Tinder */
 .tinder-wrap{display:flex;flex-direction:column;align-items:center;margin-bottom:1.5rem}
 .tinder-stack{position:relative;width:280px;height:165px;margin-bottom:1rem}
-.tcard{position:absolute;inset:0;background:#fff;border:0.5px solid #e0ded8;border-radius:16px;padding:1.5rem;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:10px;user-select:none;transition:transform .2s,opacity .2s;box-shadow:0 2px 12px rgba(0,0,0,.06)}
-.tcard.behind{transform:scale(.95) translateY(8px);z-index:0;box-shadow:none}
-.tcard.front{z-index:1}
-.tcard.sw-right{transform:rotate(10deg) translateX(50px);opacity:0}
-.tcard.sw-left{transform:rotate(-10deg) translateX(-50px);opacity:0}
-.tcard-stamp{position:absolute;top:12px;right:12px;font-size:11px;font-weight:500;padding:3px 8px;border-radius:4px;opacity:0;transition:opacity .1s}
-.tcard.hint-right .tcard-stamp.s-yes{opacity:1;background:#E1F5EE;color:#0F6E56}
-.tcard.hint-left .tcard-stamp.s-no{opacity:1;background:#FAECE7;color:#993C1D}
-.tcard-emoji{font-size:28px}
-.tcard-label{font-size:16px;font-weight:500;color:#1a1a18;text-align:center}
-.tcard-sub{font-size:12px;color:#888780;text-align:center}
-.tinder-btns{display:flex;gap:20px;align-items:center}
-.t-btn{width:56px;height:56px;border-radius:50%;border:none;cursor:pointer;font-size:22px;transition:all .15s;display:flex;align-items:center;justify-content:center}
+.pt-card{position:absolute;inset:0;background:#fff;border:0.5px solid #e0ded8;border-radius:16px;padding:1.5rem;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:10px;user-select:none;transition:transform .2s,opacity .2s;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.pt-card.behind{transform:scale(.95) translateY(8px);z-index:0;box-shadow:none}
+.pt-card.front{z-index:1}
+.pt-card.sw-right{transform:rotate(10deg) translateX(50px);opacity:0}
+.pt-card.sw-left{transform:rotate(-10deg) translateX(-50px);opacity:0}
+.pt-stamp{position:absolute;top:12px;right:12px;font-size:11px;font-weight:500;padding:3px 8px;border-radius:4px;opacity:0;transition:opacity .1s}
+.pt-card.hint-right .pt-stamp.s-yes{opacity:1;background:#E1F5EE;color:#0F6E56}
+.pt-card.hint-left  .pt-stamp.s-no {opacity:1;background:#FAECE7;color:#993C1D}
+.pt-emoji{font-size:28px}
+.pt-label{font-size:16px;font-weight:500;color:#1a1a18;text-align:center}
+.pt-sub{font-size:12px;color:#888780;text-align:center}
+.tinder-btns-simple{display:flex;gap:20px;align-items:center}
+.t-btn-simple{width:56px;height:56px;border-radius:50%;border:none;cursor:pointer;font-size:22px;transition:all .15s;display:flex;align-items:center;justify-content:center}
 .t-btn-no{background:#FAECE7;color:#D85A30}.t-btn-no:hover{background:#F5C4B3;transform:scale(1.05)}
 .t-btn-yes{background:#E1F5EE;color:#1D9E75}.t-btn-yes:hover{background:#9FE1CB;transform:scale(1.05)}
-.t-btn-star{background:#FAEEDA;color:#BA7517;width:46px;height:46px;font-size:18px}.t-btn-star:hover{background:#FAC775}
 .tinder-progress{font-size:12px;color:#888;margin-bottom:.5rem}
 .tinder-counts{display:flex;gap:20px;font-size:12px;margin-top:.625rem}
-.tc-good{color:#1D9E75;font-weight:500}.tc-weak{color:#D85A30;font-weight:500}.tc-star{color:#BA7517;font-weight:500}
+.tc-good{color:#1D9E75;font-weight:500}.tc-weak{color:#D85A30;font-weight:500}
 .keyboard-hint{font-size:11px;color:#aaa;margin-top:.5rem}
 
-/* Passion pick - vertical layout */
+/* Passion Pick */
 .pp-rank-zone{border:1.5px dashed #5DCAA5;border-radius:12px;padding:10px;min-height:52px;transition:background .15s;margin-bottom:0}
 .pp-rank-zone.drag-over{background:#E1F5EE}
 .pp-rank-header{font-size:12px;font-weight:500;color:#0F6E56;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center}
@@ -94,12 +94,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang TC','Micr
 .rank-remove:hover{background:#f1efe8;color:#888}
 .pp-pool-zone{border:0.5px solid #e0ded8;border-radius:12px;padding:10px}
 .pp-pool-header{font-size:11px;font-weight:500;color:#888;margin-bottom:7px}
-.pp-pool-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(72px,1fr));gap:6px}
-.pcard{background:#fff;border:1.5px solid #e0ded8;border-radius:10px;padding:8px 6px;cursor:pointer;font-size:11px;font-weight:500;color:#1a1a18;transition:all .15s;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;text-align:center;min-height:52px;user-select:none}
+.pp-pool-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:6px;align-items:stretch}
+.pcard{background:#fff;border:1.5px solid #e0ded8;border-radius:10px;padding:8px 6px;cursor:pointer;font-size:11px;font-weight:500;color:#1a1a18;transition:all .15s;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;text-align:center;min-height:72px;height:auto;user-select:none;line-height:1.4;white-space:normal;word-break:break-all;overflow-wrap:anywhere}
 .pcard:hover{border-color:#1D9E75;background:#f0faf6;transform:translateY(-1px);box-shadow:0 2px 8px rgba(0,0,0,.08)}
 .pcard.picked{opacity:.28;pointer-events:none;background:#f1efe8}
 .pcard.dragging{opacity:.3}
-.info-box{background:#E1F5EE;border:0.5px solid #9FE1CB;border-radius:8px;padding:9px 13px;font-size:12px;color:#0F6E56;margin-bottom:1rem;line-height:1.5}
+
 /* Passion card popup modal */
 .pcard-modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:9999;display:flex;align-items:center;justify-content:center;padding:1.25rem;opacity:0;transition:opacity .2s;pointer-events:none}
 .pcard-modal-overlay.show{opacity:1;pointer-events:all}
@@ -115,57 +115,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang TC','Micr
 .pcard-modal-section-title{font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:#aaa;margin-bottom:5px}
 .pcard-modal-section-body{font-size:13px;color:#3a3a38;line-height:1.7}
 
-/* Skill pick */
-.sp-layout{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:1rem}
-@media(max-width:560px){.sp-layout{grid-template-columns:1fr}}
-.sp-slot{border:1.5px dashed;border-radius:12px;padding:12px;min-height:180px;transition:all .15s}
-.sp-slot-best{border-color:#5DCAA5}.sp-slot-best.drag-over{background:#E1F5EE;transform:scale(1.01)}
-.sp-slot-weak{border-color:#F0997B}.sp-slot-weak.drag-over{background:#FAECE7;transform:scale(1.01)}
-.sp-slot-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
-.sp-slot-title{font-size:12px;font-weight:500}
-.sp-slot-best .sp-slot-title{color:#0F6E56}
-.sp-slot-weak .sp-slot-title{color:#993C1D}
-.sp-slot-cnt{font-size:11px;color:#888}
-.sp-slot-cards{display:flex;flex-wrap:wrap;gap:5px}
-.sp-pools{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-@media(max-width:560px){.sp-pools{grid-template-columns:1fr}}
-.sp-pool{border:0.5px solid #e0ded8;border-radius:12px;padding:10px;max-height:240px;overflow-y:auto}
-.sp-pool-label{font-size:11px;font-weight:500;margin-bottom:8px}
-.sp-pool-best-label{color:#1D9E75}.sp-pool-weak-label{color:#D85A30}
-.scard{background:#fff;border:0.5px solid #e0ded8;border-radius:8px;padding:6px 9px;cursor:grab;font-size:12px;font-weight:500;color:#1a1a18;display:flex;align-items:center;gap:5px;margin-bottom:5px;user-select:none;transition:all .15s}
-.scard:hover{border-color:#aaa}
-.scard.dragging{opacity:.3}
-.scard.picked{opacity:.35;pointer-events:none}
-.sp-slot-best .scard{background:#E1F5EE;border-color:#9FE1CB;color:#085041}
-.sp-slot-weak .scard{background:#FAECE7;border-color:#F5C4B3;color:#4A1B0C}
-.scard-remove{font-size:10px;color:#aaa;margin-left:auto;cursor:pointer;padding:1px 4px;border-radius:3px}
-.scard-remove:hover{background:#f1efe8}
-
-/* Result */
-.res-hcards-row{display:flex;flex-wrap:wrap;gap:10px}
-.res-hcard{border:2px solid;border-radius:12px;padding:14px 10px;width:90px;height:90px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-align:center}
-.res-hcard-letter{font-size:26px;font-weight:700;line-height:1}
-.res-hcard-name{font-size:11px;font-weight:500;color:#1a1a18;line-height:1.2}
-.res-title{font-size:13px;font-weight:500;margin-bottom:10px}
-.res-chips{display:flex;flex-wrap:wrap;gap:6px}
-.chip{font-size:12px;font-weight:500;padding:4px 11px;border-radius:20px}
-.chip-green{background:#E1F5EE;color:#0F6E56}
-.chip-coral{background:#FAECE7;color:#993C1D}
-.chip-amber{background:#FAEEDA;color:#BA7517}
-.chip-gray{background:#f1efe8;color:#444441}
-
-
+/* Holland Browse */
 .hb-sort-row{background:#f8f7f4;border-radius:12px;padding:1rem;margin-top:1rem}
 .hb-sort-btn{padding:10px 20px;border-radius:10px;font-size:13px;font-weight:500;cursor:pointer;border:1.5px solid;transition:all .15s}
 .hb-sim{background:#E1F5EE;color:#0F6E56;border-color:#5DCAA5}.hb-sim:hover{background:#c0edde}
 .hb-neu{background:#f1efe8;color:#5F5E5A;border-color:#B4B2A9}.hb-neu:hover{background:#e0ddd4}
 .hb-dif{background:#FAECE7;color:#993C1D;border-color:#F0997B}.hb-dif:hover{background:#f5d4c8}
 .hb-sort-btn.selected{transform:scale(1.06);box-shadow:0 2px 8px rgba(0,0,0,.12)}
-.hb-sorted-indicator{display:flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;font-size:13px;font-weight:500;margin-top:1rem}
-.hb-sorted-sim{background:#E1F5EE;color:#0F6E56}
-.hb-sorted-neu{background:#f1efe8;color:#5F5E5A}
-.hb-sorted-dif{background:#FAECE7;color:#993C1D}
-
 .hb-card{background:#fff;border:2px solid #e0ded8;border-radius:16px;padding:1.5rem;margin-bottom:1rem;transition:all .3s}
 .hb-card-header{display:flex;align-items:center;gap:12px;margin-bottom:1rem;padding-bottom:1rem;border-bottom:0.5px solid #f0ede6}
 .hb-letter{font-size:32px;font-weight:700;min-width:36px}
@@ -176,8 +132,26 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang TC','Micr
 .hb-section-title{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#aaa;margin-bottom:4px}
 .hb-section-body{font-size:13px;color:#3a3a38;line-height:1.7}
 .hb-dots{display:flex;justify-content:center;gap:6px;margin-top:.5rem}
-.hb-dot{width:7px;height:7px;border-radius:50%;background:#e0ded8;transition:background .2s}
+.hb-dot{width:7px;height:7px;border-radius:50%;background:#e0ded8;transition:background .2s;cursor:pointer}
 .hb-dot.active{background:#1D9E75}
+
+/* Value Sort */
+.vcard{background:#fff;border:2px solid #e0ded8;border-radius:16px;padding:1.5rem;margin-bottom:1rem;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:16px;font-weight:500;color:#1a1a18}
+.vp-rank-zone{border:1.5px dashed #5DCAA5;border-radius:12px;padding:10px;min-height:52px;transition:background .15s}
+.vp-rank-zone.drag-over{background:#E1F5EE}
+
+/* Result */
+.res-hcards-row{display:flex;flex-wrap:wrap;gap:10px}
+.res-hcard{border:2px solid;border-radius:12px;padding:14px 10px;width:90px;height:90px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-align:center;cursor:pointer}
+.res-hcard-letter{font-size:26px;font-weight:700;line-height:1}
+.res-hcard-name{font-size:11px;font-weight:500;color:#1a1a18;line-height:1.2}
+.res-title{font-size:13px;font-weight:500;margin-bottom:10px}
+.res-chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:12px;font-weight:500;padding:4px 11px;border-radius:20px}
+.chip-green{background:#E1F5EE;color:#0F6E56}
+.chip-coral{background:#FAECE7;color:#993C1D}
+.chip-amber{background:#FAEEDA;color:#BA7517}
+.chip-gray{background:#f1efe8;color:#444441}
 
 /* Modal */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:9999;display:flex;align-items:center;justify-content:center;padding:1.25rem;opacity:0;transition:opacity .2s}
@@ -196,17 +170,74 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang TC','Micr
 .modal-section-title{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:#aaa;margin-bottom:5px}
 .modal-section-body{font-size:14px;color:#3a3a38;line-height:1.75}
 
-/* Passion card tinder style */
-.tcard-holland{font-size:11px;font-weight:600;background:#3A5A8A;color:#fff;border-radius:6px;padding:2px 7px;position:absolute;top:12px;right:12px;letter-spacing:.04em}
-.tcard-sub{font-size:11px;color:#888;text-align:center;margin-top:-4px}
-.tcard-icons{display:grid;grid-template-columns:1fr 1fr;gap:0 12px;width:100%;margin-top:6px;text-align:left}
-.tcard-icon-col{display:flex;flex-direction:column;gap:2px}
-.tcard-icon-header{display:flex;align-items:center;gap:4px;font-size:10px;font-weight:600;color:#888;margin-bottom:2px}
-.tcard-icon-item{font-size:11px;color:#3a3a38;line-height:1.4}
-.tcard-work{font-size:11px;color:#5f5e5a;line-height:1.5;text-align:left;width:100%;border-top:.5px solid #f0ede6;padding-top:6px;margin-top:4px}
-.tcard-work-label{font-size:10px;font-weight:600;color:#888;margin-bottom:2px}
-/* Passion tinder stack taller */
-#pt-stack{height:230px !important}
+/* Skill tinder card */
+.tcard{position:absolute;inset:0;background:#fff;border:0.5px solid #e0ded8;border-radius:16px;padding:1.25rem;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:8px;user-select:none;transition:transform .2s,opacity .2s;box-shadow:0 4px 16px rgba(0,0,0,.10)}
+.tcard.behind{transform:scale(.95) translateY(8px);z-index:0;box-shadow:none}
+.tcard.front{z-index:1}
+.tcard.sw-left{transform:rotate(-10deg) translateX(-60px);opacity:0}
+.tcard.sw-right{transform:rotate(10deg) translateX(60px);opacity:0}
+.tcard.sw-down{transform:translateY(60px);opacity:0}
+.tcard-stamp{position:absolute;font-size:11px;font-weight:500;padding:3px 8px;border-radius:4px;opacity:0;transition:opacity .1s}
+.tcard-stamp.s-yes{top:12px;left:12px}
+.tcard-stamp.s-no{top:12px;left:12px}
+.tcard-stamp.s-skip{bottom:12px;left:50%;transform:translateX(-50%)}
+.tcard.hint-left .s-yes{opacity:1;background:#E1F5EE;color:#0F6E56}
+.tcard.hint-right .s-no{opacity:1;background:#FAECE7;color:#993C1D}
+.tcard.hint-down .s-skip{opacity:1;background:#FAEEDA;color:#BA7517}
+.tcard-meta{position:absolute;top:10px;right:10px;display:flex;flex-direction:column;align-items:flex-end;gap:3px}
+.tcard-cat{font-size:9px;font-weight:600;letter-spacing:.05em;padding:2px 7px;border-radius:5px}
+.tcard-num{font-size:9px;color:#bbb;font-weight:500}
+.tcard-label{font-size:20px;font-weight:500;color:#1a1a18;text-align:center}
+.tcard-desc{font-size:12px;color:#5f5e5a;text-align:center;line-height:1.5;margin-top:2px;display:none}
+.tc-skip{color:#BA7517;font-weight:500}
+.tinder-btns{display:grid;grid-template-columns:56px 40px 56px;grid-template-rows:56px 44px;gap:6px;place-items:center;margin-top:.5rem}
+.t-btn{width:56px;height:56px;border-radius:50%;border:none;cursor:pointer;font-size:22px;transition:all .15s;display:flex;align-items:center;justify-content:center}
+.t-btn-good{background:#E1F5EE;color:#1D9E75}.t-btn-good:hover{background:#9FE1CB;transform:scale(1.05)}
+.t-btn-weak{background:#FAECE7;color:#D85A30}.t-btn-weak:hover{background:#F5C4B3;transform:scale(1.05)}
+.t-btn-skip{grid-column:2;grid-row:2;width:40px;height:40px;border-radius:50%;border:none;cursor:pointer;font-size:17px;background:#FAEEDA;color:#BA7517;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.t-btn-skip:hover{background:#FAC775;transform:scale(1.05)}
+
+/* Skill Pick v2 */
+.sp2-wrap{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:1rem}
+@media(max-width:560px){.sp2-wrap{grid-template-columns:1fr}}
+.sp2-slot{border:1.5px dashed;border-radius:12px;padding:12px;min-height:160px;transition:all .15s}
+.sp2-slot-best{border-color:#5DCAA5}.sp2-slot-best.drag-over{background:#E1F5EE}
+.sp2-slot-weak{border-color:#F0997B}.sp2-slot-weak.drag-over{background:#FAECE7}
+.sp2-slot-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.sp2-slot-title{font-size:12px;font-weight:500}
+.sp2-slot-best .sp2-slot-title{color:#0F6E56}
+.sp2-slot-weak .sp2-slot-title{color:#993C1D}
+.sp2-slot-cnt{font-size:11px;color:#888}
+.sp2-slot-cards{display:flex;flex-wrap:wrap;gap:5px}
+.sp2-pools{display:grid;gap:10px;margin-top:.25rem}
+.sp2-pools-main{grid-template-columns:1fr 1fr}
+@media(max-width:560px){.sp2-pools-main{grid-template-columns:1fr}}
+.sp2-pool{border:0.5px solid #e0ded8;border-radius:12px;padding:10px;max-height:220px;overflow-y:auto}
+.sp2-pool-skip-wrap{max-height:none;margin-top:0}
+.sp2-skip-grid{display:flex;flex-wrap:wrap;gap:6px}
+.sp2-skip-grid .scard2{margin-bottom:0}
+.sp2-pool-label{font-size:11px;font-weight:500;margin-bottom:7px}
+.sp2-pool-good-label{color:#1D9E75}
+.sp2-pool-weak-label{color:#D85A30}
+.sp2-pool-skip-label{color:#BA7517}
+.scard2{background:#fff;border:0.5px solid #e0ded8;border-radius:8px;padding:5px 8px;cursor:grab;font-size:11px;font-weight:500;color:#1a1a18;display:flex;align-items:center;gap:4px;margin-bottom:5px;user-select:none;transition:all .15s;line-height:1.4}
+.scard2:hover{border-color:#aaa}
+.scard2.dragging{opacity:.3}
+.scard2.picked{opacity:.32;pointer-events:none}
+.scard2-cat{font-size:9px;font-weight:600;padding:1px 5px;border-radius:4px;flex-shrink:0}
+.scard2-remove{font-size:10px;color:#aaa;margin-left:auto;cursor:pointer;padding:1px 4px;border-radius:3px;flex-shrink:0}
+.scard2-remove:hover{background:#f1efe8}
+.sp2-slot-best .scard2{background:#E1F5EE;border-color:#9FE1CB;color:#085041}
+.sp2-slot-best .scard2-cat{background:#9FE1CB;color:#085041}
+.sp2-slot-weak .scard2{background:#FAECE7;border-color:#F5C4B3;color:#4A1B0C}
+.sp2-slot-weak .scard2-cat{background:#F5C4B3;color:#4A1B0C}
+.cat-action{background:#E1F5EE;color:#085041}
+.cat-think{background:#EEEDFE;color:#26215C}
+.cat-people{background:#FAECE7;color:#4A1B0C}
+.res-section-title{font-size:13px;font-weight:500;margin-bottom:8px}
+
+/* Skill result chips */
+.sk-res-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1rem}
 </style>
 </head>
 <body>
@@ -221,14 +252,14 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang TC','Micr
     <div class="title">選擇牌組</div>
     <div class="desc">諮詢師選好牌組與任務，一起開始</div>
     <div class="deck-grid">
-      <div class="deck-btn" onclick="go('s-holland-browse')"><div class="deck-icon">🧭</div><div class="deck-name">旅人卡 — Holland Code</div><div class="deck-meta">6 張 · RIASEC 六大性格</div><div class="deck-flow">→ 拖入三堆分類</div></div>
-      <div class="deck-btn" onclick="go('s-passion-tinder')"><div class="deck-icon">🔥</div><div class="deck-name">旅人卡 — 探索熱情</div><div class="deck-meta">100 張 · 職位關鍵字</div><div class="deck-flow">→ 滑卡圈選 → 拖曳排出前 15</div></div>
-      <div class="deck-btn" onclick="go('s-skill-tinder')"><div class="deck-icon">⚡</div><div class="deck-name">職能卡</div><div class="deck-meta">24 張 · 軟硬實力</div><div class="deck-flow">→ Tinder 滑卡 → 拖入最棒 7 + 最弱 3</div></div>
-      <div class="deck-btn" onclick="go('s-value-tinder')"><div class="deck-icon">🌟</div><div class="deck-name">價值導航卡</div><div class="deck-meta">20 張 · 人生與職業價值觀</div><div class="deck-flow">→ 滑卡標記重要 → 查看清單</div></div>
+      <div class="deck-btn" onclick="go('s-holland-browse')"><div class="deck-icon">🧭</div><div class="deck-name">旅人卡 — Holland Code</div><div class="deck-meta">6 張 · RIASEC 六大性格</div><div class="deck-flow">→ 閱讀 → 分三類</div></div>
+      <div class="deck-btn" onclick="go('s-passion-tinder')"><div class="deck-icon">🔥</div><div class="deck-name">旅人卡 — 探索熱情</div><div class="deck-meta">100 張 · 職位關鍵字</div><div class="deck-flow">→ 滑卡圈選 → 排出前 15</div></div>
+      <div class="deck-btn" onclick="go('s-skill-tinder')"><div class="deck-icon">⚡</div><div class="deck-name">職能卡</div><div class="deck-meta">32 張 · 三大能力類別</div><div class="deck-flow">→ 滑卡分類 → 排出最棒與最弱</div></div>
+      <div class="deck-btn" onclick="go('s-value-sort')"><div class="deck-icon">🌟</div><div class="deck-name">價值導航卡</div><div class="deck-meta">70 張 · 四大類價值觀</div><div class="deck-flow">→ 分三類 → 排出前 10</div></div>
     </div>
   </div>
 
-  <!-- HOLLAND READ & SORT -->
+  <!-- HOLLAND BROWSE -->
   <div id="s-holland-browse" class="screen">
     <div class="badge">旅人卡 — Holland Code</div>
     <div class="title" id="hb-title">認識六大性格</div>
@@ -245,8 +276,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang TC','Micr
         <button class="hb-sort-btn hb-dif" onclick="hbSort('dif')">✕ 不相似</button>
       </div>
     </div>
-    <div id="hb-sorted-indicator" class="hb-sorted-indicator" style="display:none"></div>
-    <div class="action-row" style="margin-top:1rem">
+    <div id="hb-sorted-indicator" style="display:none"></div>
+    <div class="action-row">
       <button class="btn" onclick="go('s-home')">← 返回</button>
       <button class="btn" id="hb-prev" onclick="hbPrev()" style="display:none">← 上一張</button>
       <button class="btn btn-primary" id="hb-next" onclick="hbNext()" style="display:none">下一張 →</button>
@@ -258,15 +289,15 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang TC','Micr
   <div id="s-passion-tinder" class="screen">
     <div class="badge">探索熱情 — 第一步</div>
     <div class="title">圈選喜歡的職位</div>
-    <div class="desc">右 ✓ 喜歡，左 ✕ 不感興趣，滑完進入排序</div>
+    <div class="desc">右 ✓ 喜歡，左 ✕ 不感興趣</div>
     <div class="tinder-progress">第 <span id="pt-cur">1</span> / <span id="pt-total">0</span> 張</div>
     <div class="tinder-wrap">
       <div class="tinder-stack" id="pt-stack"></div>
       <div class="tinder-counts"><span class="tc-good">✓ 喜歡 <span id="pt-yes-cnt">0</span></span><span class="tc-weak">✕ 跳過 <span id="pt-no-cnt">0</span></span></div>
       <div style="height:14px"></div>
-      <div class="tinder-btns">
-        <button class="t-btn t-btn-no" onclick="ptSwipe('no')">✕</button>
-        <button class="t-btn t-btn-yes" onclick="ptSwipe('yes')">✓</button>
+      <div class="tinder-btns-simple">
+        <button class="t-btn-simple t-btn-no" onclick="ptSwipe('no')">✕</button>
+        <button class="t-btn-simple t-btn-yes" onclick="ptSwipe('yes')">✓</button>
       </div>
       <div class="keyboard-hint">鍵盤：← 跳過 · → 喜歡</div>
     </div>
@@ -280,13 +311,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang TC','Micr
   <div id="s-passion-pick" class="screen">
     <div class="badge">探索熱情 — 第二步</div>
     <div class="title">排出前 15 名</div>
-    <div class="info-box" id="pp-hint" style="margin-bottom:.75rem">點選右側職位牌卡查看詳情並加入排行榜，或直接拖曳到左側</div>
+    <div class="info-box" id="pp-hint">點選右側職位牌卡查看詳情並加入排行榜，或直接拖曳到左側</div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start">
       <div class="pp-rank-zone" id="pp-rank-zone" ondragover="ppRankOver(event)" ondragleave="ppRankLeave(event)" ondrop="ppRankDrop(event)">
-        <div class="pp-rank-header">
-          <span>排行榜</span>
-          <span id="pp-cnt" style="font-size:11px;color:#888;font-weight:400">0 / 15</span>
-        </div>
+        <div class="pp-rank-header"><span>排行榜</span><span id="pp-cnt" style="font-size:11px;color:#888;font-weight:400">0 / 15</span></div>
         <div id="pp-rank-list"></div>
       </div>
       <div class="pp-pool-zone">
@@ -305,25 +333,16 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang TC','Micr
     <div class="pcard-modal-box">
       <div class="pcard-modal-header">
         <div>
-          <div id="pcard-modal-tag" class="pcard-modal-tag"></div>
+          <div id="pcard-modal-tag"></div>
           <div class="pcard-modal-title" id="pcard-modal-title"></div>
           <div class="pcard-modal-sub" id="pcard-modal-sub"></div>
         </div>
         <button class="pcard-modal-close" onclick="closePcardModal()">✕</button>
       </div>
       <div class="pcard-modal-body">
-        <div class="pcard-modal-section">
-          <div class="pcard-modal-section-title">💡 需要的知識</div>
-          <div class="pcard-modal-section-body" id="pcard-modal-knowledge"></div>
-        </div>
-        <div class="pcard-modal-section">
-          <div class="pcard-modal-section-title">🚩 主要目標</div>
-          <div class="pcard-modal-section-body" id="pcard-modal-goal"></div>
-        </div>
-        <div class="pcard-modal-section">
-          <div class="pcard-modal-section-title">工作內容</div>
-          <div class="pcard-modal-section-body" id="pcard-modal-work"></div>
-        </div>
+        <div class="pcard-modal-section"><div class="pcard-modal-section-title">💡 需要的知識</div><div class="pcard-modal-section-body" id="pcard-modal-knowledge"></div></div>
+        <div class="pcard-modal-section"><div class="pcard-modal-section-title">🚩 主要目標</div><div class="pcard-modal-section-body" id="pcard-modal-goal"></div></div>
+        <div class="pcard-modal-section"><div class="pcard-modal-section-title">工作內容</div><div class="pcard-modal-section-body" id="pcard-modal-work"></div></div>
         <button class="btn btn-primary" style="width:100%;margin-top:.5rem" id="pcard-modal-add-btn" onclick="pcardModalAdd()">＋ 加入排行榜</button>
       </div>
     </div>
@@ -333,524 +352,439 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang TC','Micr
   <div id="s-skill-tinder" class="screen">
     <div class="badge">職能卡 — 第一步</div>
     <div class="title">滑過所有職能</div>
-    <div class="desc">右 ✓ 擅長，左 ✕ 較弱</div>
+    <div class="desc" style="margin-bottom:.75rem">
+      <span style="color:#1D9E75;font-weight:500">← 擅長</span>　
+      <span style="color:#BA7517;font-weight:500">↓ 先放著</span>　
+      <span style="color:#D85A30;font-weight:500">→ 不擅長</span>
+    </div>
     <div class="tinder-progress">第 <span id="sk-cur">1</span> / <span id="sk-total">0</span> 張</div>
     <div class="tinder-wrap">
       <div class="tinder-stack" id="sk-stack"></div>
-      <div class="tinder-counts"><span class="tc-good">擅長 <span id="sk-yes-cnt">0</span></span><span class="tc-weak">較弱 <span id="sk-no-cnt">0</span></span></div>
-      <div style="height:14px"></div>
-      <div class="tinder-btns">
-        <button class="t-btn t-btn-no" onclick="skSwipe('no')">✕</button>
-        <button class="t-btn t-btn-yes" onclick="skSwipe('yes')">✓</button>
+      <div class="tinder-counts">
+        <span class="tc-good">← 擅長 <span id="sk-yes-cnt">0</span></span>
+        <span class="tc-skip">↓ 先放著 <span id="sk-skip-cnt">0</span></span>
+        <span class="tc-weak">不擅長 → <span id="sk-no-cnt">0</span></span>
       </div>
-      <div class="keyboard-hint">鍵盤：← 較弱 · → 擅長</div>
+      <div class="tinder-btns">
+        <button class="t-btn t-btn-good" onclick="skSwipe('yes')" title="擅長 ←">←</button>
+        <div></div>
+        <button class="t-btn t-btn-weak" onclick="skSwipe('no')" title="不擅長 →">→</button>
+        <button class="t-btn-skip" onclick="skSwipe('skip')" title="先放著 ↓">↓</button>
+      </div>
+      <div class="keyboard-hint">鍵盤：← 擅長 · → 不擅長 · ↓ 先放著</div>
     </div>
     <div class="action-row">
       <button class="btn" onclick="go('s-home')">← 返回</button>
-      <button class="btn btn-primary" id="sk-next" onclick="go('s-skill-pick')" style="display:none">精選最棒與最弱 →</button>
     </div>
   </div>
 
   <!-- SKILL PICK -->
   <div id="s-skill-pick" class="screen">
     <div class="badge">職能卡 — 第二步</div>
-    <div class="title">拖入最棒 7 個 + 最弱 3 個</div>
-    <div class="desc">從下方牌池拖曳到對應框框，或點選加入</div>
-    <div class="sp-layout">
-      <div class="sp-slot sp-slot-best" id="sp-best" ondragover="spOver(event,'best')" ondragleave="spLeave(event,'best')" ondrop="spDrop(event,'best')">
-        <div class="sp-slot-header"><span class="sp-slot-title">最棒職能</span><span class="sp-slot-cnt" id="best-cnt">0 / 7</span></div>
-        <div class="sp-slot-cards" id="best-cards"></div>
+    <div class="title">排出最棒與最弱</div>
+    <div class="info-box" id="sp2-hint">點選下方牌卡加入框框，或拖曳進去</div>
+    <div class="sp2-wrap">
+      <div class="sp2-slot sp2-slot-best" id="sp2-best"
+           ondragover="sp2Over(event,'best')" ondragleave="sp2Leave(event,'best')" ondrop="sp2Drop(event,'best')">
+        <div class="sp2-slot-header">
+          <span class="sp2-slot-title">最擅長</span>
+          <span class="sp2-slot-cnt" id="best2-cnt">0 / 7</span>
+        </div>
+        <div class="sp2-slot-cards" id="best2-cards"></div>
       </div>
-      <div class="sp-slot sp-slot-weak" id="sp-weak" ondragover="spOver(event,'weak')" ondragleave="spLeave(event,'weak')" ondrop="spDrop(event,'weak')">
-        <div class="sp-slot-header"><span class="sp-slot-title">最弱職能</span><span class="sp-slot-cnt" id="weak-cnt">0 / 3</span></div>
-        <div class="sp-slot-cards" id="weak-cards"></div>
+      <div class="sp2-slot sp2-slot-weak" id="sp2-weak"
+           ondragover="sp2Over(event,'weak')" ondragleave="sp2Leave(event,'weak')" ondrop="sp2Drop(event,'weak')">
+        <div class="sp2-slot-header">
+          <span class="sp2-slot-title">最不擅長</span>
+          <span class="sp2-slot-cnt" id="weak2-cnt">0 / 7</span>
+        </div>
+        <div class="sp2-slot-cards" id="weak2-cards"></div>
       </div>
     </div>
-    <div class="divider"></div>
-    <div class="sp-pools">
-      <div class="sp-pool">
-        <div class="sp-pool-label sp-pool-best-label">擅長的 → 拖入左框</div>
-        <div id="sp-yes-pool"></div>
+    <div class="sp2-pools sp2-pools-main">
+      <div class="sp2-pool">
+        <div class="sp2-pool-label sp2-pool-good-label">← 擅長（<span id="sp2-yes-cnt">0</span>）</div>
+        <div id="sp2-yes-pool"></div>
       </div>
-      <div class="sp-pool">
-        <div class="sp-pool-label sp-pool-weak-label">較弱的 → 拖入右框</div>
-        <div id="sp-no-pool"></div>
+      <div class="sp2-pool">
+        <div class="sp2-pool-label sp2-pool-weak-label">不擅長 →（<span id="sp2-no-cnt">0</span>）</div>
+        <div id="sp2-no-pool"></div>
       </div>
+    </div>
+    <div class="sp2-pool sp2-pool-skip-wrap" id="sp2-skip-wrap" style="display:none">
+      <div class="sp2-pool-label sp2-pool-skip-label">↓ 先放著（<span id="sp2-skip-cnt">0</span>）— 選不出來的可以從這裡補</div>
+      <div class="sp2-skip-grid" id="sp2-skip-pool"></div>
     </div>
     <div class="action-row">
       <button class="btn" onclick="go('s-skill-tinder')">← 重新滑</button>
-      <button class="btn btn-primary" id="sp-done" onclick="showResult('skill')" style="display:none">查看結果 →</button>
+      <button class="btn btn-primary" id="sp2-done" onclick="showSkillResult()" style="display:none">查看結果 →</button>
     </div>
   </div>
 
-  <!-- VALUE TINDER -->
-  <div id="s-value-tinder" class="screen">
-    <div class="badge">價值導航卡</div>
-    <div class="title">標記重要的價值觀</div>
-    <div class="desc">⭐ 對我重要，✕ 跳過，滑完查看全部標記</div>
-    <div class="tinder-progress">第 <span id="vt-cur">1</span> / <span id="vt-total">0</span> 張</div>
-    <div class="tinder-wrap">
-      <div class="tinder-stack" id="vt-stack"></div>
-      <div class="tinder-counts"><span class="tc-star">⭐ 重要 <span id="vt-star-cnt">0</span></span><span class="tc-weak">✕ 跳過 <span id="vt-no-cnt">0</span></span></div>
-      <div style="height:14px"></div>
-      <div class="tinder-btns">
-        <button class="t-btn t-btn-no" onclick="vtSwipe('no')">✕</button>
-        <button class="t-btn t-btn-star" onclick="vtSwipe('star')">⭐</button>
-      </div>
-      <div class="keyboard-hint">鍵盤：← 跳過 · → 重要</div>
+  <!-- SKILL RESULT -->
+  <div id="s-skill-result" class="screen">
+    <div class="badge">職能卡 — 結果</div>
+    <div class="title">我的職能輪廓</div>
+    <div class="desc">截圖後可貼到任何地方討論</div>
+    <div id="sk-res-body"></div>
+    <div class="action-row">
+      <button class="btn" onclick="go('s-home')">← 返回首頁</button>
+      <button class="btn" onclick="go('s-skill-pick')">← 重新排序</button>
     </div>
+  </div>
+
+  <!-- VALUE SORT -->
+  <div id="s-value-sort" class="screen">
+    <div class="badge">價值導航卡 — 第一步</div>
+    <div class="title">分類所有價值觀</div>
+    <div class="desc">每張牌卡對你來說有多重要？</div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+      <div style="font-size:12px;color:#888">第 <span id="vs-cur">1</span> / <span id="vs-total">0</span> 張</div>
+      <div id="vs-dots" style="display:flex;gap:5px"></div>
+    </div>
+    <div id="vs-card" class="vcard"></div>
+    <div id="vs-sort-btns" style="background:#f8f7f4;border-radius:12px;padding:1rem;margin-bottom:1rem">
+      <div style="font-size:12px;font-weight:500;color:#888;margin-bottom:10px;text-align:center">這個價值觀對你有多重要？</div>
+      <div style="display:flex;gap:10px;justify-content:center">
+        <button class="hb-sort-btn hb-sim" onclick="vsSort('hi')">← 重視</button>
+        <button class="hb-sort-btn hb-neu" onclick="vsSort('mid')">↓ 普通</button>
+        <button class="hb-sort-btn hb-dif" onclick="vsSort('lo')">→ 不太重視</button>
+      </div>
+    </div>
+    <div id="vs-sorted-badge" style="display:none"></div>
     <div class="action-row">
       <button class="btn" onclick="go('s-home')">← 返回</button>
-      <button class="btn btn-primary" id="vt-done" onclick="showResult('value')" style="display:none">查看標記結果 →</button>
+      <button class="btn" id="vs-prev" onclick="vsPrev()" style="display:none">← 上一張</button>
+      <button class="btn btn-primary" id="vs-next" onclick="vsNext()" style="display:none">下一張 →</button>
+      <button class="btn btn-primary" id="vs-finish" onclick="go('s-value-pick')" style="display:none">排出前 10 →</button>
     </div>
   </div>
 
-  <!-- RESULT -->
+  <!-- VALUE PICK -->
+  <div id="s-value-pick" class="screen">
+    <div class="badge">價值導航卡 — 第二步</div>
+    <div class="title">排出最重要的</div>
+    <div class="info-box" id="vp-hint">點選右側牌卡加入排行榜，最多 10 張</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start">
+      <div class="vp-rank-zone" id="vp-rank-zone" ondragover="vpRankOver(event)" ondragleave="vpRankLeave(event)" ondrop="vpRankDrop(event)">
+        <div class="pp-rank-header"><span>我的排行</span><span id="vp-cnt" style="font-size:11px;color:#888;font-weight:400">0 / 10</span></div>
+        <div id="vp-rank-list"></div>
+      </div>
+      <div>
+        <div class="pp-pool-zone">
+          <div class="pp-pool-header" style="color:#1D9E75;font-weight:600">✦ 重視（<span id="vp-hi-cnt">0</span>）</div>
+          <div class="pp-pool-grid" id="vp-hi-pool" style="margin-bottom:10px"></div>
+          <div class="pp-pool-header" style="margin-top:6px">◎ 普通（<span id="vp-mid-cnt">0</span>）</div>
+          <div class="pp-pool-grid" id="vp-mid-pool"></div>
+        </div>
+      </div>
+    </div>
+    <div class="action-row">
+      <button class="btn" onclick="go('s-value-sort')">← 重新分類</button>
+      <button class="btn btn-primary" id="vp-done" onclick="showResult('value')" style="display:none">查看結果 →</button>
+    </div>
+  </div>
+
+  <!-- RESULT (Holland / Passion / Value) -->
   <div id="s-result" class="screen">
     <div class="badge">結果</div>
     <div class="title" id="res-title">結果</div>
-    <div class="desc">來訪者的選擇，截圖後可貼到任何地方討論</div>
+    <div class="desc">截圖後可貼到任何地方討論</div>
     <div id="res-body"></div>
     <div class="action-row">
       <button class="btn" onclick="go('s-home')">← 選其他牌組</button>
-      <button class="btn" id="res-back-pick" onclick="go('s-passion-pick')" style="display:none">← 重新排序</button>
-      <button class="btn btn-primary" id="screenshot-btn" onclick="captureResult()">📋 截圖複製</button>
+      <button class="btn" id="res-back-pick" style="display:none">← 重新排序</button>
+    </div>
+  </div>
+</div>
+
+<!-- Holland Modal -->
+<div class="modal-overlay" id="card-modal" onclick="closeModal(event)">
+  <div class="modal-box">
+    <div class="modal-header" id="modal-header">
+      <div class="modal-letter" id="modal-letter"></div>
+      <div class="modal-names"><div class="modal-en" id="modal-en"></div><div class="modal-zh" id="modal-zh"></div></div>
+      <button class="modal-close" onclick="closeModalDirect()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section"><div class="modal-section-title">描述</div><div class="modal-section-body" id="modal-desc"></div></div>
+      <div class="modal-section"><div class="modal-section-title">優勢</div><div class="modal-section-body" id="modal-strength"></div></div>
+      <div class="modal-section"><div class="modal-section-title">典型對應職業</div><div class="modal-section-body" id="modal-career"></div></div>
     </div>
   </div>
 </div>
 
 <script>
+// ═══════════════════════════════════════════
+// DATA
+// ═══════════════════════════════════════════
 const HOLLAND=[
   {id:'R',letter:'R',label:'實踐者',sub:'REALISTIC',desc:'注重實際行動，喜歡機械操作、戶外活動與肢體運動。喜歡能產生具體作品或成果的工作。',strength:'機械與設備操作；工具運用、廚藝手工與飼育動物有天賦',career:'機械電子、農林漁牧、運動或建築工藝領域',color:'#C0522A'},
-  {id:'I',letter:'I',label:'思考者',sub:'INVESTIGATIVE',desc:'好奇心強，喜歡分析、思考與解決複雜問題。擅長觀察、構想、追尋真理，常接觸人文科學或科技領域的資訊。',strength:'理解、解決科學或數學問題；研究分析與解釋資料、構想與理論；抽象思考',career:'理工生醫或人文科學領域',color:'#5FAAA0'},
-  {id:'A',letter:'A',label:'創造者',sub:'ARTISTIC',desc:'充滿創意與想像力，喜歡設計、戲劇、文學、舞蹈、音樂等活動。具有強大的直覺與靈感，喜歡充滿變化與挑戰的環境。',strength:'運用想像力與創造力產生靈感；做事創新、彈性而靈活；善於設計與創造，具有文藝天賦',career:'藝術、設計等領域',color:'#B8922A'},
-  {id:'S',letter:'S',label:'助人者',sub:'SOCIAL',desc:'個性友善且極具包容力，喜歡和人互動與幫助他人。懂得傾聽和溝通，擅長解決人際衝突。',strength:'協調人際活動；發現與解決他人問題；優秀的人際與情緒管理能力',career:'教育、社工心理、醫護或宗教等領域',color:'#3A5A8A'},
-  {id:'E',letter:'E',label:'影響者',sub:'ENTERPRISING',desc:'自信果敢且充滿精力，勇於競爭與冒險，喜歡商業活動與決策。擅長運用自己的資源和能力影響或說服別人。',strength:'能找出商業或獲利機會；適合管理與監督工作；具有銷售與說服技巧的潛力',career:'企管領導、行銷企劃、法律政治等領域',color:'#6A9A3A'},
-  {id:'C',letter:'C',label:'組織者',sub:'CONVENTIONAL',desc:'喜歡有系統、組織和效率的SOP工作方式，在乎事情的精確細節並一絲不苟。偏好規則清楚且明確的環境。',strength:'善於數字運算；資訊處理、組織、規劃與統整；文書、行政方面具備精確的處理技巧',career:'財務金融、特助秘書、會計、行政等領域',color:'#8A3A5A'},
-];
-const PASSION=[
-  {id:1, label:'幼教老師', sub:'教育學群', holland:'SA', knowledge:'顧客服務／教育訓練／語文文學', goal:'建立夥伴關係／教導與協助個人發展／安排工作和活動時程', work:'負責教導幼兒知識與課程，促進孩子的身心與社會發展。'},
-  {id:2, label:'國高中老師', sub:'教育學群', holland:'SA', knowledge:'教育訓練／語文文學／顧客服務', goal:'安排工作和活動時程／組織內部溝通／教導與協助個人發展', work:'在學校教導國高中學生知識與課程，可能教多個科目或帶領班級。'},
-  {id:3, label:'社工師', sub:'社會與心理學群', holland:'SE', knowledge:'治療諮商／心理學／顧客服務', goal:'建立夥伴關係／協助和照顧他人／調解衝突', work:'協助個案適應與融入社會，包含家庭、社區、醫療機構、司法單位等場域。'},
-  {id:4, label:'神職人員', sub:'社會與心理/文史哲學群', holland:'SEA', knowledge:'哲學宗教／顧客服務／管理', goal:'協助和照顧他人／安排工作和活動時程／組織內部溝通', work:'負責宗教活動與儀式，提供信仰、精神和生活等方面的輔導。'},
-  {id:5, label:'導遊／導覽員', sub:'遊憩與運動學群', holland:'SEA', knowledge:'顧客服務／歷史文化／地球環境', goal:'服務與應對人群／建立夥伴關係／代表組織對外溝通', work:'帶領團隊介紹觀光景點、風景名勝，或於博物館、畫廊進行導覽。'},
-  {id:6, label:'服務生', sub:'遊憩與運動學群', holland:'SEC', knowledge:'顧客服務／銷售行銷／語文文學', goal:'服務與應對人群／搬運與動手操作／體能活動', work:'負責接待顧客、安排帶位、協助點餐、介紹菜色、端送食物等工作。'},
-  {id:7, label:'家教／補習班老師', sub:'教育學群', holland:'SEI', knowledge:'語文文學／教育訓練／顧客服務', goal:'教導他人／建立夥伴關係／搜尋資訊', work:'在正規的學校學習之外，為學生提供額外學業指導。'},
-  {id:8, label:'教授', sub:'無特定學群', holland:'SI', knowledge:'教育訓練／語文文學／管理', goal:'持續進修專業知識／教導與協助個人發展／創新設計', work:'從事學術研究，在大專院校進行研究與教學工作。'},
-  {id:9, label:'諮商與臨床心理師', sub:'社會與心理學群', holland:'SIA', knowledge:'治療諮商／心理學／顧客服務', goal:'建立夥伴關係／協助和照顧他人／教導與協助個人發展', work:'評估個人心理與情緒問題，實施療程或提供諮商，協助個案面對問題。'},
-  {id:10, label:'護理師', sub:'醫藥衛生學群', holland:'SIC', knowledge:'醫學／顧客服務／治療諮商', goal:'找出關鍵資訊和線索／協助和照顧他人／監控過程、物件或環境', work:'評估病人的健康問題，提供護理建議與服務，管理並照顧病人。'},
-  {id:11, label:'物理與職能治療師', sub:'醫藥衛生學群', holland:'SIR', knowledge:'治療諮商／教育訓練／顧客服務', goal:'協助和照顧他人／持續進修專業知識／搬運與動手操作', work:'規劃病人、傷者或身心障礙人士的療程，協助改善或恢復獨立生活能力。'},
-  {id:12, label:'看護', sub:'醫藥衛生/社會與心理學群', holland:'SRC', knowledge:'顧客服務／治療諮商／教育訓練', goal:'監控過程、物件或環境／協助和照顧他人／搬運與動手操作', work:'在機構或家中，協助高齡者或身心障礙人士的日常活動，包含食衣住行等層面。'},
-  {id:13, label:'運動教練', sub:'遊憩與運動學群', holland:'SRE', knowledge:'運動保健／教育訓練／顧客服務', goal:'體能活動／教導與協助個人發展／建立夥伴關係', work:'指導個人或團體關於運動的知識和方法，增進其運動表現。'},
-  {id:14, label:'遊戲設計師', sub:'大眾傳播/資訊/藝術學群', holland:'AE', knowledge:'設計／資訊電子／傳播媒體', goal:'創新設計／安排工作和活動時程／組織內部溝通', work:'設計遊戲，可能包含遊戲玩法、故事劇本、人物設定等。'},
-  {id:15, label:'室內設計師', sub:'建築與設計/藝術學群', holland:'AE', knowledge:'設計／建築營造／銷售行銷', goal:'創新設計／安排工作和活動時程／代表組織對外溝通', work:'設計室內空間，包含商業大樓、工業建築、住宅等，兼顧美學和功能性。'},
-  {id:16, label:'音樂家', sub:'藝術學群', holland:'AE', knowledge:'藝術／顧客服務／語文文學', goal:'創新設計／服務與應對人群／建立夥伴關係', work:'在舞台、節目、電影或錄音作品中，演奏樂器或演唱、伴唱。'},
-  {id:17, label:'演員', sub:'藝術/大眾傳播學群', holland:'AE', knowledge:'藝術／語文文學／傳播媒體', goal:'創新設計／服務與應對人群／建立夥伴關係', work:'在舞臺、節目或電影演出，透過聲音、肢體動作或歌曲舞蹈來呈現角色。'},
-  {id:18, label:'藝術總監', sub:'藝術學群', holland:'AE', knowledge:'藝術／傳播媒體／教育訓練', goal:'安排工作和活動時程／創新設計／組織內部溝通', work:'設計整體藝術呈現的理念，指導工作團隊的表演和呈現，並規劃行銷包裝。'},
-  {id:19, label:'編輯', sub:'文史哲/外語/大眾傳播學群', holland:'AEC', knowledge:'傳播媒體／語文文學／行政', goal:'持續進修專業知識／安排工作和活動時程／建立夥伴關係', work:'在各種素材出版前，進行後製與審核，包含文字、圖像、多媒體等。'},
-  {id:20, label:'記者／特派員', sub:'大眾傳播學群', holland:'AEI', knowledge:'傳播媒體／語文文學／顧客服務', goal:'代表組織對外溝通／搜尋資訊／創新設計', work:'收集與分析有報導價值的事件，並為報章雜誌、廣播電視進行報導。'},
-  {id:21, label:'商業與工業設計師', sub:'建築與設計/工程/藝術學群', holland:'AER', knowledge:'設計／工程科技／機械', goal:'創新設計／製作圖稿與規格書並解說／組織內部溝通', work:'按照需求規格，設計兼具美感和功能的產品，如家電用品、手機等。'},
-  {id:22, label:'流行服飾設計師', sub:'建築與設計/藝術學群', holland:'AER', knowledge:'設計／管理／生產與作業', goal:'創新設計／提出解決問題的方案／代表組織對外溝通', work:'掌握時尚趨勢，設計服飾和配件。可能包含使用不同色彩與材質的創新。'},
-  {id:23, label:'廣電主播／主持人', sub:'大眾傳播學群', holland:'AES', knowledge:'傳播媒體／語文文學／顧客服務', goal:'服務與應對人群／代表組織對外溝通／創新設計', work:'在廣播或電視中主持與談話。如訪問、介紹來賓、主持典禮、播報新聞等。'},
-  {id:24, label:'造型設計師', sub:'建築與設計/藝術學群', holland:'AES', knowledge:'顧客服務／銷售行銷／藝術', goal:'服務與應對人群／創新設計／提供諮詢', work:'指導整體造型搭配，包含美容、上妝、髮型設計、服裝穿搭等。'},
-  {id:25, label:'多媒體設計師', sub:'建築與設計/藝術/資訊學群', holland:'AI', knowledge:'藝術／傳播媒體／設計', goal:'創新設計／持續進修專業知識／運用電腦工作', work:'利用電腦、影片等多媒體素材，創作動畫、電影、特效、廣告等。'},
-  {id:26, label:'詩人／作家', sub:'文史哲學群', holland:'AI', knowledge:'語文文學／傳播媒體／藝術', goal:'創新設計／與人解說／持續進修專業知識', work:'創作文學作品，包含文章、詩作、歌詞、劇本等內容。'},
-  {id:27, label:'建築師', sub:'建築與設計/工程學群', holland:'AIR', knowledge:'設計／建築營造／工程科技', goal:'創新設計／安排工作和活動時程／製作圖稿與規格書並解說', work:'設計並規劃開發案件，如交通設施、都市規劃、遊樂設施、住宅區等。'},
-  {id:28, label:'攝影師', sub:'藝術學群', holland:'AR', knowledge:'資訊電子／傳播媒體／顧客服務', goal:'創新設計／搬運與動手操作／建立夥伴關係', work:'拍攝影片或影像，主題包含人文、商品、景觀等，可能包含印刷品製作。'},
-  {id:29, label:'藝術家', sub:'藝術學群', holland:'AR', knowledge:'藝術／設計／銷售行銷', goal:'創新設計／搬運與動手操作／代表組織對外溝通', work:'運用各種素材和技巧創作藝術品，如畫家、雕刻家和插畫家等。'},
-  {id:30, label:'舞者', sub:'藝術/遊憩與運動學群', holland:'AR', knowledge:'藝術／教育訓練／運動保健', goal:'體能活動／服務與應對人群／建立夥伴關係', work:'演出各類型舞蹈，包含古典、流行等風格。可能需要唱歌或演戲。'},
-  {id:31, label:'平面設計師', sub:'建築與設計/藝術學群', holland:'ARE', knowledge:'設計／藝術／傳播媒體', goal:'創新設計／持續進修專業知識／安排工作和活動時程', work:'按照客戶需求，以各種材料設計圖案，於銷售或宣傳時使用。'},
-  {id:32, label:'景觀／園藝設計師', sub:'建築與設計/生物資源學群', holland:'ARE', knowledge:'顧客服務／藝術／生產與作業', goal:'創新設計／服務與應對人群／體能活動', work:'景觀設計，包含造景、建築、庭園、花草等，可能需要栽種、修剪、施肥。'},
-  {id:33, label:'翻譯／口譯', sub:'外語學群', holland:'AS', knowledge:'外國語文／語文文學／顧客服務', goal:'建立夥伴關係／與人解說／持續進修專業知識', work:'翻譯文字資料或口語內容給其他語言族群，包含筆譯、口譯、手語翻譯等。'},
-  {id:34, label:'數位行銷', sub:'管理/大眾傳播學群', holland:'EA', knowledge:'銷售行銷／顧客服務／管理', goal:'運用電腦工作／創新設計／推銷或影響他人', work:'於網路進行商業活動，規劃營運策略、販售商品服務、處理網路訂單等。'},
-  {id:35, label:'廣告文案', sub:'文史哲/大眾傳播學群', holland:'EA', knowledge:'語文文學／銷售行銷／傳播媒體', goal:'代表組織對外溝通／推銷或影響他人／創新設計', work:'為產品或公司撰寫宣傳文案，於各種媒體與廣告中使用。'},
-  {id:36, label:'導演', sub:'藝術/大眾傳播學群', holland:'EA', knowledge:'傳播媒體／語文文學／藝術', goal:'組織內部溝通／安排工作和活動時程／服務與應對人群', work:'詮釋戲劇、電影或節目的劇本，指導演員演出和舞台呈現。'},
-  {id:37, label:'公關', sub:'大眾傳播/管理學群', holland:'EAS', knowledge:'傳播媒體／銷售行銷／顧客服務', goal:'代表組織對外溝通／安排工作和活動時程／建立夥伴關係', work:'運用各種宣傳素材、廣告媒體和公開活動，進而提升個人或組織形象。'},
-  {id:38, label:'不動產經紀人', sub:'法政/財經學群', holland:'EC', knowledge:'顧客服務／行政／管理', goal:'安排工作和活動時程／調解衝突／監控資源', work:'指導或整合不動產的買賣交易、租賃、代銷等事務。'},
-  {id:39, label:'業務人員', sub:'管理學群', holland:'EC', knowledge:'銷售行銷／顧客服務／管理', goal:'推銷或影響他人／代表組織對外溝通／安排工作和活動時程', work:'需熟悉公司產品並負責銷售，可能需陌生開發、簽約報價、提供顧客服務。'},
-  {id:40, label:'門市／專櫃人員', sub:'無特定學群', holland:'EC', knowledge:'顧客服務／銷售行銷／語文文學', goal:'服務與應對人群／推銷或影響他人／建立夥伴關係', work:'在商店進行銷售，販賣食衣住行育樂等用品。'},
-  {id:41, label:'軍官', sub:'無特定學群', holland:'ECR', knowledge:'管理／行政／公共安全', goal:'安排工作和活動的時程／體能活動／盤點與檢查物品', work:'由國家授權，負責管理軍隊的官員，擔任領導或是幕僚工作。'},
-  {id:42, label:'咖啡師', sub:'遊憩與運動學群', holland:'ECR', knowledge:'顧客服務／生資食科／銷售行銷', goal:'服務與應對人群／控制機器與程序／推銷或影響他人', work:'萃取咖啡提供給顧客，可能也要進行拉花、研發新的咖啡品項。'},
-  {id:43, label:'保險經紀人', sub:'財經學群', holland:'ECS', knowledge:'顧客服務／銷售行銷／行政', goal:'建立夥伴關係／代表組織對外溝通／推銷或影響他人', work:'販賣各類保險，如：儲蓄險、壽險、意外險等。可能獨立工作或隸屬於公司。'},
-  {id:44, label:'總經理', sub:'管理/財經學群', holland:'ECS', knowledge:'顧客服務／管理／人力資源', goal:'安排工作和活動時程／指導與激勵部屬／提出解決問題的方案', work:'指導公司運作，包含營運政策、日常管理、規畫財務及人力使用。'},
-  {id:45, label:'專案管理師', sub:'管理學群', holland:'ECS', knowledge:'顧客服務／行政／語文文學', goal:'安排工作和活動時程／組織內部溝通／調解衝突', work:'負責專案計畫的控管和執行，需要掌握溝通、時間、成本等知識與能力。'},
-  {id:46, label:'人力資源專員', sub:'社會與心理/管理學群', holland:'ECS', knowledge:'行政／人力資源／管理', goal:'安排工作和活動時程／建立夥伴關係／組織內部溝通', work:'從事企業的人力資源相關工作，包括招募、教育訓練、薪酬等層面。'},
-  {id:47, label:'律師', sub:'法政學群', holland:'EI', knowledge:'法律政治／語文文學／顧客服務', goal:'調解衝突／搜尋資訊／提出解決問題的方案', work:'受委託或指定，在法律程序中，協助當事人進行訴訟、辯護或其他事項。'},
-  {id:48, label:'網站行銷策畫', sub:'管理/資訊/大眾傳播學群', holland:'EIC', knowledge:'銷售行銷／顧客服務／傳播媒體', goal:'運用電腦工作／分析資訊／持續進修專業知識', work:'研究搜尋引擎的收錄規則、研究使用者行為，增加網路曝光程度。'},
-  {id:49, label:'企管顧問', sub:'管理學群', holland:'EIC', knowledge:'管理／銷售行銷／顧客服務', goal:'建立夥伴關係／提供諮詢／提出解決問題的方案', work:'參與企業管理與和決策過程，提出未來發展建議或現況改善方案。'},
-  {id:50, label:'船長／領航員', sub:'生物資源/工程/管理學群', holland:'ERC', knowledge:'交通運輸／地球環境／公共安全', goal:'操作運載工具、儀器或設備／監控過程、物件或環境／控制機器與程序', work:'指揮或監督船隻航行，包含進出港口、河流和海洋等。'},
-  {id:51, label:'法官', sub:'法政學群', holland:'ES', knowledge:'法律政治／語文文學／心理學', goal:'提出解決問題的方案／檢查是否符合規範／服務與應對人群', work:'司法機關人員，在法庭中裁決或執行審判。包含民刑事判決、結婚見證等。'},
-  {id:52, label:'議員／立法委員', sub:'法政學群', holland:'ES', knowledge:'法律與政治／行政／公共安全', goal:'調解衝突／檢查是否符合規範／提出解決問題的方案', work:'由人民選出，議決重大案件、制定或修改法律條文。'},
-  {id:53, label:'禮儀師', sub:'社會與心理學群', holland:'ESC', knowledge:'顧客服務／化學／行政', goal:'搬運與動手操作／代表組織對外溝通／協助和照顧他人', work:'指導葬禮進行，包含現場人員管理、場地布置、交通規劃、舉行儀式等。'},
-  {id:54, label:'空服員', sub:'外語/遊憩與運動學群', holland:'ESC', knowledge:'顧客服務／心理學／公共安全', goal:'安排工作和活動時程／建立夥伴關係／組織內部溝通', work:'提供旅客服務，讓乘客感到安全舒適。包含接待、設備使用說明、提供飲食。'},
-  {id:55, label:'客服人員', sub:'無特定學群', holland:'ESC', knowledge:'顧客服務／語文文學／行政', goal:'建立夥伴關係／安排工作和活動時程／提出解決問題的方案', work:'回應並處理顧客所提出的問題。'},
-  {id:56, label:'按摩/美容師', sub:'醫藥衛生/遊憩與運動學群', holland:'ESR', knowledge:'顧客服務／銷售行銷／教育訓練', goal:'服務與應對人群／協助和照顧他人／建立夥伴關係', work:'為顧客提供臉部和身體保養或按摩療程，藉此恢復活力或增加美觀。'},
-  {id:57, label:'會計師', sub:'財經學群', holland:'CE', knowledge:'經濟會計／行政／數學', goal:'安排工作和活動時程／處理資料／檢查是否符合規範', work:'分析企業財務現況，編製各種報表，包含資產負債、利潤虧損等項目。'},
-  {id:58, label:'採購', sub:'管理學群', holland:'CE', knowledge:'管理／行政／銷售行銷', goal:'建立夥伴關係／安排工作和活動時程／組織內部溝通', work:'購買企業所需的物品或服務。採購原物料、設備或工具等，以利生產。'},
-  {id:59, label:'行政人員', sub:'管理/無特定學群', holland:'CER', knowledge:'行政／顧客服務／語文文學', goal:'建立夥伴關係／安排工作和活動時程／組織內部溝通', work:'處理辦公室行政，可能包含接聽電話、設備操作、文件處理。'},
-  {id:60, label:'公務員', sub:'無特定/法政學群', holland:'CES', knowledge:'管理／顧客服務／行政', goal:'安排工作和活動時程／組織內部溝通／服務與應對人群', work:'在公家單位服務，處理行政、公文流程、民眾服務。'},
-  {id:61, label:'資料與檔案管理員', sub:'文史哲/資訊學群', holland:'CI', knowledge:'行政／資訊電子／歷史文化', goal:'搜尋資訊／分析資訊／代表組織對外溝通', work:'保存、維護並管理資料、文件、檔案及相關系統，包含數位內容或實際物品。'},
-  {id:62, label:'精算師', sub:'財經學群', holland:'CIE', knowledge:'數學／經濟會計／資訊電子', goal:'分析資訊／處理資料／提出解決問題的方案', work:'分析人口統計資料，進行風險預測、預估資金流動、計算保險費率等。'},
-  {id:63, label:'金融投資分析師', sub:'財經學群', holland:'CIE', knowledge:'經濟會計／數學／語文文學', goal:'處理資料／分析資訊／組織內部溝通', work:'收集市場資訊進行分析，研判趨勢並引導投資者進行投資。'},
-  {id:64, label:'資訊安全人員', sub:'資訊學群', holland:'CIR', knowledge:'資訊電子／通訊電信／工程科技', goal:'運用電腦工作／找出關鍵資訊和線索／持續進修專業知識', work:'保護網路、資訊和重要的電子設備；處理電腦安全漏洞和病毒。'},
-  {id:65, label:'網站開發人員', sub:'資訊/大眾傳播/建築與設計學群', holland:'CIR', knowledge:'資訊電子／教育訓練／數學', goal:'持續進修專業知識／創新設計／運用電腦工作', work:'分析使用者需求，設計網站內容，包含文字、圖形、影像等。'},
-  {id:66, label:'人類學家', sub:'社會與心理學群', holland:'IA', knowledge:'社會人類／教育訓練／語文文學', goal:'搜尋資訊／處理資料／分析資訊', work:'研究人類的行為、社會變遷、組織架構、語言和文化等。'},
-  {id:67, label:'程式設計師', sub:'資訊學群', holland:'IC', knowledge:'資訊電子／數學／管理', goal:'運用電腦工作／持續進修專業知識／分析資訊', work:'分析、編寫、修改、測試程式碼，開發電腦應用程式。'},
-  {id:68, label:'數據分析師', sub:'數理化/資訊學群', holland:'ICE', knowledge:'數學／資訊電子／工程科技', goal:'分析資訊／創新設計／提供諮詢', work:'收集並分析大量數據，依此歸納與預測未來趨勢、評估與訂定決策。'},
-  {id:69, label:'藥師', sub:'醫藥衛生學群', holland:'ICS', knowledge:'醫學／化學／顧客服務', goal:'持續進修專業知識／找出關鍵資訊和線索／檢查是否符合規範', work:'根據醫師的處方箋進行檢核，並提供所需之藥物。'},
-  {id:70, label:'市場調查人員', sub:'財經/管理/社會與心理學群', holland:'IEC', knowledge:'銷售行銷／顧客服務／數學', goal:'安排工作和活動時程／建立夥伴關係／分析資訊', work:'調查並研究市場現況與未來趨勢，提供行銷決策時所必需的資料。'},
-  {id:71, label:'商業智慧分析師', sub:'資訊/數理化/管理學群', holland:'IEC', knowledge:'銷售行銷／管理／數學', goal:'持續進修專業知識／分析資訊／組織內部溝通', work:'透過資料分析工具，研究過去企業資料，整理成報表輔佐決策。'},
-  {id:72, label:'大氣科學家', sub:'地球與環境/生命科學學群', holland:'IR', knowledge:'數學／地球環境／資訊電子', goal:'持續進修專業知識／處理資料／分析資訊', work:'研究氣象並解釋衛星、雷達和氣象預報等資料。'},
-  {id:73, label:'電機工程師', sub:'工程/數理化學群', holland:'IR', knowledge:'工程科技／設計／資訊電子', goal:'持續進修專業知識／提出解決問題的方案／創新設計', work:'開發、監測電機設備或電機系統的製造和安裝。'},
-  {id:74, label:'航太工程師', sub:'工程/數理化學群', holland:'IR', knowledge:'工程科技／設計／機械', goal:'持續進修專業知識／製作圖稿與規格書並解說／創新設計', work:'進行專案，設計、開發和測試飛機、飛彈和太空船等設備。'},
-  {id:75, label:'人因工程師', sub:'工程/社會與心理學群', holland:'IR', knowledge:'心理學／工程科技／數學', goal:'創新設計／持續進修專業知識／處理資料', work:'根據人類行為，設計設備工具或工作環境，讓人與系統互動發揮更大效益。'},
-  {id:76, label:'生命科學家', sub:'生命科學/生物資源學群', holland:'IR', knowledge:'生命科學／數學／化學', goal:'持續進修專業知識／處理資料／分析資訊', work:'研究各種生命的知識，包含起源、發展、結構和功能等。'},
-  {id:77, label:'生化工程師', sub:'數理化/工程/生命科學學群', holland:'IR', knowledge:'生命科學／工程科技／化學', goal:'找出關鍵資訊和線索／持續進修專業知識／處理資料', work:'以生命科學與化學知識、技術開發產品，解決人、動植物、微生物相關問題。'},
-  {id:78, label:'化工工程師', sub:'數理化/工程/生命科學學群', holland:'IR', knowledge:'工程科技／化學／數學', goal:'持續進修專業知識／提出解決問題的方案／處理資料', work:'設計化工廠的製造流程及開發化工產品，如化妝品、塑膠、水泥等。'},
-  {id:79, label:'環工工程師', sub:'地球與環境/工程學群', holland:'IRC', knowledge:'工程科技／數學／設計', goal:'持續進修專業知識／處理資料／提出解決問題的方案', work:'設計、規劃或執行與環境衛生相關的工程，如廢棄物處理等。'},
-  {id:80, label:'機電工程師', sub:'工程/數理化學群', holland:'IRC', knowledge:'工程科技／設計／資訊電子', goal:'製作圖稿與規格書並解說／持續進修專業知識／創新設計', work:'運用機械、電機與電腦工程原理，設計自動化或智慧型的系統與產品。'},
-  {id:81, label:'機械工程師', sub:'工程/數理化學群', holland:'IRC', knowledge:'設計／工程科技／數學', goal:'持續進修專業知識／創新設計／處理資料', work:'規劃和設計工具、引擎、機器等裝備，也會負責安裝、操作、維修等工作。'},
-  {id:82, label:'光電工程師', sub:'數理化/工程學群', holland:'IRC', knowledge:'工程科技／物理／數學', goal:'處理資料／創新設計／分析資訊', work:'運用工程與數學原理，研發光能利用的技術。'},
-  {id:83, label:'電腦硬體工程師', sub:'資訊/工程學群', holland:'IRC', knowledge:'資訊電子／工程科技／數學', goal:'創新設計／持續進修專業知識／處理資料', work:'研究、設計、開發與測試電腦硬體設備，或是監測製造與安裝過程。'},
-  {id:84, label:'網管人員', sub:'資訊學群', holland:'IRC', knowledge:'資訊電子／通訊電信／行政', goal:'運用電腦工作／找出關鍵資訊和線索／持續進修專業知識', work:'負責維繫企業的網路環境，進行維護與檢測，確保網路環境順暢運作。'},
-  {id:85, label:'水土保育人員', sub:'地球與環境/生物資源學群', holland:'IRE', knowledge:'顧客服務／教育訓練／生命科學', goal:'建立夥伴關係／提出解決問題的方案／持續進修專業知識', work:'規劃合理使用土地的方法，包含水土保持、控制土壤侵蝕等。'},
-  {id:86, label:'材料工程師', sub:'工程/數理化學群', holland:'IRE', knowledge:'工程科技／化學／物理', goal:'處理資料／分析資訊／創新設計', work:'評估材料和製程，製造符合產品設計與規格的材料，如金屬、塑膠、陶瓷等。'},
-  {id:87, label:'牙醫師', sub:'醫藥衛生學群', holland:'IRS', knowledge:'顧客服務／醫學／生命科學', goal:'找出關鍵資訊和線索／提出解決問題的方案／持續進修專業知識', work:'診斷、治療跟牙齒和口腔相關的疾病和受損。'},
-  {id:88, label:'營養師', sub:'醫藥衛生學群', holland:'IS', knowledge:'教育訓練／顧客服務／生命科學', goal:'持續進修專業知識／搜尋資訊／建立夥伴關係', work:'規劃食品與營養計畫，協助改善健康或控制疾病，也可能進行監督或諮詢。'},
-  {id:89, label:'醫師', sub:'醫藥衛生學群', holland:'ISR', knowledge:'醫學／治療諮商／顧客服務', goal:'協助和照顧他人／提出解決問題的方案／持續進修專業知識', work:'診斷、治療與協助預防各種疾病和傷害。'},
-  {id:90, label:'獸醫', sub:'醫藥衛生/生物資源學群', holland:'ISR', knowledge:'醫學／顧客服務／生命科學', goal:'找出關鍵資訊和線索／提出解決問題的方案／協助和照顧他人', work:'針對有疾病或障礙的動物進行診斷與治療。也可能從事研發、諮詢、銷售等。'},
-  {id:91, label:'保全', sub:'無特定學群', holland:'RCE', knowledge:'公共安全／管理／顧客服務', goal:'提出解決問題的方案／檢查是否符合規範／協助和照顧他人', work:'巡查或守衛社區、房屋或銀行等各種場所，防止偷盜、搶劫等違法行為。'},
-  {id:92, label:'產品維修人員', sub:'工程/資訊學群', holland:'RCI', knowledge:'資訊電子／工程科技／機械', goal:'持續進修專業知識／搬運與動手操作／維修設備', work:'修理電子或機械設備，包含電腦、通訊設備、各類運輸工具等。'},
-  {id:93, label:'機長', sub:'無特定/外語/工程學群', holland:'RCI', knowledge:'交通運輸／地球環境／資訊電子', goal:'控制機器與程序／操作運載工具、儀器／找出關鍵資訊和線索', work:'負責駕駛飛機運輸乘客或貨物，需要長時間訓練和相對應的執照。'},
-  {id:94, label:'運動員', sub:'遊憩與運動學群', holland:'RE', knowledge:'運動保健／治療諮商／教育訓練', goal:'體能活動／建立夥伴關係／教導與協助個人發展', work:'參與各項運動比賽，取得榮譽。'},
-  {id:95, label:'廚師', sub:'遊憩與運動學群', holland:'REA', knowledge:'生資食科／生產與作業／顧客服務', goal:'搬運與動手操作／檢查是否符合規範／體能活動', work:'準備食材，料理肉類、湯品、菜餚、甜點等。可能需要負責採購、研發菜色。'},
-  {id:96, label:'警察', sub:'法政學群', holland:'REC', knowledge:'顧客服務／公共安全／法律政治', goal:'找出關鍵資訊和線索／調解衝突／服務與應對人群', work:'負責執法、維護公共安全、保障人民生命財產、防治犯罪、逮捕犯人。'},
-  {id:97, label:'動物飼養員', sub:'生物資源/生命科學學群', holland:'RI', knowledge:'生產與作業／管理／行政', goal:'搬運與動手操作／找出關鍵資訊和線索／監控過程、物件或環境', work:'飼養動物，包含畜牧業（牛羊馬）、家禽、家畜或寵物等。需要記錄資料。'},
-  {id:98, label:'地理與航照測繪員', sub:'地球與環境/工程學群', holland:'RIC', knowledge:'地球環境／資訊電子／數學', goal:'持續進修專業知識／處理資料／運用電腦工作', work:'收集、分析和說明地理資訊。可能包含設計和規劃地理資訊系統。'},
-  {id:99, label:'土木工程師', sub:'工程/數理化學群', holland:'RIC', knowledge:'工程科技／設計／建築營造', goal:'指導與激勵部屬／創新設計／提出解決問題的方案', work:'規劃、設計、監督、維護工程與建築設施，包含道路、橋梁、港口、電廠等。'},
-  {id:100, label:'農業與食品技術員', sub:'生物資源/生命科學學群', holland:'RIC', knowledge:'生命科學／生產與作業／資訊電子', goal:'搬運與動手操作／處理資料／持續進修專業知識', work:'研發、改良和生產農業產品或食物；也可能從事動物研究、飼育和疾病預防。'},
-];
-const SKILLS=[
-  {id:1,label:'溝通表達',emoji:'💬'},{id:2,label:'積極聆聽',emoji:'👂'},{id:3,label:'書面寫作',emoji:'✍️'},{id:4,label:'公開演講',emoji:'🎤'},
-  {id:5,label:'批判思維',emoji:'🧠'},{id:6,label:'問題解決',emoji:'🔧'},{id:7,label:'創意思考',emoji:'💡'},{id:8,label:'數據分析',emoji:'📊'},
-  {id:9,label:'領導力',emoji:'👑'},{id:10,label:'決策能力',emoji:'⚖️'},{id:11,label:'激勵他人',emoji:'🚀'},{id:12,label:'衝突處理',emoji:'🤝'},
-  {id:13,label:'時間管理',emoji:'⏰'},{id:14,label:'專案管理',emoji:'📋'},{id:15,label:'注重細節',emoji:'🔍'},{id:16,label:'多任務處理',emoji:'🌐'},
-  {id:17,label:'適應力',emoji:'🌱'},{id:18,label:'抗壓性',emoji:'💪'},{id:19,label:'自我驅動',emoji:'🎯'},{id:20,label:'同理心',emoji:'❤️'},
-  {id:21,label:'談判技巧',emoji:'🤲'},{id:22,label:'建立關係',emoji:'🌉'},{id:23,label:'跨文化溝通',emoji:'🌍'},{id:24,label:'客戶服務',emoji:'⭐'},
-];
-const VALUES=[
-  {id:1,label:'成就感',emoji:'🏆',sub:'做出影響力的事'},{id:2,label:'自主性',emoji:'🎯',sub:'自己做決定'},
-  {id:3,label:'創意',emoji:'🎨',sub:'有空間發揮想像'},{id:4,label:'安全感',emoji:'🛡️',sub:'穩定可預期'},
-  {id:5,label:'人際連結',emoji:'🤝',sub:'有意義的關係'},{id:6,label:'持續成長',emoji:'📈',sub:'不斷學習進步'},
-  {id:7,label:'社會貢獻',emoji:'🌍',sub:'幫助他人或社會'},{id:8,label:'財務自由',emoji:'💰',sub:'不為錢擔心'},
-  {id:9,label:'平衡',emoji:'⚖️',sub:'工作與生活並重'},{id:10,label:'卓越',emoji:'💎',sub:'追求最高標準'},
-  {id:11,label:'家庭',emoji:'🏡',sub:'家人優先'},{id:12,label:'冒險',emoji:'🗺️',sub:'嘗試新事物'},
-  {id:13,label:'影響力',emoji:'📢',sub:'能影響他人想法'},{id:14,label:'誠信',emoji:'🕊️',sub:'言行一致'},
-  {id:15,label:'多元性',emoji:'🌈',sub:'豐富多樣的體驗'},{id:16,label:'專業深度',emoji:'🔬',sub:'成為領域專家'},
-  {id:17,label:'被認可',emoji:'🏅',sub:'努力獲得肯定'},{id:18,label:'健康',emoji:'🌿',sub:'身心健康優先'},
-  {id:19,label:'樂趣',emoji:'😄',sub:'工作要有樂趣'},{id:20,label:'責任感',emoji:'🎖️',sub:'對承諾負責'},
+  {id:'I',letter:'I',label:'思考者',sub:'INVESTIGATIVE',desc:'好奇心強，喜歡分析、思考與解決複雜問題。擅長觀察、構想、追尋真理。',strength:'理解、解決科學或數學問題；研究分析與解釋資料；抽象思考',career:'理工生醫或人文科學領域',color:'#5FAAA0'},
+  {id:'A',letter:'A',label:'創造者',sub:'ARTISTIC',desc:'充滿創意與想像力，喜歡設計、戲劇、文學、舞蹈、音樂等活動。',strength:'運用想像力與創造力產生靈感；做事創新、彈性而靈活；具有文藝天賦',career:'藝術、設計等領域',color:'#B8922A'},
+  {id:'S',letter:'S',label:'助人者',sub:'SOCIAL',desc:'個性友善且極具包容力，喜歡和人互動與幫助他人。懂得傾聽和溝通，擅長解決人際衝突。',strength:'協調人際活動；優秀的人際與情緒管理能力',career:'教育、社工心理、醫護或宗教等領域',color:'#3A5A8A'},
+  {id:'E',letter:'E',label:'影響者',sub:'ENTERPRISING',desc:'自信果敢且充滿精力，勇於競爭與冒險，喜歡商業活動與決策。',strength:'能找出商業或獲利機會；具有銷售與說服技巧的潛力',career:'企管領導、行銷企劃、法律政治等領域',color:'#6A9A3A'},
+  {id:'C',letter:'C',label:'組織者',sub:'CONVENTIONAL',desc:'喜歡有系統、組織和效率的工作方式，在乎事情的精確細節。偏好規則清楚且明確的環境。',strength:'善於數字運算；資訊處理、組織、規劃；文書行政方面精確',career:'財務金融、特助秘書、會計、行政等領域',color:'#8A3A5A'},
 ];
 
+// ── 職能卡 32 張 ──
+const SKILLS2=[
+  {id:1, label:'成就導向', cat:'action'},
+  {id:2, label:'專注目標', cat:'action'},
+  {id:3, label:'發揮效率', cat:'action'},
+  {id:5, label:'責任承諾', cat:'action'},
+  {id:6, label:'廣泛收集', cat:'action'},
+  {id:7, label:'規範秩序', cat:'action'},
+  {id:8, label:'美感創作', cat:'action'},
+  {id:9, label:'靈活應變', cat:'action'},
+  {id:10,label:'統籌規劃', cat:'action'},
+  {id:11,label:'追求公平', cat:'action'},
+  {id:12,label:'積極主動', cat:'action'},
+  {id:13,label:'解決問題', cat:'action'},
+  {id:15,label:'創新思維', cat:'think'},
+  {id:16,label:'邏輯推理', cat:'think'},
+  {id:17,label:'戰略思維', cat:'think'},
+  {id:18,label:'概念思考', cat:'think'},
+  {id:19,label:'熱愛學習', cat:'think'},
+  {id:25,label:'回溯過往', cat:'think'},
+  {id:26,label:'審慎周全', cat:'think'},
+  {id:27,label:'想像未來', cat:'think'},
+  {id:30,label:'批判思考', cat:'think'},
+  {id:31,label:'察言觀色', cat:'people'},
+  {id:32,label:'感同身受', cat:'people'},
+  {id:33,label:'協調衝突', cat:'people'},
+  {id:34,label:'協助他人', cat:'people'},
+  {id:35,label:'推動影響', cat:'people'},
+  {id:36,label:'培養他人', cat:'people'},
+  {id:37,label:'團隊意識', cat:'people'},
+  {id:39,label:'表達技巧', cat:'people'},
+  {id:40,label:'善於識人', cat:'people'},
+  {id:41,label:'深化關係', cat:'people'},
+];
+const CAT_META={
+  action:{label:'行動與做事',bg:'#E1F5EE',border:'#9FE1CB',text:'#085041'},
+  think: {label:'思考與心態',bg:'#EEEDFE',border:'#AFA9EC',text:'#26215C'},
+  people:{label:'人際與領導',bg:'#FAECE7',border:'#F5C4B3',text:'#4A1B0C'},
+};
+
+const PASSION=[
+  {id:1,label:'幼教老師',sub:'教育學群',holland:'SA',knowledge:'顧客服務／教育訓練／語文文學',goal:'建立夥伴關係／教導與協助個人發展／安排工作和活動時程',work:'負責教導幼兒知識與課程，促進孩子的身心與社會發展。'},
+  {id:2,label:'國高中老師',sub:'教育學群',holland:'SA',knowledge:'教育訓練／語文文學／顧客服務',goal:'安排工作和活動時程／組織內部溝通／教導與協助個人發展',work:'在學校教導國高中學生知識與課程。'},
+  {id:3,label:'社工師',sub:'社會與心理學群',holland:'SE',knowledge:'治療諮商／心理學／顧客服務',goal:'建立夥伴關係／協助和照顧他人／調解衝突',work:'協助個案適應與融入社會。'},
+  {id:4,label:'神職人員',sub:'社會與心理/文史哲學群',holland:'SEA',knowledge:'哲學宗教／顧客服務／管理',goal:'協助和照顧他人／安排工作和活動時程／組織內部溝通',work:'負責宗教活動與儀式，提供信仰、精神和生活等方面的輔導。'},
+  {id:5,label:'導遊／導覽員',sub:'遊憩與運動學群',holland:'SEA',knowledge:'顧客服務／歷史文化／地球環境',goal:'服務與應對人群／建立夥伴關係／代表組織對外溝通',work:'帶領團隊介紹觀光景點，或於博物館進行導覽。'},
+  {id:6,label:'服務生',sub:'遊憩與運動學群',holland:'SEC',knowledge:'顧客服務／銷售行銷／語文文學',goal:'服務與應對人群／搬運與動手操作／體能活動',work:'負責接待顧客、安排帶位、協助點餐、端送食物。'},
+  {id:7,label:'家教／補習班老師',sub:'教育學群',holland:'SEI',knowledge:'語文文學／教育訓練／顧客服務',goal:'教導他人／建立夥伴關係／搜尋資訊',work:'為學生提供額外學業指導。'},
+  {id:8,label:'教授',sub:'無特定學群',holland:'SI',knowledge:'教育訓練／語文文學／管理',goal:'持續進修專業知識／教導與協助個人發展／創新設計',work:'從事學術研究，在大專院校進行研究與教學工作。'},
+  {id:9,label:'諮商與臨床心理師',sub:'社會與心理學群',holland:'SIA',knowledge:'治療諮商／心理學／顧客服務',goal:'建立夥伴關係／協助和照顧他人／教導與協助個人發展',work:'評估個人心理與情緒問題，實施療程或提供諮商。'},
+  {id:10,label:'護理師',sub:'醫藥衛生學群',holland:'SIC',knowledge:'醫學／顧客服務／治療諮商',goal:'找出關鍵資訊和線索／協助和照顧他人／監控過程',work:'評估病人的健康問題，提供護理建議與服務。'},
+  {id:34,label:'數位行銷',sub:'管理/大眾傳播學群',holland:'EA',knowledge:'銷售行銷／顧客服務／管理',goal:'運用電腦工作／創新設計／推銷或影響他人',work:'於網路進行商業活動，規劃營運策略。'},
+  {id:35,label:'廣告文案',sub:'文史哲/大眾傳播學群',holland:'EA',knowledge:'語文文學／銷售行銷／傳播媒體',goal:'代表組織對外溝通／推銷或影響他人／創新設計',work:'為產品或公司撰寫宣傳文案。'},
+  {id:44,label:'總經理',sub:'管理/財經學群',holland:'ECS',knowledge:'顧客服務／管理／人力資源',goal:'安排工作和活動時程／指導與激勵部屬／提出解決問題的方案',work:'指導公司運作，包含營運政策、日常管理、規畫財務及人力使用。'},
+  {id:45,label:'專案管理師',sub:'管理學群',holland:'ECS',knowledge:'顧客服務／行政／語文文學',goal:'安排工作和活動時程／組織內部溝通／調解衝突',work:'負責專案計畫的控管和執行。'},
+  {id:46,label:'人力資源專員',sub:'社會與心理/管理學群',holland:'ECS',knowledge:'行政／人力資源／管理',goal:'安排工作和活動時程／建立夥伴關係／組織內部溝通',work:'從事企業的人力資源相關工作，包括招募、教育訓練、薪酬等。'},
+  {id:47,label:'律師',sub:'法政學群',holland:'EI',knowledge:'法律政治／語文文學／顧客服務',goal:'調解衝突／搜尋資訊／提出解決問題的方案',work:'在法律程序中，協助當事人進行訴訟、辯護或其他事項。'},
+  {id:49,label:'企管顧問',sub:'管理學群',holland:'EIC',knowledge:'管理／銷售行銷／顧客服務',goal:'建立夥伴關係／提供諮詢／提出解決問題的方案',work:'參與企業管理與決策過程，提出未來發展建議或現況改善方案。'},
+  {id:57,label:'會計師',sub:'財經學群',holland:'CE',knowledge:'經濟會計／行政／數學',goal:'安排工作和活動時程／處理資料／檢查是否符合規範',work:'分析企業財務現況，編製各種報表。'},
+  {id:63,label:'金融投資分析師',sub:'財經學群',holland:'CIE',knowledge:'經濟會計／數學／語文文學',goal:'處理資料／分析資訊／組織內部溝通',work:'收集市場資訊進行分析，研判趨勢並引導投資者進行投資。'},
+  {id:67,label:'程式設計師',sub:'資訊學群',holland:'IC',knowledge:'資訊電子／數學／管理',goal:'運用電腦工作／持續進修專業知識／分析資訊',work:'分析、編寫、修改、測試程式碼，開發電腦應用程式。'},
+  {id:68,label:'數據分析師',sub:'數理化/資訊學群',holland:'ICE',knowledge:'數學／資訊電子／工程科技',goal:'分析資訊／創新設計／提供諮詢',work:'收集並分析大量數據，依此歸納與預測未來趨勢、評估與訂定決策。'},
+];
+
+const VALUE_CATS={
+  self:{label:'個人與自我',color:'#C4786B'},
+  rel: {label:'關係與家庭',color:'#C49060'},
+  soc: {label:'社會與道德',color:'#5B8A78'},
+  work:{label:'工作與成就',color:'#4E7A96'},
+};
+const VALUES=[
+  {id:1,label:'享受生活、美食等休閒娛樂',cat:'self'},{id:2,label:'有趣的人事物',cat:'self'},{id:3,label:'忠於自我',cat:'self'},
+  {id:4,label:'自由自在不受拘束',cat:'self'},{id:5,label:'內在的平靜',cat:'self'},{id:6,label:'對生命、人性或人生的洞察智慧',cat:'self'},
+  {id:7,label:'保持潔淨 身體、心靈或環境',cat:'self'},{id:8,label:'健康的身體與心靈',cat:'self'},{id:9,label:'保有隱私 不受人打擾',cat:'self'},
+  {id:10,label:'追求真理與知性',cat:'self'},{id:11,label:'自我肯定 喜歡自己',cat:'self'},{id:12,label:'自我表達與呈現',cat:'self'},
+  {id:13,label:'舒適的環境',cat:'self'},{id:14,label:'信仰、宗教或靈性的生活',cat:'self'},{id:15,label:'平凡的生活',cat:'self'},
+  {id:16,label:'能親近大自然',cat:'self'},{id:17,label:'規律的生活',cat:'self'},{id:18,label:'有獨處的空間',cat:'self'},{id:19,label:'低調 不張揚',cat:'self'},
+  {id:20,label:'忠誠',cat:'soc'},{id:21,label:'國家主權 民族意識',cat:'soc'},{id:22,label:'不欺騙 不說謊',cat:'soc'},
+  {id:23,label:'不要傷害別人',cat:'soc'},{id:24,label:'知恩圖報',cat:'soc'},{id:25,label:'真誠一致',cat:'soc'},
+  {id:26,label:'全人類的福祉',cat:'soc'},{id:27,label:'尊重傳統延續歷史',cat:'soc'},{id:28,label:'公平正義',cat:'soc'},
+  {id:29,label:'保護環境或動植物',cat:'soc'},{id:30,label:'社會公益 關懷弱勢',cat:'soc'},
+  {id:31,label:'交友廣闊',cat:'rel'},{id:32,label:'愛與被愛',cat:'rel'},{id:33,label:'歸屬與認同 屬於某個身份或團體',cat:'rel'},
+  {id:34,label:'能彼此尊重',cat:'rel'},{id:35,label:'獲得父母的認同',cat:'rel'},{id:36,label:'有一個安穩的家',cat:'rel'},
+  {id:37,label:'深刻友誼',cat:'rel'},{id:38,label:'人際和諧',cat:'rel'},{id:39,label:'有小孩',cat:'rel'},{id:40,label:'能好好照顧家人',cat:'rel'},
+  {id:41,label:'能持續自我成長',cat:'work'},{id:42,label:'工作與生活平衡',cat:'work'},{id:43,label:'對他人社會有影響力',cat:'work'},
+  {id:44,label:'負責 勇於承擔責任',cat:'work'},{id:45,label:'資產與金錢',cat:'work'},{id:46,label:'晉升的機會與速度',cat:'work'},
+  {id:47,label:'擁有自己的事業',cat:'work'},{id:48,label:'權威身份 擁有特定地位職權',cat:'work'},{id:49,label:'社會認可 受人尊重肯定',cat:'work'},
+  {id:50,label:'有效率、有效能',cat:'work'},{id:51,label:'領導團隊',cat:'work'},{id:52,label:'務實 重視可行性',cat:'work'},
+  {id:53,label:'能被看見 有舞台能發光',cat:'work'},{id:54,label:'清楚的流程與規範',cat:'work'},{id:55,label:'隨遇而安 順勢而為',cat:'work'},
+  {id:56,label:'工作穩定性',cat:'work'},{id:58,label:'發揮自己的天賦能力',cat:'work'},{id:59,label:'追求美感或藝術',cat:'work'},
+  {id:60,label:'專業',cat:'work'},{id:61,label:'創新與創造',cat:'work'},{id:62,label:'追求工作品質',cat:'work'},
+  {id:63,label:'邏輯清晰',cat:'work'},{id:64,label:'有夥伴一起打拼',cat:'work'},{id:65,label:'解決他人的問題 幫助他人成長',cat:'work'},
+  {id:66,label:'安全感 工作或心理上可預測可掌控',cat:'work'},{id:67,label:'冒險挑戰',cat:'work'},{id:68,label:'有明確的目標或方向',cat:'work'},
+  {id:69,label:'有成就感',cat:'work'},{id:70,label:'有秩序與穩定的環境',cat:'work'},
+];
+
+// ═══════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════
 let hSorted={};
 let ptYes=[],ptNo=[],ptIdx=0,ptRank=[];
-let skYes=[],skNo=[],skIdx=0,skBest=[],skWeak=[];
-let vtStarred=[],vtIdx=0;
-let lastDeck='';
+let skYes2=[],skNo2=[],skSkip2=[],skIdx2=0,sk2Best=[],sk2Weak=[],sp2DragId=null;
+let vsSorted={},vsIdx=0,vsSortLock=false,vpRank=[];
 let dragData={type:null,id:null};
+let hbIdx=0;
+let pcardModalTarget=null;
 
+// ═══════════════════════════════════════════
+// NAV
+// ═══════════════════════════════════════════
 function go(id){
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   window.scrollTo(0,0);
-  if(id==='s-holland-browse')initHollandBrowse();
-  if(id==='s-holland')initHolland();
-  if(id==='s-passion-tinder')initPT();
-  if(id==='s-passion-pick')initPP();
-  if(id==='s-skill-tinder')initSK();
-  if(id==='s-skill-pick')initSP();
-  if(id==='s-value-tinder')initVT();
+  if(id==='s-holland-browse') initHollandBrowse();
+  if(id==='s-passion-tinder') initPT();
+  if(id==='s-passion-pick')   initPP();
+  if(id==='s-skill-tinder')   initSK2();
+  if(id==='s-skill-pick')     initSP2();
+  if(id==='s-value-sort')     initVS();
+  if(id==='s-value-pick')     initVP();
 }
 
-// Keyboard support
+// ═══════════════════════════════════════════
+// KEYBOARD & TOUCH
+// ═══════════════════════════════════════════
 document.addEventListener('keydown',e=>{
   const active=document.querySelector('.screen.active')?.id;
-  if(active==='s-passion-tinder'){if(e.key==='ArrowRight')ptSwipe('yes');if(e.key==='ArrowLeft')ptSwipe('no')}
-  if(active==='s-skill-tinder'){if(e.key==='ArrowRight')skSwipe('yes');if(e.key==='ArrowLeft')skSwipe('no')}
-  if(active==='s-value-tinder'){if(e.key==='ArrowRight')vtSwipe('star');if(e.key==='ArrowLeft')vtSwipe('no')}
+  if(active==='s-passion-tinder'){
+    if(e.key==='ArrowRight'){e.preventDefault();ptSwipe('yes');}
+    if(e.key==='ArrowLeft') {e.preventDefault();ptSwipe('no');}
+  }
+  if(active==='s-skill-tinder'){
+    if(e.key==='ArrowLeft') {e.preventDefault();skSwipe('yes');}
+    if(e.key==='ArrowRight'){e.preventDefault();skSwipe('no');}
+    if(e.key==='ArrowDown') {e.preventDefault();skSwipe('skip');}
+  }
+  if(active==='s-value-sort'){
+    if(e.key==='ArrowLeft') {e.preventDefault();vsSort('hi');}
+    if(e.key==='ArrowDown') {e.preventDefault();vsSort('mid');}
+    if(e.key==='ArrowRight'){e.preventDefault();vsSort('lo');}
+  }
 });
 
-// Touch swipe support for tinder
-let touchStartX=null;
-document.addEventListener('touchstart',e=>{const s=document.querySelector('.screen.active')?.id;if(['s-passion-tinder','s-skill-tinder','s-value-tinder'].includes(s))touchStartX=e.touches[0].clientX},{passive:true});
+let touchStartX=null,touchStartY=null;
+document.addEventListener('touchstart',e=>{
+  const id=document.querySelector('.screen.active')?.id;
+  if(['s-passion-tinder','s-skill-tinder','s-value-sort'].includes(id)){
+    touchStartX=e.touches[0].clientX; touchStartY=e.touches[0].clientY;
+  }
+},{passive:true});
 document.addEventListener('touchend',e=>{
   if(touchStartX===null)return;
   const dx=e.changedTouches[0].clientX-touchStartX;
-  touchStartX=null;
-  if(Math.abs(dx)<50)return;
+  const dy=e.changedTouches[0].clientY-touchStartY;
+  touchStartX=null;touchStartY=null;
   const active=document.querySelector('.screen.active')?.id;
-  if(active==='s-passion-tinder'){dx>0?ptSwipe('yes'):ptSwipe('no')}
-  if(active==='s-skill-tinder'){dx>0?skSwipe('yes'):skSwipe('no')}
-  if(active==='s-value-tinder'){dx>0?vtSwipe('star'):vtSwipe('no')}
+  if(active==='s-passion-tinder'){if(Math.abs(dx)>40){dx>0?ptSwipe('yes'):ptSwipe('no');}}
+  if(active==='s-skill-tinder'){
+    if(Math.abs(dy)>Math.abs(dx)&&Math.abs(dy)>40){skSwipe('skip');}
+    else if(Math.abs(dx)>40){dx<0?skSwipe('yes'):skSwipe('no');}
+  }
+  if(active==='s-value-sort'){if(Math.abs(dx)>40){dx>0?vsSort('hi'):vsSort('lo');}}
 });
 
-
-// HOLLAND READ & SORT
-let hbIdx=0;
-function initHollandBrowse(){hbIdx=0;hSorted={};renderHB()}
+// ═══════════════════════════════════════════
+// HOLLAND BROWSE
+// ═══════════════════════════════════════════
+function initHollandBrowse(){hbIdx=0;hSorted={};renderHB();}
 function renderHB(){
   const c=HOLLAND[hbIdx];
   const card=document.getElementById('hb-card');
   card.style.borderColor=c.color;
-  card.innerHTML=`
-    <div class="hb-card-header">
-      <div class="hb-letter" style="color:${c.color}">${c.letter}</div>
-      <div class="hb-names">
-        <div class="hb-en" style="color:${c.color}">${c.sub}</div>
-        <div class="hb-zh">${c.label}</div>
-      </div>
-    </div>
-    <div class="hb-section">
-      <div class="hb-section-title">描述</div>
-      <div class="hb-section-body">${c.desc}</div>
-    </div>
-    <div class="hb-section">
-      <div class="hb-section-title">優勢</div>
-      <div class="hb-section-body">${c.strength}</div>
-    </div>
-    <div class="hb-section">
-      <div class="hb-section-title">典型對應職業</div>
-      <div class="hb-section-body">${c.career}</div>
-    </div>`;
+  card.innerHTML=`<div class="hb-card-header"><div class="hb-letter" style="color:${c.color}">${c.letter}</div><div class="hb-names"><div class="hb-en" style="color:${c.color}">${c.sub}</div><div class="hb-zh">${c.label}</div></div></div><div class="hb-section"><div class="hb-section-title">描述</div><div class="hb-section-body">${c.desc}</div></div><div class="hb-section"><div class="hb-section-title">優勢</div><div class="hb-section-body">${c.strength}</div></div><div class="hb-section"><div class="hb-section-title">典型對應職業</div><div class="hb-section-body">${c.career}</div></div>`;
   document.getElementById('hb-cur').textContent=hbIdx+1;
   const dots=document.getElementById('hb-dots');dots.innerHTML='';
-  HOLLAND.forEach((cc,i)=>{
-    const dot=document.createElement('div');
-    const z=hSorted[cc.id];
-    dot.className='hb-dot'+(i===hbIdx?' active':'');
-    if(z) dot.style.background=z==='sim'?'#1D9E75':z==='neu'?'#888':'#D85A30';
-    dot.onclick=()=>{hbIdx=i;renderHB()};
-    dots.appendChild(dot);
-  });
+  HOLLAND.forEach((cc,i)=>{const dot=document.createElement('div');const z=hSorted[cc.id];dot.className='hb-dot'+(i===hbIdx?' active':'');if(z)dot.style.background=z==='sim'?'#1D9E75':z==='neu'?'#888':'#D85A30';dot.onclick=()=>{hbIdx=i;renderHB();};dots.appendChild(dot);});
   const sorted=hSorted[c.id];
   document.querySelectorAll('.hb-sort-btn').forEach(b=>b.classList.remove('selected'));
-  if(sorted){
-    const map={sim:'.hb-sim',neu:'.hb-neu',dif:'.hb-dif'};
-    document.querySelector(map[sorted])?.classList.add('selected');
-  }
-  const sortRow=document.getElementById('hb-sort-btns');
-  const indicator=document.getElementById('hb-sorted-indicator');
-  sortRow.style.display='';
-  indicator.style.display='none';
+  if(sorted){const map={sim:'.hb-sim',neu:'.hb-neu',dif:'.hb-dif'};document.querySelector(map[sorted])?.classList.add('selected');}
+  const allSorted=HOLLAND.every(cc=>hSorted[cc.id]);
   document.getElementById('hb-prev').style.display=hbIdx>0?'':'none';
   const nextBtn=document.getElementById('hb-next');
   const finishBtn=document.getElementById('hb-finish');
-  const allSorted=HOLLAND.every(cc=>hSorted[cc.id]);
-  if(sorted && hbIdx<HOLLAND.length-1){
-    nextBtn.style.display='';finishBtn.style.display='none';
-  } else if(allSorted){
-    nextBtn.style.display='none';finishBtn.style.display='';
-  } else {
-    nextBtn.style.display='none';finishBtn.style.display='none';
-  }
+  if(sorted&&hbIdx<HOLLAND.length-1){nextBtn.style.display='';finishBtn.style.display='none';}
+  else if(allSorted){nextBtn.style.display='none';finishBtn.style.display='';}
+  else{nextBtn.style.display='none';finishBtn.style.display='none';}
 }
 function hbSort(zone){
-  const c=HOLLAND[hbIdx];
-  hSorted[c.id]=zone;
+  const c=HOLLAND[hbIdx];hSorted[c.id]=zone;
   document.querySelectorAll('.hb-sort-btn').forEach(b=>b.classList.remove('selected'));
   const map={sim:'.hb-sim',neu:'.hb-neu',dif:'.hb-dif'};
   document.querySelector(map[zone])?.classList.add('selected');
-  setTimeout(()=>{
-    const allSorted=HOLLAND.every(cc=>hSorted[cc.id]);
-    if(allSorted){
-      renderHB();
-    } else if(hbIdx<HOLLAND.length-1){
-      hbIdx++;
-      renderHB();
-      window.scrollTo(0,0);
-    }
-  }, 300);
+  setTimeout(()=>{if(HOLLAND.every(cc=>hSorted[cc.id])){renderHB();}else if(hbIdx<HOLLAND.length-1){hbIdx++;renderHB();window.scrollTo(0,0);}},300);
 }
-function hbNext(){if(hbIdx<HOLLAND.length-1){hbIdx++;renderHB();window.scrollTo(0,0)}}
-function hbPrev(){if(hbIdx>0){hbIdx--;renderHB();window.scrollTo(0,0)}}
+function hbNext(){if(hbIdx<HOLLAND.length-1){hbIdx++;renderHB();window.scrollTo(0,0);}}
+function hbPrev(){if(hbIdx>0){hbIdx--;renderHB();window.scrollTo(0,0);}}
 
-// HOLLAND
-let hDragId=null;
-let hTouchGhost=null,hTouchCardId=null,hTouchLastZone=null;
-function initHolland(){hSorted={};renderH()}
-function makeHCard(c){
-  const d=document.createElement('div');
-  d.className='hcard';d.draggable=true;d.dataset.id=c.id;
-  d.style.borderColor=c.color||'';
-  d.innerHTML=`<div class="hcard-letter" style="color:${c.color}">${c.letter}</div><div class="hcard-name">${c.label}</div><div class="hcard-sub">${c.sub}</div>`;
-  d.addEventListener('dragstart',()=>{hDragId=c.id;setTimeout(()=>d.classList.add('dragging'),0)});
-  d.addEventListener('dragend',()=>d.classList.remove('dragging'));
-  d.addEventListener('touchstart',hTouchStart,{passive:false});
-  d.addEventListener('touchmove',hTouchMove,{passive:false});
-  d.addEventListener('touchend',hTouchEnd,{passive:false});
-  return d;
-}
-function hTouchStart(e){
-  e.preventDefault();
-  const card=e.currentTarget;
-  hTouchCardId=card.dataset.id;
-  const ghost=card.cloneNode(true);
-  const r=card.getBoundingClientRect();
-  ghost.style.cssText=`position:fixed;pointer-events:none;opacity:0.75;z-index:9999;width:${r.width}px;left:${r.left}px;top:${r.top}px;transform:scale(1.08);transition:none;`;
-  document.body.appendChild(ghost);
-  hTouchGhost=ghost;
-  card.classList.add('dragging');
-}
-function hTouchMove(e){
-  e.preventDefault();
-  if(!hTouchGhost)return;
-  const t=e.touches[0];
-  hTouchGhost.style.left=(t.clientX-40)+'px';
-  hTouchGhost.style.top=(t.clientY-30)+'px';
-  hTouchGhost.style.pointerEvents='none';
-  const el=document.elementFromPoint(t.clientX,t.clientY);
-  ['pool','sim','neu','dif'].forEach(z=>{
-    const zone=z==='pool'?document.getElementById('h-pool'):document.getElementById('hz-'+z)?.closest('.h-zone');
-    if(zone)zone.classList.remove('drag-over');
-  });
-  const zone=el?.closest('.h-zone, .h-pool');
-  if(zone)zone.classList.add('drag-over');
-}
-function hTouchEnd(e){
-  e.preventDefault();
-  if(!hTouchGhost)return;
-  hTouchGhost.remove();hTouchGhost=null;
-  document.querySelectorAll('.hcard.dragging').forEach(x=>x.classList.remove('dragging'));
-  ['pool','sim','neu','dif'].forEach(z=>{
-    const zone=z==='pool'?document.getElementById('h-pool'):document.getElementById('hz-'+z)?.closest('.h-zone');
-    if(zone)zone.classList.remove('drag-over');
-  });
-  const t=e.changedTouches[0];
-  const el=document.elementFromPoint(t.clientX,t.clientY);
-  hDragId=hTouchCardId;
-  if(el?.closest('.z-sim'))hDrop({preventDefault:()=>{}},'sim');
-  else if(el?.closest('.z-neu'))hDrop({preventDefault:()=>{}},'neu');
-  else if(el?.closest('.z-dif'))hDrop({preventDefault:()=>{}},'dif');
-  else if(el?.closest('.h-pool'))hDrop({preventDefault:()=>{}},'pool');
-  else{hDragId=null;}
-  hTouchCardId=null;
-}
-function renderH(){
-  const pool=document.getElementById('h-pool');pool.innerHTML='';
-  HOLLAND.filter(c=>!hSorted[c.id]).forEach(c=>pool.appendChild(makeHCard(c)));
-  document.getElementById('h-unsorted').textContent=HOLLAND.filter(c=>!hSorted[c.id]).length;
-  ['sim','neu','dif'].forEach(z=>{
-    const el=document.getElementById('hz-'+z);el.innerHTML='';
-    HOLLAND.filter(c=>hSorted[c.id]===z).forEach(c=>el.appendChild(makeHCard(c)));
-    document.getElementById('hc-'+z).textContent=HOLLAND.filter(c=>hSorted[c.id]===z).length;
-  });
-  document.getElementById('h-done').style.display=HOLLAND.every(c=>hSorted[c.id])?'':'none';
-}
-function hDragOver(e,z){e.preventDefault();const el=z==='pool'?document.getElementById('h-pool'):document.getElementById('hz-'+z)?.closest('.h-zone');if(el)el.classList.add('drag-over')}
-function hDragLeave(e,z){const el=z==='pool'?document.getElementById('h-pool'):document.getElementById('hz-'+z)?.closest('.h-zone');if(el)el.classList.remove('drag-over')}
-function hDrop(e,z){e.preventDefault();hDragLeave(e,z);if(!hDragId)return;if(z==='pool')delete hSorted[hDragId];else hSorted[hDragId]=z;hDragId=null;renderH()}
-
-// TINDER ENGINE
-const HOLLAND_COLORS={'R':'#C0522A','I':'#5FAAA0','A':'#B8922A','S':'#3A5A8A','E':'#6A9A3A','C':'#8A3A5A'};
-function getHollandColor(code){return HOLLAND_COLORS[code?code[0]:'S']||'#3A5A8A';}
-function makeTCard(c){
-  const d=document.createElement('div');d.className='tcard';
-  if(c.knowledge){
-    const color=getHollandColor(c.holland);
-    d.style.border=`2px solid ${color}`;
-    d.style.borderRadius='16px';
-    d.innerHTML=`
-      <div class="tcard-stamp s-yes">喜歡 ✓</div>
-      <div class="tcard-stamp s-no">跳過 ✕</div>
-      <div class="tcard-holland" style="background:${color}">${c.holland}</div>
-      <div class="tcard-label" style="margin-top:8px">${c.label}</div>
-      <div class="tcard-sub">${c.sub}</div>
-      <div class="tcard-icons">
-        <div class="tcard-icon-col">
-          <div class="tcard-icon-header">💡</div>
-          ${c.knowledge.split('／').map(k=>`<div class="tcard-icon-item">${k}</div>`).join('')}
-        </div>
-        <div class="tcard-icon-col">
-          <div class="tcard-icon-header">🚩</div>
-          ${c.goal.split('／').map(g=>`<div class="tcard-icon-item">${g}</div>`).join('')}
-        </div>
-      </div>
-      <div class="tcard-work">
-        <div class="tcard-work-label">工作內容</div>
-        ${c.work}
-      </div>`;
-  } else {
-    d.innerHTML=`<div class="tcard-stamp s-yes">喜歡 ✓</div><div class="tcard-stamp s-no">跳過 ✕</div>${c.emoji?`<div class="tcard-emoji">${c.emoji}</div>`:''}<div class="tcard-label">${c.label}</div>${c.sub?`<div class="tcard-sub">${c.sub}</div>`:''}`;
-  }
-  return d;
-}
-function renderStack(cards,idx,stackId){
-  const stack=document.getElementById(stackId);stack.innerHTML='';
-  if(idx>=cards.length){stack.innerHTML='<div class="tcard front" style="justify-content:center;font-size:14px;color:#888">全部滑完！</div>';return}
-  if(idx+1<cards.length){const b=makeTCard(cards[idx+1]);b.classList.add('behind');stack.appendChild(b)}
-  const f=makeTCard(cards[idx]);f.classList.add('front');stack.appendChild(f);
-}
-function animateSwipe(stackId,dir,cb){
-  const f=document.getElementById(stackId)?.querySelector('.front');
-  if(!f){cb();return}
-  f.classList.add(dir==='yes'?'sw-right':'sw-left');
-  setTimeout(cb,200);
-}
-
+// ═══════════════════════════════════════════
 // PASSION TINDER
-function initPT(){ptYes=[];ptNo=[];ptIdx=0;renderPT()}
-function renderPT(){
-  renderStack(PASSION,ptIdx,'pt-stack');
+// ═══════════════════════════════════════════
+const HOLLAND_COLORS={R:'#C0522A',I:'#5FAAA0',A:'#B8922A',S:'#3A5A8A',E:'#6A9A3A',C:'#8A3A5A'};
+function getHollandColor(code){return HOLLAND_COLORS[code?code[0]:'S']||'#3A5A8A';}
+
+function makePTCard(c){
+  const color=getHollandColor(c.holland);
+  const d=document.createElement('div');d.className='pt-card';
+  d.style.borderTop=`3px solid ${color}`;
+  d.innerHTML=`<div class="pt-stamp s-yes">喜歡 ✓</div><div class="pt-stamp s-no">跳過 ✕</div><div style="position:absolute;top:10px;right:10px;font-size:10px;font-weight:700;color:${color};background:${color}1a;border-radius:5px;padding:2px 7px">${c.holland}</div><div class="pt-label">${c.label}</div><div class="pt-sub">${c.sub}</div>`;
+  return d;
+}
+
+function renderPTStack(){
+  const stack=document.getElementById('pt-stack');stack.innerHTML='';
+  if(ptIdx>=PASSION.length){stack.innerHTML='<div class="pt-card front" style="justify-content:center;font-size:14px;color:#888">全部滑完！</div>';return;}
+  if(ptIdx+1<PASSION.length){const b=makePTCard(PASSION[ptIdx+1]);b.classList.add('behind');stack.appendChild(b);}
+  const f=makePTCard(PASSION[ptIdx]);f.classList.add('front');stack.appendChild(f);
+}
+function initPT(){ptYes=[];ptNo=[];ptIdx=0;document.getElementById('pt-total').textContent=PASSION.length;renderPTStack();updatePTCounts();}
+function updatePTCounts(){
   document.getElementById('pt-cur').textContent=Math.min(ptIdx+1,PASSION.length);
-  document.getElementById('pt-total').textContent=PASSION.length;
   document.getElementById('pt-yes-cnt').textContent=ptYes.length;
   document.getElementById('pt-no-cnt').textContent=ptNo.length;
   document.getElementById('pt-next').style.display=ptIdx>=PASSION.length&&ptYes.length>0?'':'none';
 }
 function ptSwipe(dir){
   if(ptIdx>=PASSION.length)return;
-  animateSwipe('pt-stack',dir,()=>{
-    if(dir==='yes')ptYes.push(PASSION[ptIdx]);
-    else ptNo.push(PASSION[ptIdx]);
+  const card=document.getElementById('pt-stack')?.querySelector('.front');
+  if(!card)return;
+  card.classList.add(dir==='yes'?'sw-right':'sw-left');
+  setTimeout(()=>{
+    if(dir==='yes')ptYes.push(PASSION[ptIdx]);else ptNo.push(PASSION[ptIdx]);
     ptIdx++;
-    if(ptIdx>=PASSION.length && ptYes.length>0){
-      setTimeout(()=>go('s-passion-pick'),300);
-    } else {
-      renderPT();
-    }
-  });
+    if(ptIdx>=PASSION.length&&ptYes.length>0){renderPTStack();updatePTCounts();setTimeout(()=>go('s-passion-pick'),300);}
+    else{renderPTStack();updatePTCounts();}
+  },200);
 }
 
+// ═══════════════════════════════════════════
 // PASSION PICK
+// ═══════════════════════════════════════════
 let ppDragId=null;
-let pcardModalTarget=null;
-function initPP(){ptRank=[];renderPP()}
+function initPP(){ptRank=[];renderPP();}
 function renderPP(){
   document.getElementById('pp-cnt').textContent=ptRank.length+' / 15';
   document.getElementById('pp-pool-cnt').textContent=ptYes.length;
   const list=document.getElementById('pp-rank-list');list.innerHTML='';
-  if(ptRank.length===0){
-    const empty=document.createElement('div');
-    empty.style.cssText='font-size:12px;color:#aaa;text-align:center;padding:10px 0';
-    empty.textContent='點選下方職位加入排行榜';
-    list.appendChild(empty);
-  }
+  if(ptRank.length===0){const e=document.createElement('div');e.style.cssText='font-size:12px;color:#aaa;text-align:center;padding:10px 0';e.textContent='點選下方職位加入排行榜';list.appendChild(e);}
   ptRank.forEach((c,i)=>{
     const rcolor=getHollandColor(c.holland);
     const r=document.createElement('div');r.className='rank-item';r.draggable=true;r.dataset.rid=c.id;
     r.style.borderLeft=`3px solid ${rcolor}`;
     r.innerHTML=`<span class="rank-num">${i+1}</span><span style="font-size:9px;font-weight:700;color:${rcolor};background:${rcolor}22;border-radius:4px;padding:1px 5px;flex-shrink:0">${c.holland||''}</span><span class="rank-label">${c.label}</span><span class="rank-remove" onclick="ppRemove(${c.id})">✕</span>`;
-    r.addEventListener('dragstart',e=>{
-      ppDragId=c.id;dragData={type:'rank-reorder',id:c.id};
-      const ghost=r.cloneNode(true);
-      ghost.style.cssText='position:fixed;top:-999px;left:-999px;width:'+r.offsetWidth+'px;background:#fff;border:1.5px solid #1D9E75;border-radius:8px;padding:8px 10px;opacity:0.9;pointer-events:none;';
-      document.body.appendChild(ghost);
-      e.dataTransfer.setDragImage(ghost,20,20);
-      setTimeout(()=>{r.classList.add('dragging');ghost.remove()},0);
-      e.stopPropagation();
-    });
-    r.addEventListener('dragend',()=>{r.classList.remove('dragging');document.querySelectorAll('.rank-item').forEach(x=>x.classList.remove('drag-over-item'));ppDragId=null});
-    r.addEventListener('dragover',e=>{e.preventDefault();e.stopPropagation();document.querySelectorAll('.rank-item').forEach(x=>x.classList.remove('drag-over-item'));r.classList.add('drag-over-item')});
-    r.addEventListener('drop',e=>{e.preventDefault();e.stopPropagation();if(ppDragId&&ppDragId!==c.id){const fi=ptRank.findIndex(x=>x.id===ppDragId);const ti=ptRank.findIndex(x=>x.id===c.id);const[item]=ptRank.splice(fi,1);ptRank.splice(ti,0,item);renderPP()}});
+    r.addEventListener('dragstart',e=>{ppDragId=c.id;dragData={type:'rank-reorder',id:c.id};setTimeout(()=>r.classList.add('dragging'),0);e.stopPropagation();});
+    r.addEventListener('dragend',()=>{r.classList.remove('dragging');document.querySelectorAll('.rank-item').forEach(x=>x.classList.remove('drag-over-item'));ppDragId=null;});
+    r.addEventListener('dragover',e=>{e.preventDefault();e.stopPropagation();document.querySelectorAll('.rank-item').forEach(x=>x.classList.remove('drag-over-item'));const rect=r.getBoundingClientRect();const mid=rect.top+rect.height/2;r.dataset.insertAfter=e.clientY>mid?'1':'0';r.classList.add('drag-over-item');r.style.borderTop=e.clientY<=mid?'2px solid #1D9E75':'';r.style.borderBottom=e.clientY>mid?'2px solid #1D9E75':'';});
+    r.addEventListener('dragleave',()=>{r.style.borderTop='';r.style.borderBottom='';});
+    r.addEventListener('drop',e=>{e.preventDefault();e.stopPropagation();r.style.borderTop='';r.style.borderBottom='';if(!ppDragId||ppDragId===c.id)return;const insertAfter=r.dataset.insertAfter==='1';let fi=ptRank.findIndex(x=>x.id===ppDragId);let ti=ptRank.findIndex(x=>x.id===c.id);if(fi<0){const src=ptYes.find(x=>x.id===ppDragId);if(src&&ptRank.length<15){ptRank.splice(insertAfter?ti+1:ti,0,src);renderPP();return;}}const[item]=ptRank.splice(fi,1);ti=ptRank.findIndex(x=>x.id===c.id);ptRank.splice(insertAfter?ti+1:ti,0,item);renderPP();});
     list.appendChild(r);
   });
   const pool=document.getElementById('pp-pool');pool.innerHTML='';
@@ -858,35 +792,33 @@ function renderPP(){
     const inRank=ptRank.find(x=>x.id===c.id);
     const pcolor=getHollandColor(c.holland);
     const p=document.createElement('div');p.className='pcard'+(inRank?' picked':'');
-    p.style.borderColor=pcolor;
-    p.style.borderTopWidth='3px';
-    p.innerHTML=`<span style="font-size:10px;font-weight:700;color:${pcolor};line-height:1">${c.holland||''}</span><span style="font-size:11px;line-height:1.3;word-break:keep-all">${c.label}</span>`;
+    p.style.borderColor=pcolor;p.style.borderTopWidth='3px';
+    p.innerHTML=`<span style="font-size:10px;font-weight:700;color:${pcolor};line-height:1;flex-shrink:0">${c.holland||''}</span><span style="font-size:11px;line-height:1.4;display:block;width:100%;text-align:center">${c.label}</span>`;
     p.draggable=!inRank;
-    p.addEventListener('dragstart',e=>{if(inRank)return;dragData={type:'pool-to-rank',id:c.id};setTimeout(()=>p.classList.add('dragging'),0)});
+    p.addEventListener('dragstart',e=>{if(inRank)return;dragData={type:'pool-to-rank',id:c.id};setTimeout(()=>p.classList.add('dragging'),0);});
     p.addEventListener('dragend',()=>p.classList.remove('dragging'));
-    p.onclick=()=>{
-      if(inRank)return;
-      openPcardModal(c);
-    };
+    p.onclick=()=>{if(inRank)return;openPcardModal(c);};
     pool.appendChild(p);
   });
   const hint=document.getElementById('pp-hint');
   hint.textContent=ptRank.length>=15?'已選滿 15 張！可查看結果，或拖曳排行榜調整順序':`已選 ${ptRank.length} / 15，點選職位牌卡查看詳情並加入`;
   document.getElementById('pp-done').style.display=ptRank.length>0?'':'none';
 }
-function ppRemove(id){ptRank=ptRank.filter(c=>c.id!==id);renderPP()}
-function ppRankOver(e){e.preventDefault();document.getElementById('pp-rank-zone').classList.add('drag-over')}
-function ppRankLeave(e){document.getElementById('pp-rank-zone').classList.remove('drag-over')}
+function ppRemove(id){ptRank=ptRank.filter(c=>c.id!==id);renderPP();}
+function ppRankOver(e){e.preventDefault();document.getElementById('pp-rank-zone').classList.add('drag-over');}
+function ppRankLeave(e){document.getElementById('pp-rank-zone').classList.remove('drag-over');}
 function ppRankDrop(e){
   e.preventDefault();document.getElementById('pp-rank-zone').classList.remove('drag-over');
-  if(dragData.type==='pool-to-rank'){const c=ptYes.find(x=>x.id===dragData.id);if(c&&!ptRank.find(x=>x.id===c.id)&&ptRank.length<15){ptRank.push(c);renderPP()}}
+  if(e.target.closest('.rank-item'))return;
+  if(dragData.type==='pool-to-rank'){const c=ptYes.find(x=>x.id===dragData.id);if(c&&!ptRank.find(x=>x.id===c.id)&&ptRank.length<15){ptRank.push(c);renderPP();}}
+  else if(ppDragId){const c=ptRank.find(x=>x.id===ppDragId);if(!c)return;ptRank=ptRank.filter(x=>x.id!==ppDragId);ptRank.push(c);renderPP();}
 }
-// Passion card detail modal
+
 function openPcardModal(c){
   pcardModalTarget=c;
   const color=getHollandColor(c.holland);
   const tag=document.getElementById('pcard-modal-tag');
-  tag.textContent=c.holland;tag.style.background=color;
+  tag.textContent=c.holland;tag.style.cssText=`font-size:10px;font-weight:700;color:${color};background:${color}1a;border-radius:5px;padding:2px 8px;display:inline-block;margin-bottom:4px`;
   document.getElementById('pcard-modal-title').textContent=c.label;
   document.getElementById('pcard-modal-sub').textContent=c.sub||'';
   document.getElementById('pcard-modal-knowledge').textContent=c.knowledge?c.knowledge.split('／').join('、'):'';
@@ -902,238 +834,309 @@ function openPcardModal(c){
   document.body.style.overflow='hidden';
 }
 function closePcardModal(){
-  const overlay=document.getElementById('pcard-modal');
-  overlay.classList.remove('show');
-  setTimeout(()=>{overlay.style.display='none';document.body.style.overflow='';},200);
-  pcardModalTarget=null;
+  const overlay=document.getElementById('pcard-modal');overlay.classList.remove('show');
+  setTimeout(()=>{overlay.style.display='none';document.body.style.overflow='';},200);pcardModalTarget=null;
 }
 function pcardModalBgClose(e){if(e.target===document.getElementById('pcard-modal'))closePcardModal();}
 function pcardModalAdd(){
   if(!pcardModalTarget)return;
   if(ptRank.find(x=>x.id===pcardModalTarget.id)||ptRank.length>=15)return;
-  ptRank.push(pcardModalTarget);
-  renderPP();
-  closePcardModal();
+  ptRank.push(pcardModalTarget);renderPP();closePcardModal();
 }
 
+// ═══════════════════════════════════════════
 // SKILL TINDER
-function initSK(){skYes=[];skNo=[];skIdx=0;renderSK()}
-function renderSK(){
-  renderStack(SKILLS,skIdx,'sk-stack');
-  document.getElementById('sk-cur').textContent=Math.min(skIdx+1,SKILLS.length);
-  document.getElementById('sk-total').textContent=SKILLS.length;
-  document.getElementById('sk-yes-cnt').textContent=skYes.length;
-  document.getElementById('sk-no-cnt').textContent=skNo.length;
-  document.getElementById('sk-next').style.display=skIdx>=SKILLS.length?'':'none';
+// ═══════════════════════════════════════════
+function makeTCard2(c){
+  const m=CAT_META[c.cat];
+  const d=document.createElement('div');d.className='tcard';
+  d.style.borderTop=`3px solid ${m.border}`;
+  d.innerHTML=`<div class="tcard-stamp s-yes">← 擅長</div><div class="tcard-stamp s-no">不擅長 →</div><div class="tcard-stamp s-skip">↓ 先放著</div><div class="tcard-meta"><span class="tcard-cat" style="background:${m.bg};color:${m.text}">${m.label}</span><span class="tcard-num">#${c.id}</span></div><div class="tcard-label">${c.label}</div><div class="tcard-desc">${c.desc||''}</div>`;
+  return d;
+}
+function renderSK2Stack(){
+  const stack=document.getElementById('sk-stack');stack.innerHTML='';
+  if(skIdx2>=SKILLS2.length){stack.innerHTML='<div class="tcard front" style="justify-content:center;font-size:14px;color:#888;flex-direction:column;gap:6px"><div>全部滑完！</div><div style="font-size:12px;color:#aaa">請稍候，進入排序中…</div></div>';return;}
+  if(skIdx2+1<SKILLS2.length){const b=makeTCard2(SKILLS2[skIdx2+1]);b.classList.add('behind');stack.appendChild(b);}
+  const f=makeTCard2(SKILLS2[skIdx2]);f.classList.add('front');stack.appendChild(f);
+}
+function initSK2(){
+  skYes2=[];skNo2=[];skSkip2=[];skIdx2=0;sk2Best=[];sk2Weak=[];
+  document.getElementById('sk-total').textContent=SKILLS2.length;
+  renderSK2Stack();updateSK2Counts();
+}
+function updateSK2Counts(){
+  document.getElementById('sk-cur').textContent=Math.min(skIdx2+1,SKILLS2.length);
+  document.getElementById('sk-yes-cnt').textContent=skYes2.length;
+  document.getElementById('sk-no-cnt').textContent=skNo2.length;
+  document.getElementById('sk-skip-cnt').textContent=skSkip2.length;
 }
 function skSwipe(dir){
-  if(skIdx>=SKILLS.length)return;
-  animateSwipe('sk-stack',dir,()=>{if(dir==='yes')skYes.push(SKILLS[skIdx]);else skNo.push(SKILLS[skIdx]);skIdx++;renderSK()});
+  if(skIdx2>=SKILLS2.length)return;
+  const card=document.getElementById('sk-stack')?.querySelector('.front');
+  if(!card)return;
+  const cls=dir==='yes'?'sw-left':dir==='no'?'sw-right':'sw-down';
+  card.classList.add(cls);
+  setTimeout(()=>{
+    if(dir==='yes')skYes2.push(SKILLS2[skIdx2]);
+    else if(dir==='no')skNo2.push(SKILLS2[skIdx2]);
+    else skSkip2.push(SKILLS2[skIdx2]);
+    skIdx2++;
+    if(skIdx2>=SKILLS2.length){renderSK2Stack();updateSK2Counts();setTimeout(()=>go('s-skill-pick'),400);}
+    else{renderSK2Stack();updateSK2Counts();}
+  },200);
 }
+document.addEventListener('mouseover',e=>{
+  const btn=e.target.closest('.t-btn-good,.t-btn-weak,.t-btn-skip');if(!btn)return;
+  const front=document.getElementById('sk-stack')?.querySelector('.front');if(!front)return;
+  if(btn.classList.contains('t-btn-good'))front.classList.add('hint-left');
+  if(btn.classList.contains('t-btn-weak'))front.classList.add('hint-right');
+  if(btn.classList.contains('t-btn-skip'))front.classList.add('hint-down');
+});
+document.addEventListener('mouseout',e=>{
+  const btn=e.target.closest('.t-btn-good,.t-btn-weak,.t-btn-skip');if(!btn)return;
+  document.querySelectorAll('.tcard.front').forEach(c=>c.classList.remove('hint-left','hint-right','hint-down'));
+});
 
+// ═══════════════════════════════════════════
 // SKILL PICK
-let spDragId=null;
-function initSP(){skBest=[];skWeak=[];renderSP()}
-function makeSkCard(c,from){
-  const d=document.createElement('div');d.className='scard';d.draggable=true;
-  const inBest=skBest.find(x=>x.id===c.id),inWeak=skWeak.find(x=>x.id===c.id);
-  if(inBest||inWeak)d.classList.add('picked');
-  d.innerHTML=`<span>${c.emoji}</span><span>${c.label}</span>`;
-  d.addEventListener('dragstart',e=>{spDragId=c.id;setTimeout(()=>d.classList.add('dragging'),0)});
+// ═══════════════════════════════════════════
+function initSP2(){renderSP2();}
+function makeSP2Card(c,from){
+  const m=CAT_META[c.cat];
+  const inBest=sk2Best.find(x=>x.id===c.id);
+  const inWeak=sk2Weak.find(x=>x.id===c.id);
+  const d=document.createElement('div');
+  d.className='scard2'+(inBest||inWeak?' picked':'');
+  d.draggable=!(inBest||inWeak);
+  d.innerHTML=`<span class="scard2-cat cat-${c.cat}">${m.label.slice(0,2)}</span><span>${c.label}</span>`;
+  d.addEventListener('dragstart',e=>{sp2DragId=c.id;setTimeout(()=>d.classList.add('dragging'),0);});
   d.addEventListener('dragend',()=>d.classList.remove('dragging'));
   d.onclick=()=>{
     if(inBest||inWeak)return;
-    if(from==='yes-pool'&&skBest.length<7){skBest.push(c);renderSP()}
-    else if(from==='no-pool'&&skWeak.length<3){skWeak.push(c);renderSP()}
+    if(from==='yes'&&sk2Best.length<7){sk2Best.push(c);renderSP2();}
+    else if((from==='no'||from==='skip')&&sk2Weak.length<7){sk2Weak.push(c);renderSP2();}
   };
   return d;
 }
-function makeSlotCard(c,slot){
-  const d=document.createElement('div');d.className='scard';
-  d.innerHTML=`<span>${c.emoji}</span><span>${c.label}</span><span class="scard-remove" onclick="spRemove('${slot}',${c.id})">✕</span>`;
+function makeSlotCard2(c,slot){
+  const m=CAT_META[c.cat];
+  const d=document.createElement('div');d.className='scard2';
+  d.innerHTML=`<span class="scard2-cat cat-${c.cat}">${m.label.slice(0,2)}</span><span>${c.label}</span><span class="scard2-remove" onclick="sp2Remove('${slot}',${c.id})">✕</span>`;
   return d;
 }
-function renderSP(){
-  const bc=document.getElementById('best-cards');bc.innerHTML='';skBest.forEach(c=>bc.appendChild(makeSlotCard(c,'best')));
-  document.getElementById('best-cnt').textContent=`${skBest.length} / 7`;
-  const wc=document.getElementById('weak-cards');wc.innerHTML='';skWeak.forEach(c=>wc.appendChild(makeSlotCard(c,'weak')));
-  document.getElementById('weak-cnt').textContent=`${skWeak.length} / 3`;
-  const yp=document.getElementById('sp-yes-pool');yp.innerHTML='';skYes.forEach(c=>yp.appendChild(makeSkCard(c,'yes-pool')));
-  const np=document.getElementById('sp-no-pool');np.innerHTML='';skNo.forEach(c=>np.appendChild(makeSkCard(c,'no-pool')));
-  document.getElementById('sp-done').style.display=(skBest.length>0||skWeak.length>0)?'':'none';
+function renderSP2(){
+  const bc=document.getElementById('best2-cards');bc.innerHTML='';
+  sk2Best.forEach(c=>bc.appendChild(makeSlotCard2(c,'best')));
+  document.getElementById('best2-cnt').textContent=`${sk2Best.length} / 7`;
+  const wc=document.getElementById('weak2-cards');wc.innerHTML='';
+  sk2Weak.forEach(c=>wc.appendChild(makeSlotCard2(c,'weak')));
+  document.getElementById('weak2-cnt').textContent=`${sk2Weak.length} / 7`;
+  const yp=document.getElementById('sp2-yes-pool');yp.innerHTML='';
+  const sp=document.getElementById('sp2-skip-pool');sp.innerHTML='';
+  const np=document.getElementById('sp2-no-pool');np.innerHTML='';
+  document.getElementById('sp2-yes-cnt').textContent=skYes2.length;
+  document.getElementById('sp2-skip-cnt').textContent=skSkip2.length;
+  document.getElementById('sp2-no-cnt').textContent=skNo2.length;
+  const skipWrap=document.getElementById('sp2-skip-wrap');
+  if(skipWrap)skipWrap.style.display=skSkip2.length>0?'':'none';
+  skYes2.forEach(c=>yp.appendChild(makeSP2Card(c,'yes')));
+  skSkip2.forEach(c=>sp.appendChild(makeSP2Card(c,'skip')));
+  skNo2.forEach(c=>np.appendChild(makeSP2Card(c,'no')));
+  const total=sk2Best.length+sk2Weak.length;
+  document.getElementById('sp2-hint').textContent=total===0?'點選下方牌卡加入框框，或拖曳進去；先放著的也可以補選':`已選：最擅長 ${sk2Best.length} 張，最不擅長 ${sk2Weak.length} 張`;
+  document.getElementById('sp2-done').style.display=total>0?'':'none';
 }
-function spRemove(slot,id){if(slot==='best')skBest=skBest.filter(c=>c.id!==id);else skWeak=skWeak.filter(c=>c.id!==id);renderSP()}
-function spOver(e,slot){e.preventDefault();document.getElementById('sp-'+slot).classList.add('drag-over')}
-function spLeave(e,slot){document.getElementById('sp-'+slot).classList.remove('drag-over')}
-function spDrop(e,slot){
-  e.preventDefault();spLeave(e,slot);if(!spDragId)return;
-  const c=SKILLS.find(x=>x.id===spDragId);if(!c)return;
-  skBest=skBest.filter(x=>x.id!==spDragId);skWeak=skWeak.filter(x=>x.id!==spDragId);
-  if(slot==='best'&&skBest.length<7)skBest.push(c);
-  else if(slot==='weak'&&skWeak.length<3)skWeak.push(c);
-  spDragId=null;renderSP();
+function sp2Remove(slot,id){
+  if(slot==='best')sk2Best=sk2Best.filter(c=>c.id!==id);
+  else sk2Weak=sk2Weak.filter(c=>c.id!==id);
+  renderSP2();
+}
+function sp2Over(e,slot){e.preventDefault();document.getElementById('sp2-'+slot).classList.add('drag-over');}
+function sp2Leave(e,slot){document.getElementById('sp2-'+slot).classList.remove('drag-over');}
+function sp2Drop(e,slot){
+  e.preventDefault();sp2Leave(e,slot);if(!sp2DragId)return;
+  const c=SKILLS2.find(x=>x.id===sp2DragId);if(!c)return;
+  sk2Best=sk2Best.filter(x=>x.id!==sp2DragId);sk2Weak=sk2Weak.filter(x=>x.id!==sp2DragId);
+  if(slot==='best'&&sk2Best.length<7)sk2Best.push(c);
+  else if(slot==='weak'&&sk2Weak.length<7)sk2Weak.push(c);
+  sp2DragId=null;renderSP2();
+}
+function showSkillResult(){
+  const catChip=c=>{const m=CAT_META[c.cat];return `<span class="chip" style="background:${m.bg};color:${m.text}">${c.label}</span>`;};
+  let html='';
+  html+=`<div class="res-section-title" style="color:#1D9E75">✦ 最擅長（${sk2Best.length} 項）</div>`;
+  html+=`<div class="sk-res-chips">${sk2Best.map(catChip).join('')||'<span style="font-size:12px;color:#888">未選</span>'}</div>`;
+  html+=`<div class="res-section-title" style="color:#D85A30;margin-top:.75rem">✕ 最不擅長（${sk2Weak.length} 項）</div>`;
+  html+=`<div class="sk-res-chips">${sk2Weak.map(catChip).join('')||'<span style="font-size:12px;color:#888">未選</span>'}</div>`;
+  document.getElementById('sk-res-body').innerHTML=html;
+  go('s-skill-result');
 }
 
-// VALUE TINDER
-function initVT(){vtStarred=[];vtIdx=0;renderVT()}
-function renderVT(){
-  renderStack(VALUES,vtIdx,'vt-stack');
-  document.getElementById('vt-cur').textContent=Math.min(vtIdx+1,VALUES.length);
-  document.getElementById('vt-total').textContent=VALUES.length;
-  document.getElementById('vt-star-cnt').textContent=vtStarred.length;
-  document.getElementById('vt-no-cnt').textContent=vtIdx-vtStarred.length;
-  document.getElementById('vt-done').style.display=vtIdx>=VALUES.length&&vtStarred.length>0?'':'none';
+// ═══════════════════════════════════════════
+// VALUE SORT
+// ═══════════════════════════════════════════
+function initVS(){vsSorted={};vsIdx=0;vsSortLock=false;document.getElementById('vs-sort-btns').style.display='';renderVS();}
+function renderVS(){
+  const sortedCount=Object.keys(vsSorted).length;
+  const allSorted=sortedCount>=VALUES.length;
+  if(vsIdx>=VALUES.length||allSorted){
+    document.getElementById('vs-next').style.display='none';
+    document.getElementById('vs-finish').style.display='';
+    document.getElementById('vs-prev').style.display=vsIdx>0?'':'none';
+    document.getElementById('vs-cur').textContent=VALUES.length;
+    document.getElementById('vs-total').textContent=VALUES.length;
+    document.getElementById('vs-card').innerHTML='<span style="font-size:14px;color:#1D9E75;font-weight:500">✓ 全部分類完成！</span>';
+    document.getElementById('vs-card').style.borderColor='#1D9E75';
+    document.getElementById('vs-sort-btns').style.display='none';
+    return;
+  }
+  const c=VALUES[vsIdx];
+  const catInfo=c.cat&&VALUE_CATS[c.cat]?VALUE_CATS[c.cat]:null;
+  const color=catInfo?catInfo.color:'#888';
+  const card=document.getElementById('vs-card');
+  card.style.borderColor=color;card.style.borderTopWidth='3px';
+  card.innerHTML=`<span style="font-size:15px;font-weight:500;color:#1a1a18;line-height:1.5">${c.label}</span>`;
+  document.getElementById('vs-cur').textContent=vsIdx+1;
+  document.getElementById('vs-total').textContent=VALUES.length;
+  const sorted=vsSorted[vsIdx];
+  document.querySelectorAll('.hb-sort-btn').forEach(b=>b.classList.remove('selected'));
+  if(sorted){const map={hi:'.hb-sim',mid:'.hb-neu',lo:'.hb-dif'};document.querySelector(map[sorted])?.classList.add('selected');}
+  document.getElementById('vs-prev').style.display=vsIdx>0?'':'none';
+  const hasSorted=vsSorted[vsIdx];
+  if(hasSorted&&vsIdx<VALUES.length-1){document.getElementById('vs-next').style.display='';document.getElementById('vs-finish').style.display='none';}
+  else{document.getElementById('vs-next').style.display='none';document.getElementById('vs-finish').style.display='none';}
 }
-function vtSwipe(dir){
-  if(vtIdx>=VALUES.length)return;
-  animateSwipe('vt-stack',dir==='star'?'yes':'no',()=>{if(dir==='star')vtStarred.push(VALUES[vtIdx]);vtIdx++;renderVT()});
+function vsSort(zone){
+  if(vsSortLock)return;vsSortLock=true;
+  vsSorted[vsIdx]=zone;
+  document.querySelectorAll('.hb-sort-btn').forEach(b=>b.classList.remove('selected'));
+  const map={hi:'.hb-sim',mid:'.hb-neu',lo:'.hb-dif'};document.querySelector(map[zone])?.classList.add('selected');
+  setTimeout(()=>{
+    const allSorted=Object.keys(vsSorted).length>=VALUES.length;
+    if(allSorted){vsIdx=VALUES.length;vsSortLock=false;go('s-value-pick');}
+    else if(vsIdx<VALUES.length-1){vsIdx++;renderVS();window.scrollTo(0,0);vsSortLock=false;}
+    else{vsSortLock=false;}
+  },300);
+}
+function vsNext(){if(vsIdx<VALUES.length-1){vsIdx++;renderVS();window.scrollTo(0,0);}}
+function vsPrev(){if(vsIdx>0){vsIdx--;document.getElementById('vs-sort-btns').style.display='';renderVS();window.scrollTo(0,0);}}
+
+// ═══════════════════════════════════════════
+// VALUE PICK
+// ═══════════════════════════════════════════
+let vpDragId2=null;
+function initVP(){
+  vpRank=[];
+  window.vsZoneById={};
+  VALUES.forEach((v,i)=>{if(vsSorted[i])window.vsZoneById[v.id]=vsSorted[i];});
+  renderVP();
+}
+function makeVpCard(c){
+  const inRank=vpRank.find(x=>x.id===c.id);
+  const catInfo=c.cat&&VALUE_CATS[c.cat]?VALUE_CATS[c.cat]:null;
+  const color=catInfo?catInfo.color:'#888';
+  const p=document.createElement('div');p.className='pcard'+(inRank?' picked':'');
+  p.style.borderColor=color;p.style.borderTopWidth='3px';
+  p.innerHTML=`<span style="font-size:11px;line-height:1.4;white-space:normal;word-break:break-all;text-align:center;display:block;width:100%">${c.label}</span>`;
+  p.draggable=!inRank;
+  p.addEventListener('dragstart',e=>{if(inRank)return;vpDragId2=c.id;setTimeout(()=>p.classList.add('dragging'),0);});
+  p.addEventListener('dragend',()=>p.classList.remove('dragging'));
+  p.onclick=()=>{if(inRank||vpRank.length>=10)return;vpRank.push(c);renderVP();};
+  return p;
+}
+function renderVP(){
+  const list=document.getElementById('vp-rank-list');list.innerHTML='';
+  if(vpRank.length===0){const e=document.createElement('div');e.style.cssText='font-size:12px;color:#aaa;text-align:center;padding:10px 0';e.textContent='點選右側牌卡加入排行';list.appendChild(e);}
+  vpRank.forEach((c,i)=>{
+    const catInfo=c.cat&&VALUE_CATS[c.cat]?VALUE_CATS[c.cat]:null;
+    const color=catInfo?catInfo.color:'#888';
+    const r=document.createElement('div');r.className='rank-item';r.draggable=true;
+    r.style.borderLeft=`3px solid ${color}`;
+    r.innerHTML=`<span class="rank-num">${i+1}</span><span class="rank-label">${c.label}</span><span class="rank-remove" onclick="vpRemove(${c.id})">✕</span>`;
+    r.addEventListener('dragstart',e=>{vpDragId2=c.id;setTimeout(()=>r.classList.add('dragging'),0);e.stopPropagation();});
+    r.addEventListener('dragend',()=>{r.classList.remove('dragging');document.querySelectorAll('.rank-item').forEach(x=>x.classList.remove('drag-over-item'));vpDragId2=null;});
+    r.addEventListener('dragover',e=>{e.preventDefault();e.stopPropagation();document.querySelectorAll('.rank-item').forEach(x=>x.classList.remove('drag-over-item'));const rect=r.getBoundingClientRect();const mid=rect.top+rect.height/2;r.dataset.insertAfter=e.clientY>mid?'1':'0';r.classList.add('drag-over-item');r.style.borderTop=e.clientY<=mid?'2px solid #1D9E75':'';r.style.borderBottom=e.clientY>mid?'2px solid #1D9E75':'';});
+    r.addEventListener('dragleave',()=>{r.style.borderTop='';r.style.borderBottom='';});
+    r.addEventListener('drop',e=>{e.preventDefault();e.stopPropagation();r.style.borderTop='';r.style.borderBottom='';if(!vpDragId2||vpDragId2===c.id)return;const insertAfter=r.dataset.insertAfter==='1';let fi=vpRank.findIndex(x=>x.id===vpDragId2);let ti=vpRank.findIndex(x=>x.id===c.id);if(fi<0){const src=VALUES.find(x=>x.id===vpDragId2);if(src&&vpRank.length<10){vpRank.splice(insertAfter?ti+1:ti,0,src);renderVP();return;}}const[item]=vpRank.splice(fi,1);ti=vpRank.findIndex(x=>x.id===c.id);vpRank.splice(insertAfter?ti+1:ti,0,item);renderVP();});
+    list.appendChild(r);
+  });
+  document.getElementById('vp-cnt').textContent=vpRank.length+' / 10';
+  const hiPool=document.getElementById('vp-hi-pool');hiPool.innerHTML='';
+  const hiCards=VALUES.filter(v=>vsZoneById[v.id]==='hi');
+  document.getElementById('vp-hi-cnt').textContent=hiCards.length;
+  hiCards.forEach(c=>hiPool.appendChild(makeVpCard(c)));
+  const midPool=document.getElementById('vp-mid-pool');midPool.innerHTML='';
+  const midCards=VALUES.filter(v=>vsZoneById[v.id]==='mid');
+  document.getElementById('vp-mid-cnt').textContent=midCards.length;
+  midCards.forEach(c=>midPool.appendChild(makeVpCard(c)));
+  const hint=document.getElementById('vp-hint');
+  hint.textContent=vpRank.length>=10?'已選滿 10 張！可查看結果，或拖曳調整順序':`已選 ${vpRank.length} / 10，點選牌卡加入排行`;
+  document.getElementById('vp-done').style.display=vpRank.length>0?'':'none';
+}
+function vpRemove(id){vpRank=vpRank.filter(c=>c.id!==id);renderVP();}
+function vpRankOver(e){e.preventDefault();document.getElementById('vp-rank-zone').classList.add('drag-over');}
+function vpRankLeave(e){document.getElementById('vp-rank-zone').classList.remove('drag-over');}
+function vpRankDrop(e){
+  e.preventDefault();document.getElementById('vp-rank-zone').classList.remove('drag-over');
+  if(e.target.closest('.rank-item'))return;
+  if(vpDragId2){const c=VALUES.find(x=>x.id===vpDragId2);if(c&&!vpRank.find(x=>x.id===c.id)&&vpRank.length<10){vpRank.push(c);renderVP();}}
 }
 
-// RESULTS
+// ═══════════════════════════════════════════
+// RESULT (Holland / Passion / Value)
+// ═══════════════════════════════════════════
 function showResult(deck){
-  lastDeck=deck;
-  const titles={holland:'Holland Code 分類結果',passion:'探索熱情 — 前 '+ptRank.length+' 名',skill:'職能卡結果',value:'價值導航 — 重要清單'};
+  const titles={holland:'Holland Code 分類結果',passion:'探索熱情 — 前 '+ptRank.length+' 名',value:'價值導航 — Top '+vpRank.length};
   document.getElementById('res-title').textContent=titles[deck];
   let html='';
   if(deck==='holland'){
     [['sim','相似','#1D9E75'],['neu','普通','#5F5E5A'],['dif','不相似','#D85A30']].forEach(([z,name,clr])=>{
       const cards=HOLLAND.filter(c=>hSorted[c.id]===z);
-      const cubes=cards.map(c=>`<div class="res-hcard" style="border-color:${c.color};background:${c.color}18;cursor:pointer" onclick="openCardModal('${c.id}')"><div class="res-hcard-letter" style="color:${c.color}">${c.letter}</div><div class="res-hcard-name">${c.label}</div></div>`).join('');
-      html+=`<div class="res-section"><div class="res-title" style="color:${clr}">${name}（${cards.length} 張）</div><div class="res-hcards-row">${cubes||'<span style="font-size:12px;color:#888">無</span>'}</div></div>`;
+      const cubes=cards.map(c=>`<div class="res-hcard" style="border-color:${c.color};background:${c.color}18" onclick="openCardModal('${c.id}')"><div class="res-hcard-letter" style="color:${c.color}">${c.letter}</div><div class="res-hcard-name">${c.label}</div></div>`).join('');
+      html+=`<div style="margin-bottom:1rem"><div class="res-title" style="color:${clr}">${name}（${cards.length} 張）</div><div class="res-hcards-row">${cubes||'<span style="font-size:12px;color:#888">無</span>'}</div></div>`;
     });
   } else if(deck==='passion'){
-    const rows=[];
-    for(let i=0;i<ptRank.length;i+=5){rows.push(ptRank.slice(i,i+5));}
+    const rows=[];for(let i=0;i<ptRank.length;i+=5){rows.push(ptRank.slice(i,i+5));}
     const rowsHtml=rows.map((row,ri)=>{
-      const cols=row.map((c,ci)=>{
-        const idx=ri*5+ci;
-        const color=getHollandColor(c.holland);
-        return `<div style="background:#fff;border:1.5px solid ${color};border-top:3px solid ${color};border-radius:10px;padding:8px 6px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-align:center;min-height:64px;flex:1">
-          <span style="font-size:9px;font-weight:700;color:${color};background:${color}1a;border-radius:4px;padding:1px 5px;line-height:1.4">${c.holland}</span>
-          <span style="font-size:11px;font-weight:500;color:#1a1a18;line-height:1.3;word-break:keep-all">${c.label}</span>
-        </div>`;
+      const cols=row.map((c,ci)=>{const idx=ri*5+ci;const color=getHollandColor(c.holland);
+        return `<div style="background:#fff;border:1.5px solid ${color};border-top:3px solid ${color};border-radius:10px;padding:8px 6px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-align:center;min-height:72px;flex:1"><span style="font-size:9px;font-weight:700;color:${color};background:${color}1a;border-radius:4px;padding:1px 5px">${c.holland}</span><span style="font-size:11px;font-weight:500;color:#1a1a18;line-height:1.4;word-break:break-all;display:block;width:100%">${c.label}</span></div>`;
       }).join('');
       return `<div style="display:flex;gap:6px;margin-bottom:6px">${cols}</div>`;
     }).join('');
-    html=`<div class="res-section">${rowsHtml}</div>`;
-  } else if(deck==='skill'){
-    html=`<div class="res-section"><div class="res-title" style="color:#1D9E75">最棒職能（${skBest.length}）</div><div class="res-chips">${skBest.map(c=>`<div class="chip chip-green">${c.emoji} ${c.label}</div>`).join('')||'<span style="font-size:12px;color:#888">未選</span>'}</div></div><div class="res-section"><div class="res-title" style="color:#D85A30">最弱職能（${skWeak.length}）</div><div class="res-chips">${skWeak.map(c=>`<div class="chip chip-coral">${c.emoji} ${c.label}</div>`).join('')||'<span style="font-size:12px;color:#888">未選</span>'}</div></div>`;
+    html=`<div>${rowsHtml}</div>`;
   } else if(deck==='value'){
-    html=`<div class="res-section"><div class="res-title" style="color:#BA7517">標記為重要（${vtStarred.length} 張）</div><div class="res-chips">${vtStarred.map(c=>`<div class="chip chip-amber">${c.emoji} ${c.label}</div>`).join('')}</div></div>`;
+    const rows=[];for(let i=0;i<vpRank.length;i+=5){rows.push(vpRank.slice(i,i+5));}
+    const rowsHtml=rows.map((row,ri)=>{
+      const cols=row.map((c,ci)=>{const idx=ri*5+ci;const info=c.cat&&VALUE_CATS[c.cat]?VALUE_CATS[c.cat]:null;const color=info?info.color:'#888';
+        return `<div style="background:#fff;border:1.5px solid ${color};border-top:3px solid ${color};border-radius:10px;padding:8px 6px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-align:center;min-height:72px;flex:1"><span style="font-size:9px;font-weight:700;color:${color};background:${color}1a;border-radius:4px;padding:1px 5px">${idx+1}</span><span style="font-size:11px;font-weight:500;color:#1a1a18;line-height:1.4;word-break:break-all;display:block;width:100%">${c.label}</span></div>`;
+      }).join('');
+      return `<div style="display:flex;gap:6px;margin-bottom:6px">${cols}</div>`;
+    }).join('');
+    html=`<div>${rowsHtml}</div>`;
   }
   document.getElementById('res-body').innerHTML=html;
   const backBtn=document.getElementById('res-back-pick');
-  if(backBtn) backBtn.style.display=deck==='passion'?'':'none';
+  if(deck==='passion'){backBtn.style.display='';backBtn.textContent='← 重新排序';backBtn.onclick=()=>go('s-passion-pick');}
+  else if(deck==='value'){backBtn.style.display='';backBtn.textContent='← 重新排序';backBtn.onclick=()=>go('s-value-pick');}
+  else{backBtn.style.display='none';}
   go('s-result');
 }
 
 function openCardModal(id){
-  const c=HOLLAND.find(x=>x.id===id);
-  if(!c)return;
-  document.getElementById('modal-letter').textContent=c.letter;
-  document.getElementById('modal-letter').style.color=c.color;
-  document.getElementById('modal-en').textContent=c.sub;
-  document.getElementById('modal-en').style.color=c.color;
+  const c=HOLLAND.find(x=>x.id===id);if(!c)return;
+  document.getElementById('modal-letter').textContent=c.letter;document.getElementById('modal-letter').style.color=c.color;
+  document.getElementById('modal-en').textContent=c.sub;document.getElementById('modal-en').style.color=c.color;
   document.getElementById('modal-zh').textContent=c.label;
   document.getElementById('modal-header').style.borderBottom='2px solid'+c.color+'44';
   document.getElementById('modal-desc').textContent=c.desc;
   document.getElementById('modal-strength').textContent=c.strength;
   document.getElementById('modal-career').textContent=c.career;
-  const overlay=document.getElementById('card-modal');
-  overlay.style.display='flex';
-  requestAnimationFrame(()=>overlay.classList.add('show'));
+  const overlay=document.getElementById('card-modal');overlay.style.display='flex';requestAnimationFrame(()=>overlay.classList.add('show'));
   document.body.style.overflow='hidden';
 }
-function closeModalDirect(){
-  const overlay=document.getElementById('card-modal');
-  overlay.classList.remove('show');
-  setTimeout(()=>{overlay.style.display='none';document.body.style.overflow='';},200);
-}
-function closeModal(e){
-  if(e.target===document.getElementById('card-modal'))closeModalDirect();
-}
-</script>
-
-<!-- Card Detail Modal -->
-<div class="modal-overlay" id="card-modal" onclick="closeModal(event)">
-  <div class="modal-box" id="modal-box">
-    <div class="modal-header" id="modal-header">
-      <div class="modal-letter" id="modal-letter"></div>
-      <div class="modal-names">
-        <div class="modal-en" id="modal-en"></div>
-        <div class="modal-zh" id="modal-zh"></div>
-      </div>
-      <button class="modal-close" onclick="closeModalDirect()">✕</button>
-    </div>
-    <div class="modal-body">
-      <div class="modal-section">
-        <div class="modal-section-title">描述</div>
-        <div class="modal-section-body" id="modal-desc"></div>
-      </div>
-      <div class="modal-section">
-        <div class="modal-section-title">優勢</div>
-        <div class="modal-section-body" id="modal-strength"></div>
-      </div>
-      <div class="modal-section">
-        <div class="modal-section-title">典型對應職業</div>
-        <div class="modal-section-body" id="modal-career"></div>
-      </div>
-    </div>
-  </div>
-</div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<script>
-async function captureResult(){
-  const btn=document.getElementById('screenshot-btn');
-  const originalText=btn.textContent;
-  btn.textContent='截圖中…';btn.disabled=true;
-
-  // Hide action buttons during capture
-  const actionRow=btn.closest('.action-row');
-  actionRow.style.visibility='hidden';
-
-  try{
-    const target=document.getElementById('res-body');
-    // Add a title header for the capture
-    const header=document.createElement('div');
-    header.id='capture-header';
-    header.style.cssText='padding:12px 0 10px;font-size:14px;font-weight:600;color:#1a1a18;border-bottom:0.5px solid #e0ded8;margin-bottom:12px';
-    header.textContent=document.getElementById('res-title').textContent;
-    target.prepend(header);
-
-    const canvas=await html2canvas(target,{
-      backgroundColor:'#f8f7f4',
-      scale:2,
-      useCORS:true,
-      logging:false,
-      padding:16,
-    });
-    header.remove();
-
-    // Try clipboard API first
-    canvas.toBlob(async(blob)=>{
-      try{
-        await navigator.clipboard.write([new ClipboardItem({'image/png':blob})]);
-        btn.textContent='✓ 已複製！';
-        setTimeout(()=>{btn.textContent=originalText;btn.disabled=false;},2000);
-      } catch(e){
-        // Fallback: download the image
-        const url=URL.createObjectURL(blob);
-        const a=document.createElement('a');
-        a.href=url;a.download='職遊結果.png';a.click();
-        URL.revokeObjectURL(url);
-        btn.textContent='✓ 已下載！';
-        setTimeout(()=>{btn.textContent=originalText;btn.disabled=false;},2000);
-      }
-      actionRow.style.visibility='visible';
-    },'image/png');
-  } catch(err){
-    console.error(err);
-    btn.textContent='請重試';btn.disabled=false;
-    actionRow.style.visibility='visible';
-    setTimeout(()=>{btn.textContent=originalText;},2000);
-  }
-}
+function closeModalDirect(){const overlay=document.getElementById('card-modal');overlay.classList.remove('show');setTimeout(()=>{overlay.style.display='none';document.body.style.overflow='';},200);}
+function closeModal(e){if(e.target===document.getElementById('card-modal'))closeModalDirect();}
 </script>
 </body>
 </html>
