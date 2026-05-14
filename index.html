@@ -20,6 +20,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang TC','Micr
 .btn-primary{background:#1D9E75;color:#fff;border-color:#1D9E75}
 .btn-primary:hover{background:#0F6E56}
 .action-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:1.25rem}
+.action-row-sticky{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:1rem;position:sticky;bottom:0;background:#f8f7f4;padding:.75rem 0 .5rem;border-top:.5px solid #e0ded8}
 .divider{border:none;border-top:0.5px solid #e0ded8;margin:1.5rem 0}
 .info-box{background:#E1F5EE;border:0.5px solid #9FE1CB;border-radius:8px;padding:9px 13px;font-size:12px;color:#0F6E56;margin-bottom:1rem;line-height:1.5}
 
@@ -27,7 +28,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang TC','Micr
 .deck-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:1.5rem}
 @media(max-width:480px){.deck-grid{grid-template-columns:1fr}}
 /* 5th card full-width on 2-col layout */
-.deck-grid .deck-btn:last-child:nth-child(odd){grid-column:1/-1;max-width:calc(50% - 6px);margin:0 auto}
 .deck-btn{background:#fff;border:0.5px solid #e0ded8;border-radius:12px;padding:1rem 1.25rem;cursor:pointer;transition:all .18s;text-align:center;display:flex;flex-direction:column;align-items:center;min-height:140px;justify-content:center}
 .deck-btn:hover{border-color:#aaa;transform:translateY(-1px);box-shadow:0 2px 8px rgba(0,0,0,.06)}
 .deck-icon{font-size:28px;margin-bottom:8px}
@@ -67,9 +67,14 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang TC','Micr
 .pt-card.front{z-index:1}
 .pt-card.sw-right{transform:rotate(10deg) translateX(50px);opacity:0}
 .pt-card.sw-left{transform:rotate(-10deg) translateX(-50px);opacity:0}
-.pt-stamp{position:absolute;top:12px;right:12px;font-size:11px;font-weight:500;padding:3px 8px;border-radius:4px;opacity:0;transition:opacity .1s}
+.pt-card.sw-down{transform:translateY(60px);opacity:0}
+.pt-stamp{position:absolute;font-size:11px;font-weight:500;padding:3px 8px;border-radius:4px;opacity:0;transition:opacity .1s}
+.pt-stamp.s-yes{top:12px;right:12px}
+.pt-stamp.s-no{top:12px;left:12px}
+.pt-stamp.s-mid{bottom:12px;left:50%;transform:translateX(-50%)}
 .pt-card.hint-right .pt-stamp.s-yes{opacity:1;background:#E1F5EE;color:#0F6E56}
 .pt-card.hint-left  .pt-stamp.s-no {opacity:1;background:#FAECE7;color:#993C1D}
+.pt-card.hint-down  .pt-stamp.s-mid{opacity:1;background:#FAEEDA;color:#BA7517}
 .pt-label{font-size:16px;font-weight:500;color:#1a1a18;text-align:center}
 .pt-sub{font-size:12px;color:#888780;text-align:center;margin-top:-4px}
 .pt-icons{display:grid;grid-template-columns:1fr 1fr;gap:0 12px;width:100%;margin-top:4px;text-align:left}
@@ -119,7 +124,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang TC','Micr
 .pcard-modal-close:hover{background:#e0ddd4}
 .pcard-modal-body{padding:.875rem 1.25rem 1.25rem}
 .pcard-modal-section{margin-bottom:.875rem}
-.pcard-modal-section-title{font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:#aaa;margin-bottom:5px}
+.pcard-modal-section-title{font-size:12px;font-weight:700;color:#555;margin-bottom:6px;margin-top:4px}
 .pcard-modal-section-body{font-size:13px;color:#3a3a38;line-height:1.7}
 
 /* Holland Browse */
@@ -128,8 +133,21 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang TC','Micr
 .hb-sim{background:#E1F5EE;color:#0F6E56;border-color:#5DCAA5}.hb-sim:hover{background:#c0edde}
 .hb-neu{background:#f1efe8;color:#5F5E5A;border-color:#B4B2A9}.hb-neu:hover{background:#e0ddd4}
 .hb-dif{background:#FAECE7;color:#993C1D;border-color:#F0997B}.hb-dif:hover{background:#f5d4c8}
-.hb-sort-btn.selected{transform:scale(1.06);box-shadow:0 2px 8px rgba(0,0,0,.12)}
-.hb-card{background:#fff;border:2px solid #e0ded8;border-radius:16px;padding:1.5rem;margin-bottom:1rem;transition:all .3s}
+.hb-sort-btn.selected{transform:scale(1.06);box-shadow:0 2px 8px rgba(0,0,0,.18);opacity:1!important;filter:brightness(.9)}
+.hb-stack{position:relative;width:300px;height:320px;margin-bottom:.5rem}
+.hb-card{position:absolute;inset:0;background:#fff;border:2px solid #e0ded8;border-radius:16px;padding:1.25rem;display:flex;flex-direction:column;gap:8px;user-select:none;transition:transform .2s,opacity .2s;box-shadow:0 4px 16px rgba(0,0,0,.10);overflow-y:auto}
+.hb-card.behind{transform:scale(.95) translateY(8px);z-index:0;box-shadow:none;overflow:hidden}
+.hb-card.front{z-index:1}
+.hb-card.sw-right{transform:rotate(10deg) translateX(60px);opacity:0}
+.hb-card.sw-left{transform:rotate(-10deg) translateX(-60px);opacity:0}
+.hb-card.sw-down{transform:translateY(60px);opacity:0}
+.hb-stamp{position:absolute;font-size:11px;font-weight:500;padding:3px 8px;border-radius:4px;opacity:0;transition:opacity .1s}
+.hb-stamp.s-sim{top:12px;right:12px}
+.hb-stamp.s-dif{top:12px;left:12px}
+.hb-stamp.s-neu{bottom:12px;left:50%;transform:translateX(-50%)}
+.hb-card.hint-right .hb-stamp.s-sim{opacity:1;background:#E1F5EE;color:#0F6E56}
+.hb-card.hint-left  .hb-stamp.s-dif{opacity:1;background:#FAECE7;color:#993C1D}
+.hb-card.hint-down  .hb-stamp.s-neu{opacity:1;background:#FAEEDA;color:#BA7517}
 .hb-card-header{display:flex;align-items:center;gap:12px;margin-bottom:1rem;padding-bottom:1rem;border-bottom:0.5px solid #f0ede6}
 .hb-letter{font-size:32px;font-weight:700;min-width:36px}
 .hb-names{flex:1}
@@ -148,8 +166,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang TC','Micr
 .vp-rank-zone.drag-over{background:#E1F5EE}
 
 /* Result */
-.res-hcards-row{display:flex;flex-wrap:wrap;gap:10px}
-.res-hcard{border:2px solid;border-radius:12px;padding:14px 10px;width:90px;height:90px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-align:center;cursor:pointer}
+.res-hcards-row{display:flex;flex-wrap:wrap;gap:8px}
+.res-hcard{border:2px solid;border-radius:12px;padding:10px 8px;width:88px;height:88px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-align:center;cursor:pointer}
+/* unified result grid card */
+.res-card{border:1.5px solid;border-radius:10px;padding:8px 6px;width:88px;min-height:88px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-align:center;cursor:pointer;box-sizing:border-box}
+.res-grid{display:flex;flex-wrap:wrap;gap:8px}
 .res-hcard-letter{font-size:26px;font-weight:700;line-height:1}
 .res-hcard-name{font-size:11px;font-weight:500;color:#1a1a18;line-height:1.2}
 .res-title{font-size:13px;font-weight:500;margin-bottom:10px}
@@ -194,10 +215,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang TC','Micr
 .tcard-meta{position:absolute;top:10px;right:10px;display:flex;flex-direction:column;align-items:flex-end;gap:3px}
 .tcard-cat{font-size:9px;font-weight:600;letter-spacing:.05em;padding:2px 7px;border-radius:5px}
 .tcard-num{font-size:9px;color:#bbb;font-weight:500}
-.tcard-label{font-size:20px;font-weight:500;color:#1a1a18;text-align:center}
+.tcard-label{font-size:20px;font-weight:500;color:#1a1a18;text-align:center;margin-top:24px}
 .tcard-desc-list{width:100%;margin-top:4px;display:flex;flex-direction:column;gap:3px}
 .tcard-desc-item{font-size:10px;color:#5f5e5a;line-height:1.45;text-align:left}
-.tcard-info-btn{margin-top:6px;padding:3px 10px;border-radius:6px;border:0.5px solid #d3d1c7;background:#f8f7f4;font-size:10px;color:#888;cursor:pointer;align-self:flex-end;flex-shrink:0}
+.tcard-info-btn{position:absolute;bottom:10px;right:10px;padding:3px 10px;border-radius:6px;border:0.5px solid #d3d1c7;background:#f8f7f4;font-size:10px;color:#888;cursor:pointer;z-index:2}
 .tcard-info-btn:hover{background:#e8e6e0;color:#1a1a18}
 .tc-skip{color:#BA7517;font-weight:500}
 .tinder-btns{display:grid;grid-template-columns:56px 40px 56px;grid-template-rows:56px 44px;gap:6px;place-items:center;margin-top:.5rem}
@@ -296,25 +317,24 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang TC','Micr
   <!-- HOLLAND BROWSE -->
   <div id="s-holland-browse" class="screen">
     <div class="badge">旅人卡 — Holland Code</div>
-    <div class="title" id="hb-title">認識六大性格</div>
+    <div class="title">認識六大性格</div>
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
       <div style="font-size:12px;color:#888">第 <span id="hb-cur">1</span> / 6 張</div>
       <div class="hb-dots" id="hb-dots"></div>
     </div>
-    <div id="hb-card" class="hb-card"></div>
-    <div id="hb-sort-btns" class="hb-sort-row">
-      <div style="font-size:12px;font-weight:500;color:#888;margin-bottom:8px;text-align:center">這張牌卡和你的描述有多相似？</div>
+    <div id="hb-card" class="vcard" style="min-height:260px;align-items:flex-start;text-align:left;flex-direction:column;padding:1.25rem"></div>
+    <div id="hb-sort-btns" style="background:#f8f7f4;border-radius:12px;padding:1rem;margin-bottom:1rem">
+      <div style="font-size:12px;font-weight:500;color:#888;margin-bottom:10px;text-align:center">這張牌卡和你的描述有多相似？</div>
       <div style="display:flex;gap:10px;justify-content:center">
-        <button class="hb-sort-btn hb-sim" onclick="hbSort('sim')">✦ 相似</button>
-        <button class="hb-sort-btn hb-neu" onclick="hbSort('neu')">◎ 普通</button>
-        <button class="hb-sort-btn hb-dif" onclick="hbSort('dif')">✕ 不相似</button>
+        <button class="hb-sort-btn hb-dif" onclick="hbSwipe('dif')">← 不相似</button>
+        <button class="hb-sort-btn hb-neu" onclick="hbSwipe('neu')">普通</button>
+        <button class="hb-sort-btn hb-sim" onclick="hbSwipe('sim')">相似 →</button>
       </div>
     </div>
     <div id="hb-sorted-indicator" style="display:none"></div>
     <div class="action-row">
       <button class="btn" onclick="go('s-home')">← 返回</button>
-      <button class="btn" id="hb-prev" onclick="hbPrev()" style="display:none">← 上一張</button>
-      <button class="btn btn-primary" id="hb-next" onclick="hbNext()" style="display:none">下一張 →</button>
+      <button class="btn" id="hb-prev-btn" onclick="hbPrev()" style="display:none">← 上一張</button>
       <button class="btn btn-primary" id="hb-finish" onclick="showResult('holland')" style="display:none">查看結果 →</button>
     </div>
   </div>
@@ -323,21 +343,28 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang TC','Micr
   <div id="s-passion-tinder" class="screen">
     <div class="badge">探索熱情 — 第一步</div>
     <div class="title">圈選喜歡的職位</div>
-    <div class="desc">右 ✓ 喜歡，左 ✕ 不感興趣</div>
-    <div class="tinder-progress">第 <span id="pt-cur">1</span> / <span id="pt-total">0</span> 張</div>
-    <div class="tinder-wrap">
-      <div class="tinder-stack" id="pt-stack"></div>
-      <div class="tinder-counts"><span class="tc-good">✓ 喜歡 <span id="pt-yes-cnt">0</span></span><span class="tc-weak">✕ 跳過 <span id="pt-no-cnt">0</span></span></div>
-      <div style="height:14px"></div>
-      <div class="tinder-btns-simple">
-        <button class="t-btn-simple t-btn-no" onclick="ptSwipe('no')">✕</button>
-        <button class="t-btn-simple t-btn-yes" onclick="ptSwipe('yes')">✓</button>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+      <div style="font-size:12px;color:#888">第 <span id="pt-cur">1</span> / <span id="pt-total">0</span> 張</div>
+      <div style="display:flex;gap:12px;font-size:12px">
+        <span class="tc-weak">← 不喜歡 <span id="pt-no-cnt">0</span></span>
+        <span class="tc-skip">↓ 普通 <span id="pt-mid-cnt">0</span></span>
+        <span class="tc-good">喜歡 → <span id="pt-yes-cnt">0</span></span>
       </div>
-      <div class="keyboard-hint">鍵盤：← 跳過 · → 喜歡</div>
     </div>
+    <div id="pt-card" class="vcard" style="min-height:200px;align-items:flex-start;text-align:left;flex-direction:column;padding:1.25rem"></div>
+    <div style="background:#f8f7f4;border-radius:12px;padding:1rem;margin-bottom:1rem">
+      <div style="font-size:12px;font-weight:500;color:#888;margin-bottom:10px;text-align:center">這個職位你喜歡嗎？</div>
+      <div style="display:flex;gap:10px;justify-content:center">
+        <button class="hb-sort-btn hb-dif" onclick="ptSwipe('no')">← 不喜歡</button>
+        <button class="hb-sort-btn hb-neu" onclick="ptSwipe('mid')">普通</button>
+        <button class="hb-sort-btn hb-sim" onclick="ptSwipe('yes')">喜歡 →</button>
+      </div>
+    </div>
+    <div class="keyboard-hint" style="margin-bottom:.75rem">鍵盤：→ 喜歡 · ← 不喜歡 · ↓ 普通</div>
     <div class="action-row">
       <button class="btn" onclick="go('s-home')">← 返回</button>
-      <button class="btn btn-primary" id="pt-next" onclick="go('s-passion-pick')" style="display:none">從喜歡的裡排序 →</button>
+      <button class="btn" id="pt-prev-btn" onclick="ptPrev()" style="display:none">← 上一張</button>
+      <button class="btn btn-primary" id="pt-next" onclick="go('s-passion-pick')" style="display:none">排序喜歡的 →</button>
     </div>
   </div>
 
@@ -385,30 +412,28 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang TC','Micr
   <!-- SKILL TINDER -->
   <div id="s-skill-tinder" class="screen">
     <div class="badge">職能卡 — 第一步</div>
-    <div class="title">滑過所有職能</div>
-    <div class="desc" style="margin-bottom:.75rem">
-      <span style="color:#D85A30;font-weight:500">← 不擅長</span>　
-      <span style="color:#BA7517;font-weight:500">↓ 先放著</span>　
-      <span style="color:#1D9E75;font-weight:500">→ 擅長</span>
-    </div>
-    <div class="tinder-progress">第 <span id="sk-cur">1</span> / <span id="sk-total">0</span> 張</div>
-    <div class="tinder-wrap">
-      <div class="tinder-stack" id="sk-stack"></div>
-      <div class="tinder-counts">
-        <span class="tc-good">擅長 → <span id="sk-yes-cnt">0</span></span>
-        <span class="tc-skip">↓ 先放著 <span id="sk-skip-cnt">0</span></span>
+    <div class="title">為每個職能分類</div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+      <div style="font-size:12px;color:#888">第 <span id="sk-cur">1</span> / <span id="sk-total">0</span> 張</div>
+      <div style="display:flex;gap:12px;font-size:12px">
         <span class="tc-weak">← 不擅長 <span id="sk-no-cnt">0</span></span>
+        <span class="tc-skip">↓ 先放著 <span id="sk-skip-cnt">0</span></span>
+        <span class="tc-good">擅長 → <span id="sk-yes-cnt">0</span></span>
       </div>
-      <div class="tinder-btns">
-        <button class="t-btn t-btn-good" onclick="skSwipe('yes')" title="擅長 →">→</button>
-        <div></div>
-        <button class="t-btn t-btn-weak" onclick="skSwipe('no')" title="← 不擅長">←</button>
-        <button class="t-btn-skip" onclick="skSwipe('skip')" title="先放著 ↓">↓</button>
-      </div>
-      <div class="keyboard-hint">鍵盤：→ 擅長 · ← 不擅長 · ↓ 先放著</div>
     </div>
+    <div id="sk-card" class="vcard" style="min-height:220px;align-items:flex-start;text-align:left;flex-direction:column;padding:1.25rem"></div>
+    <div style="background:#f8f7f4;border-radius:12px;padding:1rem;margin-bottom:1rem">
+      <div style="font-size:12px;font-weight:500;color:#888;margin-bottom:10px;text-align:center">這個職能你的程度如何？</div>
+      <div style="display:flex;gap:10px;justify-content:center">
+        <button class="hb-sort-btn hb-dif" onclick="skSwipe('no')">← 不擅長</button>
+        <button class="hb-sort-btn hb-neu" onclick="skSwipe('skip')">先放著</button>
+        <button class="hb-sort-btn hb-sim" onclick="skSwipe('yes')">擅長 →</button>
+      </div>
+    </div>
+    <div class="keyboard-hint" style="margin-bottom:.75rem">鍵盤：→ 擅長 · ← 不擅長 · ↓ 先放著</div>
     <div class="action-row">
       <button class="btn" onclick="go('s-home')">← 返回</button>
+      <button class="btn" id="sk-prev-btn" onclick="skPrev()" style="display:none">← 上一張</button>
     </div>
   </div>
 
@@ -424,7 +449,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang TC','Micr
           <span class="sp2-slot-title">最擅長</span>
           <span class="sp2-slot-cnt" id="best2-cnt">0 / 7</span>
         </div>
-        <div class="sp2-slot-cards" id="best2-cards"></div>
+        <div id="best2-rank-list"></div>
       </div>
       <div class="sp2-slot sp2-slot-weak" id="sp2-weak"
            ondragover="sp2Over(event,'weak')" ondragleave="sp2Leave(event,'weak')" ondrop="sp2Drop(event,'weak')">
@@ -432,23 +457,20 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang TC','Micr
           <span class="sp2-slot-title">最不擅長</span>
           <span class="sp2-slot-cnt" id="weak2-cnt">0 / 3</span>
         </div>
-        <div class="sp2-slot-cards" id="weak2-cards"></div>
+        <div id="weak2-rank-list"></div>
       </div>
     </div>
     <div class="sp2-pools sp2-pools-main">
       <div class="sp2-pool">
-        <div class="sp2-pool-label sp2-pool-good-label">← 擅長（<span id="sp2-yes-cnt">0</span>）</div>
+        <div class="sp2-pool-label sp2-pool-good-label">← 擅長（<span id="sp2-yes-cnt">0</span>）點選加入上方</div>
         <div id="sp2-yes-pool"></div>
       </div>
       <div class="sp2-pool">
-        <div class="sp2-pool-label sp2-pool-weak-label">不擅長 →（<span id="sp2-no-cnt">0</span>）</div>
+        <div class="sp2-pool-label sp2-pool-weak-label">不擅長 →（<span id="sp2-no-cnt">0</span>）點選加入上方</div>
         <div id="sp2-no-pool"></div>
       </div>
     </div>
-    <div class="sp2-pool sp2-pool-skip-wrap" id="sp2-skip-wrap" style="display:none">
-      <div class="sp2-pool-label sp2-pool-skip-label">↓ 先放著（<span id="sp2-skip-cnt">0</span>）— 選不出來的可以從這裡補</div>
-      <div class="sp2-skip-grid" id="sp2-skip-pool"></div>
-    </div>
+
     <div class="action-row">
       <button class="btn" onclick="go('s-skill-tinder')">← 重新滑</button>
       <button class="btn btn-primary" id="sp2-done" onclick="showSkillResult()" style="display:none">查看結果 →</button>
@@ -461,9 +483,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang TC','Micr
     <div class="title">我的職能輪廓</div>
     <div class="desc">截圖後可貼到任何地方討論</div>
     <div id="sk-res-body"></div>
-    <div class="action-row">
-      <button class="btn" onclick="go('s-home')">← 返回首頁</button>
-      <button class="btn" onclick="go('s-skill-pick')">← 重新排序</button>
+    <div class="action-row-sticky">
+      <button class="btn" onclick="go('s-home')">← 首頁</button>
+      <button class="btn" onclick="goBackFromResult()">← 編輯排序</button>
     </div>
   </div>
 
@@ -480,9 +502,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang TC','Micr
     <div id="vs-sort-btns" style="background:#f8f7f4;border-radius:12px;padding:1rem;margin-bottom:1rem">
       <div style="font-size:12px;font-weight:500;color:#888;margin-bottom:10px;text-align:center">這個價值觀對你有多重要？</div>
       <div style="display:flex;gap:10px;justify-content:center">
+        <button class="hb-sort-btn hb-dif" onclick="vsSort('lo')">← 不重視</button>
+        <button class="hb-sort-btn hb-neu" onclick="vsSort('mid')">普通</button>
         <button class="hb-sort-btn hb-sim" onclick="vsSort('hi')">重視 →</button>
-        <button class="hb-sort-btn hb-neu" onclick="vsSort('mid')">↓ 普通</button>
-        <button class="hb-sort-btn hb-dif" onclick="vsSort('lo')">← 不太重視</button>
       </div>
     </div>
     <div id="vs-sorted-badge" style="display:none"></div>
@@ -533,9 +555,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang TC','Micr
     <div id="vws-sort-btns" style="background:#f8f7f4;border-radius:12px;padding:1rem;margin-bottom:1rem">
       <div style="font-size:12px;font-weight:500;color:#888;margin-bottom:10px;text-align:center">這個價值觀對你有多重要？</div>
       <div style="display:flex;gap:10px;justify-content:center">
+        <button class="hb-sort-btn hb-dif" onclick="vwsSort('lo')">← 不重視</button>
+        <button class="hb-sort-btn hb-neu" onclick="vwsSort('mid')">普通</button>
         <button class="hb-sort-btn hb-sim" onclick="vwsSort('hi')">重視 →</button>
-        <button class="hb-sort-btn hb-neu" onclick="vwsSort('mid')">↓ 普通</button>
-        <button class="hb-sort-btn hb-dif" onclick="vwsSort('lo')">← 不太重視</button>
       </div>
     </div>
     <div id="vws-sorted-badge" style="display:none"></div>
@@ -578,8 +600,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang TC','Micr
     <div class="title" id="res-title">結果</div>
     <div class="desc">截圖後可貼到任何地方討論</div>
     <div id="res-body"></div>
-    <div class="action-row">
-      <button class="btn" onclick="go('s-home')">← 選其他牌組</button>
+    <div class="action-row-sticky">
+      <button class="btn" onclick="go('s-home')">← 首頁</button>
+      <button class="btn" onclick="goBackFromResult()">← 編輯</button>
       <button class="btn" id="res-back-pick" style="display:none">← 重新排序</button>
     </div>
   </div>
@@ -857,9 +880,9 @@ const VALUES=[
 // STATE
 // ═══════════════════════════════════════════
 let hSorted={};
-let ptYes=[],ptNo=[],ptIdx=0,ptRank=[];
-let skYes2=[],skNo2=[],skSkip2=[],skIdx2=0,sk2Best=[],sk2Weak=[],sp2DragId=null;
-let vsSorted={},vsIdx=0,vsSortLock=false,vpRank=[];
+let ptYes=[],ptNo=[],ptMid=[],ptIdx=0,ptRank=[],ptHistory=[];
+let skYes2=[],skNo2=[],skSkip2=[],skIdx2=0,sk2Best=[],sk2Weak=[],sp2DragId=null,skHistory2=[];
+let vsSorted={},vsIdx=0,vsSortLock=false,vpRank=[],vwpRank=[],vwpDragId=null;
 let dragData={type:null,id:null};
 let hbIdx=0;
 let pcardModalTarget=null;
@@ -870,6 +893,7 @@ let pcardModalTarget=null;
 function go(id){
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
+
   window.scrollTo(0,0);
   if(id==='s-holland-browse') initHollandBrowse();
   if(id==='s-passion-tinder') initPT();
@@ -882,14 +906,36 @@ function go(id){
   if(id==='s-value-work-pick') initVWP();
 }
 
+// go back to previous pick/sort page WITHOUT resetting state
+let _resultPrev = null;
+function goBackFromResult(){
+  if(!_resultPrev) return go('s-home');
+  const id = _resultPrev;
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+  // only re-render, don't reinit
+  if(id==='s-holland-browse') renderHBStack();
+  if(id==='s-passion-pick')   renderPP();
+  if(id==='s-skill-pick')     renderSP2();
+  if(id==='s-value-pick')     renderVP();
+  if(id==='s-value-work-pick') renderVWP();
+}
+
 // ═══════════════════════════════════════════
 // KEYBOARD & TOUCH
 // ═══════════════════════════════════════════
 document.addEventListener('keydown',e=>{
   const active=document.querySelector('.screen.active')?.id;
+  if(active==='s-holland-browse'){
+    if(e.key==='ArrowRight'){e.preventDefault();hbSwipe('sim');}
+    if(e.key==='ArrowLeft') {e.preventDefault();hbSwipe('dif');}
+    if(e.key==='ArrowDown') {e.preventDefault();hbSwipe('neu');}
+  }
   if(active==='s-passion-tinder'){
     if(e.key==='ArrowRight'){e.preventDefault();ptSwipe('yes');}
     if(e.key==='ArrowLeft') {e.preventDefault();ptSwipe('no');}
+    if(e.key==='ArrowDown') {e.preventDefault();ptSwipe('mid');}
   }
   if(active==='s-skill-tinder'){
     if(e.key==='ArrowRight'){e.preventDefault();skSwipe('yes');}
@@ -901,6 +947,11 @@ document.addEventListener('keydown',e=>{
     if(e.key==='ArrowDown') {e.preventDefault();vsSort('mid');}
     if(e.key==='ArrowLeft') {e.preventDefault();vsSort('lo');}
   }
+  if(active==='s-value-work-sort'){
+    if(e.key==='ArrowRight'){e.preventDefault();vwsSort('hi');}
+    if(e.key==='ArrowDown') {e.preventDefault();vwsSort('mid');}
+    if(e.key==='ArrowLeft') {e.preventDefault();vwsSort('lo');}
+  }
 });
 
 // ── TOUCH DRAG-FOLLOW ──
@@ -909,16 +960,12 @@ const SWIPE_THRESHOLD=60; // px to trigger swipe
 
 function getTinderScreenInfo(){
   const id=document.querySelector('.screen.active')?.id;
-  if(id==='s-passion-tinder')   return {id,stackId:'pt-stack',hasDown:false};
-  if(id==='s-skill-tinder')     return {id,stackId:'sk-stack',hasDown:true};
-  if(id==='s-value-sort')       return {id,stackId:null,hasDown:false};
-  if(id==='s-value-work-sort')  return {id,stackId:null,hasDown:false};
+  if(id==='s-holland-browse')   return {id,stackId:null,hasDown:true};
+  if(id==='s-passion-tinder')   return {id,stackId:null,hasDown:true};
+  if(id==='s-skill-tinder')     return {id,stackId:null,hasDown:true};
+  if(id==='s-value-sort')       return {id,stackId:null,hasDown:true};
+  if(id==='s-value-work-sort')  return {id,stackId:null,hasDown:true};
   return null;
-}
-
-function getFrontCard(stackId){
-  if(!stackId) return null;
-  return document.getElementById(stackId)?.querySelector('.front');
 }
 
 document.addEventListener('touchstart',e=>{
@@ -931,39 +978,14 @@ document.addEventListener('touchstart',e=>{
 },{passive:true});
 
 document.addEventListener('touchmove',e=>{
-  if(!touchActive||touchStartX===null) return;
+  // no drag-follow needed (vcard style) — just prevent scroll on these screens
+  if(!touchActive||touchStartX===null)return;
   const info=getTinderScreenInfo();
-  if(!info) return;
-  const card=getFrontCard(info.stackId);
-
+  if(!info)return;
+  // only prevent if clearly horizontal or down swipe
   const dx=e.touches[0].clientX-touchStartX;
   const dy=e.touches[0].clientY-touchStartY;
-
-  if(info.id==='s-value-sort'){
-    // value sort: just show hint, no card to drag
-    return;
-  }
-
-  if(!card) return;
-  e.preventDefault(); // prevent scroll while dragging card
-
-  const isDown=info.hasDown && Math.abs(dy)>Math.abs(dx) && dy>0;
-  const rotation= isDown ? 0 : dx/20;
-  const tx = isDown ? 0 : dx;
-  const ty = isDown ? dy : dy*0.1;
-
-  card.style.transition='none';
-  card.style.transform=`translate(${tx}px,${ty}px) rotate(${rotation}deg)`;
-
-  // stamp hints
-  card.classList.remove('hint-left','hint-right','hint-down');
-  if(isDown && Math.abs(dy)>30){
-    card.classList.add('hint-down');
-  } else if(!isDown && dx > 30){
-    card.classList.add('hint-right'); // right = positive for all
-  } else if(!isDown && dx < -30){
-    card.classList.add('hint-left'); // left = negative for all
-  }
+  if(Math.abs(dx)>20||Math.abs(dy)>20) e.preventDefault();
 },{passive:false});
 
 document.addEventListener('touchend',e=>{
@@ -974,29 +996,30 @@ document.addEventListener('touchend',e=>{
 
   const dx=e.changedTouches[0].clientX-touchStartX;
   const dy=e.changedTouches[0].clientY-touchStartY;
-  const card=getFrontCard(info.stackId);
-
-  // reset card style before potential swipe animation
-  if(card){
-    card.style.transition='';
-    card.style.transform='';
-    card.classList.remove('hint-left','hint-right','hint-down');
-  }
-
   touchStartX=null;touchStartY=null;
 
-  // value sort: swipe left=hi, right=lo
+  // value sorts: right=hi, left=lo, down=mid
   if(info.id==='s-value-sort'){
-    if(Math.abs(dx)>SWIPE_THRESHOLD) dx>0?vsSort('hi'):vsSort('lo');
+    if(Math.abs(dy)>Math.abs(dx)&&Math.abs(dy)>SWIPE_THRESHOLD){vsSort('mid');return;}
+    if(Math.abs(dx)>SWIPE_THRESHOLD){dx>0?vsSort('hi'):vsSort('lo');}
+    return;
+  }
+  if(info.id==='s-value-work-sort'){
+    if(Math.abs(dy)>Math.abs(dx)&&Math.abs(dy)>SWIPE_THRESHOLD){vwsSort('mid');return;}
+    if(Math.abs(dx)>SWIPE_THRESHOLD){dx>0?vwsSort('hi'):vwsSort('lo');}
     return;
   }
 
   const isDown=info.hasDown && Math.abs(dy)>Math.abs(dx) && dy>0;
 
   if(isDown && Math.abs(dy)>SWIPE_THRESHOLD){
-    skSwipe('skip'); return;
+    if(info.id==='s-holland-browse') hbSwipe('neu');
+    else if(info.id==='s-passion-tinder') ptSwipe('mid');
+    else skSwipe('skip');
+    return;
   }
   if(Math.abs(dx)>SWIPE_THRESHOLD){
+    if(info.id==='s-holland-browse') dx>0?hbSwipe('sim'):hbSwipe('dif');
     if(info.id==='s-passion-tinder') dx>0?ptSwipe('yes'):ptSwipe('no');
     if(info.id==='s-skill-tinder')   dx>0?skSwipe('yes'):skSwipe('no');
   }
@@ -1005,35 +1028,86 @@ document.addEventListener('touchend',e=>{
 // ═══════════════════════════════════════════
 // HOLLAND BROWSE
 // ═══════════════════════════════════════════
-function initHollandBrowse(){hbIdx=0;hSorted={};renderHB();}
-function renderHB(){
+function initHollandBrowse(){hbIdx=0;hSorted={};renderHBCard();updateHBCounts();}
+
+function renderHBCard(){
+  if(hbIdx>=HOLLAND.length){
+    document.getElementById('hb-card').innerHTML='<span style="font-size:14px;color:#1D9E75;font-weight:500">✓ 全部完成！</span>';
+    document.getElementById('hb-card').style.borderColor='#1D9E75';
+    document.getElementById('hb-sort-btns').style.display='none';
+    document.getElementById('hb-finish').style.display='';
+    return;
+  }
   const c=HOLLAND[hbIdx];
   const card=document.getElementById('hb-card');
   card.style.borderColor=c.color;
-  card.innerHTML=`<div class="hb-card-header"><div class="hb-letter" style="color:${c.color}">${c.letter}</div><div class="hb-names"><div class="hb-en" style="color:${c.color}">${c.sub}</div><div class="hb-zh">${c.label}</div></div></div><div class="hb-section"><div class="hb-section-title">描述</div><div class="hb-section-body">${c.desc}</div></div><div class="hb-section"><div class="hb-section-title">優勢</div><div class="hb-section-body">${c.strength}</div></div><div class="hb-section"><div class="hb-section-title">典型對應職業</div><div class="hb-section-body">${c.career}</div></div>`;
-  document.getElementById('hb-cur').textContent=hbIdx+1;
-  const dots=document.getElementById('hb-dots');dots.innerHTML='';
-  HOLLAND.forEach((cc,i)=>{const dot=document.createElement('div');const z=hSorted[cc.id];dot.className='hb-dot'+(i===hbIdx?' active':'');if(z)dot.style.background=z==='sim'?'#1D9E75':z==='neu'?'#888':'#D85A30';dot.onclick=()=>{hbIdx=i;renderHB();};dots.appendChild(dot);});
+  card.style.borderTopWidth='3px';
+  card.innerHTML=`
+    <div class="hb-card-header">
+      <div class="hb-letter" style="color:${c.color}">${c.letter}</div>
+      <div class="hb-names">
+        <div class="hb-en" style="color:${c.color}">${c.sub}</div>
+        <div class="hb-zh">${c.label}</div>
+      </div>
+    </div>
+    <div class="hb-section"><div class="hb-section-title">描述</div><div class="hb-section-body">${c.desc}</div></div>
+    <div class="hb-section"><div class="hb-section-title">優勢</div><div class="hb-section-body">${c.strength}</div></div>
+    <div class="hb-section"><div class="hb-section-title">典型對應職業</div><div class="hb-section-body">${c.career}</div></div>`;
+  document.getElementById('hb-sort-btns').style.display='';
+  // highlight current sort if already chosen
   const sorted=hSorted[c.id];
   document.querySelectorAll('.hb-sort-btn').forEach(b=>b.classList.remove('selected'));
   if(sorted){const map={sim:'.hb-sim',neu:'.hb-neu',dif:'.hb-dif'};document.querySelector(map[sorted])?.classList.add('selected');}
+  // dots
+  document.getElementById('hb-cur').textContent=hbIdx+1;
+  const dots=document.getElementById('hb-dots');dots.innerHTML='';
+  HOLLAND.forEach((cc,i)=>{
+    const dot=document.createElement('div');const z=hSorted[cc.id];
+    dot.className='hb-dot'+(i===hbIdx?' active':'');
+    if(z)dot.style.background=z==='sim'?'#1D9E75':z==='neu'?'#888780':'#D85A30';
+    dots.appendChild(dot);
+  });
   const allSorted=HOLLAND.every(cc=>hSorted[cc.id]);
-  document.getElementById('hb-prev').style.display=hbIdx>0?'':'none';
-  const nextBtn=document.getElementById('hb-next');
-  const finishBtn=document.getElementById('hb-finish');
-  if(sorted&&hbIdx<HOLLAND.length-1){nextBtn.style.display='';finishBtn.style.display='none';}
-  else if(allSorted){nextBtn.style.display='none';finishBtn.style.display='';}
-  else{nextBtn.style.display='none';finishBtn.style.display='none';}
+  document.getElementById('hb-finish').style.display=allSorted?'':'none';
+  document.getElementById('hb-prev-btn').style.display=hbIdx>0?'':'none';
 }
-function hbSort(zone){
-  const c=HOLLAND[hbIdx];hSorted[c.id]=zone;
+// alias for touch/keyboard routing
+function renderHBStack(){renderHBCard();}
+
+
+function updateHBCounts(){
+  // dots updated in renderHBCard; no separate count display in vcard mode
+}
+
+function hbSwipe(zone){
+  if(hbIdx>=HOLLAND.length)return;
+  hSorted[HOLLAND[hbIdx].id]=zone;
+  // highlight selected btn briefly
   document.querySelectorAll('.hb-sort-btn').forEach(b=>b.classList.remove('selected'));
   const map={sim:'.hb-sim',neu:'.hb-neu',dif:'.hb-dif'};
   document.querySelector(map[zone])?.classList.add('selected');
-  setTimeout(()=>{if(HOLLAND.every(cc=>hSorted[cc.id])){renderHB();}else if(hbIdx<HOLLAND.length-1){hbIdx++;renderHB();window.scrollTo(0,0);}},300);
+  hbIdx++;
+  updateHBCounts();
+  if(hbIdx>=HOLLAND.length){
+    renderHBCard();
+      setTimeout(()=>{_resultPrev='s-holland-browse';showResult('holland');},300);
+  } else{
+    setTimeout(()=>{renderHBCard();window.scrollTo(0,0);},80);
+  }
 }
-function hbNext(){if(hbIdx<HOLLAND.length-1){hbIdx++;renderHB();window.scrollTo(0,0);}}
-function hbPrev(){if(hbIdx>0){hbIdx--;renderHB();window.scrollTo(0,0);}}
+
+// keep hbSort as alias for button compat
+function hbSort(zone){hbSwipe(zone);}
+function hbNext(){hbSwipe('neu');}
+function hbPrev(){
+  if(hbIdx>0){
+    hbIdx--;
+    delete hSorted[HOLLAND[hbIdx].id];
+    updateHBCounts();
+    renderHBCard();
+    window.scrollTo(0,0);
+  }
+}
 
 // ═══════════════════════════════════════════
 // PASSION TINDER
@@ -1041,60 +1115,76 @@ function hbPrev(){if(hbIdx>0){hbIdx--;renderHB();window.scrollTo(0,0);}}
 const HOLLAND_COLORS={R:'#C0522A',I:'#5FAAA0',A:'#B8922A',S:'#3A5A8A',E:'#6A9A3A',C:'#8A3A5A'};
 function getHollandColor(code){return HOLLAND_COLORS[code?code[0]:'S']||'#3A5A8A';}
 
-function makePTCard(c){
+function renderPTCard(){
+  if(ptIdx>=PASSION.length){
+    const card=document.getElementById('pt-card');
+    card.innerHTML='<span style="font-size:14px;color:#1D9E75;font-weight:500">✓ 全部完成！</span>';
+    card.style.borderColor='#1D9E75';card.style.borderTopWidth='3px';
+    return;
+  }
+  const c=PASSION[ptIdx];
   const color=getHollandColor(c.holland);
-  const d=document.createElement('div');d.className='pt-card';
-  d.style.border=`2px solid ${color}`;
-  d.style.borderRadius='16px';
-  const knowledgeItems=c.knowledge?c.knowledge.split('／').map(k=>`<div class="pt-icon-item">${k}</div>`).join(''):'';
-  const goalItems=c.goal?c.goal.split('／').map(g=>`<div class="pt-icon-item">${g}</div>`).join(''):'';
-  d.innerHTML=`
-    <div class="pt-stamp s-yes">喜歡 ✓</div>
-    <div class="pt-stamp s-no">跳過 ✕</div>
-    <div style="position:absolute;top:10px;right:10px;font-size:10px;font-weight:700;color:#fff;background:${color};border-radius:5px;padding:2px 7px">${c.holland}</div>
-    <div class="pt-label">${c.label}</div>
-    <div class="pt-sub">${c.sub}</div>
-    <div class="pt-icons">
-      <div class="pt-icon-col">
-        <div class="pt-icon-header">💡 知識</div>
-        ${knowledgeItems}
+  const card=document.getElementById('pt-card');
+  card.style.borderColor=color;card.style.borderTopWidth='3px';
+  card.innerHTML=`
+    <div style="display:flex;align-items:center;justify-content:space-between;width:100%;margin-bottom:8px">
+      <div>
+        <div style="font-size:18px;font-weight:600;color:#1a1a18">${c.label}</div>
+        <div style="font-size:12px;color:#888;margin-top:2px">${c.sub}</div>
       </div>
-      <div class="pt-icon-col">
-        <div class="pt-icon-header">🚩 目標</div>
-        ${goalItems}
+      <span style="font-size:10px;font-weight:700;color:#fff;background:${color};border-radius:6px;padding:3px 9px;flex-shrink:0">${c.holland}</span>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 12px;width:100%;margin-top:4px">
+      <div>
+        <div style="font-size:10px;font-weight:600;color:#aaa;margin-bottom:4px">💡 需要的知識</div>
+        ${c.knowledge?c.knowledge.split('／').map(k=>`<div style="font-size:11px;color:#3a3a38;margin-bottom:2px">${k}</div>`).join(''):''}
+      </div>
+      <div>
+        <div style="font-size:10px;font-weight:600;color:#aaa;margin-bottom:4px">🚩 主要目標</div>
+        ${c.goal?c.goal.split('／').map(g=>`<div style="font-size:11px;color:#3a3a38;margin-bottom:2px">${g}</div>`).join(''):''}
       </div>
     </div>
-    <div class="pt-work">
-      <div class="pt-work-label">工作內容</div>
-      ${c.work||''}
+    <div style="border-top:.5px solid #f0ede6;margin-top:8px;padding-top:8px;font-size:11px;color:#5f5e5a;line-height:1.6">
+      <span style="font-size:10px;font-weight:600;color:#aaa">工作內容 </span>${c.work||''}
     </div>`;
-  return d;
 }
+function renderPTStack(){renderPTCard();}
 
-function renderPTStack(){
-  const stack=document.getElementById('pt-stack');stack.innerHTML='';
-  if(ptIdx>=PASSION.length){stack.innerHTML='<div class="pt-card front" style="justify-content:center;font-size:14px;color:#888">全部滑完！</div>';return;}
-  if(ptIdx+1<PASSION.length){const b=makePTCard(PASSION[ptIdx+1]);b.classList.add('behind');stack.appendChild(b);}
-  const f=makePTCard(PASSION[ptIdx]);f.classList.add('front');stack.appendChild(f);
-}
-function initPT(){ptYes=[];ptNo=[];ptIdx=0;document.getElementById('pt-total').textContent=PASSION.length;renderPTStack();updatePTCounts();}
+
+function initPT(){ptYes=[];ptNo=[];ptMid=[];ptIdx=0;ptHistory=[];document.getElementById('pt-total').textContent=PASSION.length;renderPTCard();updatePTCounts();}
 function updatePTCounts(){
   document.getElementById('pt-cur').textContent=Math.min(ptIdx+1,PASSION.length);
   document.getElementById('pt-yes-cnt').textContent=ptYes.length;
   document.getElementById('pt-no-cnt').textContent=ptNo.length;
+  document.getElementById('pt-mid-cnt').textContent=ptMid.length;
   document.getElementById('pt-next').style.display=ptIdx>=PASSION.length&&ptYes.length>0?'':'none';
+  document.getElementById('pt-prev-btn').style.display=ptHistory.length>0?'':'none';
+}
+function ptPrev(){
+  if(!ptHistory.length)return;
+  const last=ptHistory.pop();
+  ptIdx=last.idx;
+  if(last.dir==='yes')ptYes.pop();else if(last.dir==='no')ptNo.pop();else ptMid.pop();
+  renderPTCard();updatePTCounts();
 }
 function ptSwipe(dir){
   if(ptIdx>=PASSION.length)return;
-  const card=document.getElementById('pt-stack')?.querySelector('.front');
-  if(!card)return;
-  card.classList.add(dir==='yes'?'sw-right':'sw-left');
-  setTimeout(()=>{
-    if(dir==='yes')ptYes.push(PASSION[ptIdx]);else ptNo.push(PASSION[ptIdx]);
-    ptIdx++;
-    if(ptIdx>=PASSION.length&&ptYes.length>0){renderPTStack();updatePTCounts();setTimeout(()=>go('s-passion-pick'),300);}
-    else{renderPTStack();updatePTCounts();}
-  },200);
+  // highlight selected btn
+  document.querySelectorAll('#s-passion-tinder .hb-sort-btn').forEach(b=>b.classList.remove('selected'));
+  const btnMap={yes:'.hb-sim',no:'.hb-dif',mid:'.hb-neu'};
+  document.querySelector('#s-passion-tinder '+btnMap[dir])?.classList.add('selected');
+  ptHistory.push({idx:ptIdx,dir});
+  if(dir==='yes')ptYes.push(PASSION[ptIdx]);
+  else if(dir==='no')ptNo.push(PASSION[ptIdx]);
+  else ptMid.push(PASSION[ptIdx]);
+  ptIdx++;
+  updatePTCounts();
+  if(ptIdx>=PASSION.length&&ptYes.length>0){
+    renderPTCard();
+    setTimeout(()=>go('s-passion-pick'),300);
+  } else{
+    setTimeout(()=>{renderPTCard();},80);
+  }
 }
 
 // ═══════════════════════════════════════════
@@ -1116,7 +1206,30 @@ function renderPP(){
     r.addEventListener('dragend',()=>{r.classList.remove('dragging');document.querySelectorAll('.rank-item').forEach(x=>x.classList.remove('drag-over-item'));ppDragId=null;});
     r.addEventListener('dragover',e=>{e.preventDefault();e.stopPropagation();document.querySelectorAll('.rank-item').forEach(x=>x.classList.remove('drag-over-item'));const rect=r.getBoundingClientRect();const mid=rect.top+rect.height/2;r.dataset.insertAfter=e.clientY>mid?'1':'0';r.classList.add('drag-over-item');r.style.borderTop=e.clientY<=mid?'2px solid #1D9E75':'';r.style.borderBottom=e.clientY>mid?'2px solid #1D9E75':'';});
     r.addEventListener('dragleave',()=>{r.style.borderTop='';r.style.borderBottom='';});
-    r.addEventListener('drop',e=>{e.preventDefault();e.stopPropagation();r.style.borderTop='';r.style.borderBottom='';if(!ppDragId||ppDragId===c.id)return;const insertAfter=r.dataset.insertAfter==='1';let fi=ptRank.findIndex(x=>x.id===ppDragId);let ti=ptRank.findIndex(x=>x.id===c.id);if(fi<0){const src=ptYes.find(x=>x.id===ppDragId);if(src&&ptRank.length<15){ptRank.splice(insertAfter?ti+1:ti,0,src);renderPP();return;}}const[item]=ptRank.splice(fi,1);ti=ptRank.findIndex(x=>x.id===c.id);ptRank.splice(insertAfter?ti+1:ti,0,item);renderPP();});
+    r.addEventListener('drop',e=>{
+      e.preventDefault();e.stopPropagation();
+      r.style.borderTop='';r.style.borderBottom='';
+      // resolve dragged id from either source
+      const dragId = ppDragId || dragData.id;
+      if(!dragId||dragId===c.id)return;
+      const insertAfter=r.dataset.insertAfter==='1';
+      let fi=ptRank.findIndex(x=>x.id===dragId);
+      let ti=ptRank.findIndex(x=>x.id===c.id);
+      if(fi<0){
+        // coming from pool
+        const src=ptYes.find(x=>x.id===dragId);
+        if(src&&!ptRank.find(x=>x.id===src.id)&&ptRank.length<15){
+          ptRank.splice(insertAfter?ti+1:ti,0,src);
+          renderPP();
+        }
+        return;
+      }
+      // reorder within rank list
+      const[item]=ptRank.splice(fi,1);
+      ti=ptRank.findIndex(x=>x.id===c.id);
+      ptRank.splice(insertAfter?ti+1:ti,0,item);
+      renderPP();
+    });
     list.appendChild(r);
   });
   const pool=document.getElementById('pp-pool');pool.innerHTML='';
@@ -1179,70 +1292,74 @@ function pcardModalAdd(){
 // ═══════════════════════════════════════════
 // SKILL TINDER
 // ═══════════════════════════════════════════
-function makeTCard2(c){
+function renderSK2Card(){
+  if(skIdx2>=SKILLS2.length){
+    const card=document.getElementById('sk-card');
+    card.innerHTML='<span style="font-size:14px;color:#1D9E75;font-weight:500">✓ 全部完成！</span>';
+    card.style.borderColor='#1D9E75';card.style.borderTopWidth='3px';
+    return;
+  }
+  const c=SKILLS2[skIdx2];
   const m=CAT_META[c.cat];
-  const d=document.createElement('div');d.className='tcard';
-  d.style.borderTop=`3px solid ${m.border}`;
-  const descItems=(c.desc||[]).map(t=>`<div class="tcard-desc-item"># ${t}</div>`).join('');
-  d.innerHTML=`
-    <div class="tcard-stamp s-yes">擅長 →</div>
-    <div class="tcard-stamp s-no">← 不擅長</div>
-    <div class="tcard-stamp s-skip">↓ 先放著</div>
-    <div class="tcard-meta">
-      <span class="tcard-cat" style="background:${m.bg};color:${m.text}">${m.label}</span>
-      <span class="tcard-num">#${c.id}</span>
+  const card=document.getElementById('sk-card');
+  card.style.borderColor=m.border;card.style.borderTopWidth='3px';
+  const descItems=(c.desc||[]).map(t=>`<div style="font-size:11px;color:#3a3a38;margin-bottom:4px"># ${t}</div>`).join('');
+  card.innerHTML=`
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;width:100%;margin-bottom:10px">
+      <div style="font-size:22px;font-weight:600;color:#1a1a18">${c.label}</div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:3px;flex-shrink:0;margin-left:8px">
+        <span style="font-size:9px;font-weight:600;padding:2px 7px;border-radius:5px;background:${m.bg};color:${m.text}">${m.label}</span>
+        <span style="font-size:9px;color:#bbb">#${c.id}</span>
+      </div>
     </div>
-    <div class="tcard-label">${c.label}</div>
-    <div class="tcard-desc-list">${descItems}</div>
-    <button class="tcard-info-btn" title="查看詳情">詳情 ↗</button>`;
-  return d;
+    <div style="width:100%">${descItems}</div>
+    <button class="tcard-info-btn" onclick="openSkillModal(SKILLS2[${skIdx2}])">詳情 ↗</button>`;
 }
-function renderSK2Stack(){
-  const stack=document.getElementById('sk-stack');stack.innerHTML='';
-  if(skIdx2>=SKILLS2.length){stack.innerHTML='<div class="tcard front" style="justify-content:center;font-size:14px;color:#888;flex-direction:column;gap:6px"><div>全部滑完！</div><div style="font-size:12px;color:#aaa">請稍候，進入排序中…</div></div>';return;}
-  if(skIdx2+1<SKILLS2.length){const b=makeTCard2(SKILLS2[skIdx2+1]);b.classList.add('behind');stack.appendChild(b);}
-  const f=makeTCard2(SKILLS2[skIdx2]);f.classList.add('front');
-  // tap info icon to open modal, but don't interfere with swipe
-  f.querySelector('.tcard-info-btn')?.addEventListener('click',e=>{e.stopPropagation();openSkillModal(SKILLS2[skIdx2]);});
-  stack.appendChild(f);
-}
+
+function renderSK2Stack(){renderSK2Card();}
+
 function initSK2(){
-  skYes2=[];skNo2=[];skSkip2=[];skIdx2=0;sk2Best=[];sk2Weak=[];
+  skYes2=[];skNo2=[];skSkip2=[];skIdx2=0;sk2Best=[];sk2Weak=[];skHistory2=[];
   document.getElementById('sk-total').textContent=SKILLS2.length;
-  renderSK2Stack();updateSK2Counts();
+  renderSK2Card();updateSK2Counts();
 }
 function updateSK2Counts(){
   document.getElementById('sk-cur').textContent=Math.min(skIdx2+1,SKILLS2.length);
   document.getElementById('sk-yes-cnt').textContent=skYes2.length;
   document.getElementById('sk-no-cnt').textContent=skNo2.length;
   document.getElementById('sk-skip-cnt').textContent=skSkip2.length;
+  document.getElementById('sk-prev-btn').style.display=skHistory2.length>0?'':'none';
+}
+function skPrev(){
+  if(!skHistory2.length)return;
+  const last=skHistory2.pop();
+  skIdx2=last.idx;
+  if(last.dir==='yes')skYes2.pop();
+  else if(last.dir==='no')skNo2.pop();
+  else skSkip2.pop();
+  renderSK2Card();updateSK2Counts();
 }
 function skSwipe(dir){
   if(skIdx2>=SKILLS2.length)return;
-  const card=document.getElementById('sk-stack')?.querySelector('.front');
-  if(!card)return;
-  const cls=dir==='yes'?'sw-right':dir==='no'?'sw-left':'sw-down';
-  card.classList.add(cls);
-  setTimeout(()=>{
-    if(dir==='yes')skYes2.push(SKILLS2[skIdx2]);
-    else if(dir==='no')skNo2.push(SKILLS2[skIdx2]);
-    else skSkip2.push(SKILLS2[skIdx2]);
-    skIdx2++;
-    if(skIdx2>=SKILLS2.length){renderSK2Stack();updateSK2Counts();setTimeout(()=>go('s-skill-pick'),400);}
-    else{renderSK2Stack();updateSK2Counts();}
-  },200);
+  // highlight btn
+  document.querySelectorAll('#s-skill-tinder .hb-sort-btn').forEach(b=>b.classList.remove('selected'));
+  const btnMap={yes:'.hb-sim',no:'.hb-dif',skip:'.hb-neu'};
+  document.querySelector('#s-skill-tinder '+btnMap[dir])?.classList.add('selected');
+  skHistory2.push({idx:skIdx2,dir});
+  if(dir==='yes')skYes2.push(SKILLS2[skIdx2]);
+  else if(dir==='no')skNo2.push(SKILLS2[skIdx2]);
+  else skSkip2.push(SKILLS2[skIdx2]);
+  skIdx2++;
+  updateSK2Counts();
+  if(skIdx2>=SKILLS2.length){
+    renderSK2Card();
+    setTimeout(()=>go('s-skill-pick'),300);
+  } else{
+    setTimeout(()=>{renderSK2Card();},80);
+  }
 }
-document.addEventListener('mouseover',e=>{
-  const btn=e.target.closest('.t-btn-good,.t-btn-weak,.t-btn-skip');if(!btn)return;
-  const front=document.getElementById('sk-stack')?.querySelector('.front');if(!front)return;
-  if(btn.classList.contains('t-btn-good'))front.classList.add('hint-right');
-  if(btn.classList.contains('t-btn-weak'))front.classList.add('hint-left');
-  if(btn.classList.contains('t-btn-skip'))front.classList.add('hint-down');
-});
-document.addEventListener('mouseout',e=>{
-  const btn=e.target.closest('.t-btn-good,.t-btn-weak,.t-btn-skip');if(!btn)return;
-  document.querySelectorAll('.tcard.front').forEach(c=>c.classList.remove('hint-left','hint-right','hint-down'));
-});
+
+
 
 // ═══════════════════════════════════════════
 // SKILL PICK
@@ -1271,26 +1388,93 @@ function makeSlotCard2(c,slot){
   d.onclick=e=>{if(!e.target.classList.contains('scard2-remove'))openSkillModal(c);};
   return d;
 }
+let sp2RankDragId=null, sp2RankDragSlot=null;
+
+function makeSP2RankItem(c, slot, idx){
+  const m=CAT_META[c.cat];
+  const r=document.createElement('div');
+  r.className='rank-item';r.draggable=true;r.dataset.id=c.id;r.dataset.slot=slot;
+  const slotColor=slot==='best'?'#1D9E75':'#D85A30';
+  r.style.borderLeft=`3px solid ${slotColor}`;
+  r.innerHTML=`<span class="rank-num">${idx+1}</span><span class="scard2-cat cat-${c.cat}" style="font-size:9px">${m.label}</span><span class="rank-label" style="cursor:pointer" onclick="openSkillModal(SKILLS2.find(x=>x.id===${c.id}))">${c.label}</span><span class="rank-remove" onclick="sp2Remove('${slot}',${c.id})">✕</span>`;
+  r.addEventListener('dragstart',e=>{
+    sp2RankDragId=c.id;sp2RankDragSlot=slot;
+    setTimeout(()=>r.classList.add('dragging'),0);
+    e.stopPropagation();
+  });
+  r.addEventListener('dragend',()=>{
+    r.classList.remove('dragging');
+    document.querySelectorAll('.rank-item').forEach(x=>x.classList.remove('drag-over-item'));
+    r.style.borderTop='';r.style.borderBottom='';
+    sp2RankDragId=null;sp2RankDragSlot=null;
+  });
+  r.addEventListener('dragover',e=>{
+    e.preventDefault();e.stopPropagation();
+    document.querySelectorAll('.rank-item').forEach(x=>{x.classList.remove('drag-over-item');x.style.borderTop='';x.style.borderBottom='';});
+    const rect=r.getBoundingClientRect();
+    const after=e.clientY>rect.top+rect.height/2;
+    r.dataset.insertAfter=after?'1':'0';
+    r.style.borderTop=after?'':'2px solid '+slotColor;
+    r.style.borderBottom=after?'2px solid '+slotColor:'';
+  });
+  r.addEventListener('dragleave',()=>{r.style.borderTop='';r.style.borderBottom='';});
+  r.addEventListener('drop',e=>{
+    e.preventDefault();e.stopPropagation();
+    r.style.borderTop='';r.style.borderBottom='';
+    const dragId=sp2RankDragId||sp2DragId;
+    if(!dragId||dragId===c.id)return;
+    const insertAfter=r.dataset.insertAfter==='1';
+    // find source
+    const srcSlot=sp2RankDragSlot;
+    const destList=slot==='best'?sk2Best:sk2Weak;
+    let fi=(srcSlot==='best'?sk2Best:srcSlot==='weak'?sk2Weak:null)?.findIndex(x=>x.id===dragId)??-1;
+    let ti=destList.findIndex(x=>x.id===c.id);
+    if(fi>=0&&srcSlot===slot){
+      // reorder within same slot
+      const arr=destList;
+      const[item]=arr.splice(fi,1);
+      ti=arr.findIndex(x=>x.id===c.id);
+      arr.splice(insertAfter?ti+1:ti,0,item);
+    } else {
+      // coming from pool (sp2DragId set) or cross-slot
+      const card=SKILLS2.find(x=>x.id===dragId);
+      if(!card)return;
+      // remove from wherever it is
+      sk2Best=sk2Best.filter(x=>x.id!==dragId);
+      sk2Weak=sk2Weak.filter(x=>x.id!==dragId);
+      const limit=slot==='best'?7:3;
+      const arr=slot==='best'?sk2Best:sk2Weak;
+      if(arr.length<limit){
+        ti=arr.findIndex(x=>x.id===c.id);
+        arr.splice(insertAfter?ti+1:ti,0,card);
+      }
+    }
+    sp2RankDragId=null;sp2DragId=null;
+    renderSP2();
+  });
+  return r;
+}
+
 function renderSP2(){
-  const bc=document.getElementById('best2-cards');bc.innerHTML='';
-  sk2Best.forEach(c=>bc.appendChild(makeSlotCard2(c,'best')));
+  // ranked lists in slots
+  const bl=document.getElementById('best2-rank-list');bl.innerHTML='';
+  sk2Best.forEach((c,i)=>bl.appendChild(makeSP2RankItem(c,'best',i)));
   document.getElementById('best2-cnt').textContent=`${sk2Best.length} / 7`;
-  const wc=document.getElementById('weak2-cards');wc.innerHTML='';
-  sk2Weak.forEach(c=>wc.appendChild(makeSlotCard2(c,'weak')));
+  const wl=document.getElementById('weak2-rank-list');wl.innerHTML='';
+  sk2Weak.forEach((c,i)=>wl.appendChild(makeSP2RankItem(c,'weak',i)));
   document.getElementById('weak2-cnt').textContent=`${sk2Weak.length} / 3`;
+  // pools (yes + no only, skip removed)
   const yp=document.getElementById('sp2-yes-pool');yp.innerHTML='';
-  const sp=document.getElementById('sp2-skip-pool');sp.innerHTML='';
   const np=document.getElementById('sp2-no-pool');np.innerHTML='';
   document.getElementById('sp2-yes-cnt').textContent=skYes2.length;
-  document.getElementById('sp2-skip-cnt').textContent=skSkip2.length;
   document.getElementById('sp2-no-cnt').textContent=skNo2.length;
-  const skipWrap=document.getElementById('sp2-skip-wrap');
-  if(skipWrap)skipWrap.style.display=skSkip2.length>0?'':'none';
-  skYes2.forEach(c=>yp.appendChild(makeSP2Card(c,'yes')));
-  skSkip2.forEach(c=>sp.appendChild(makeSP2Card(c,'skip')));
+  // combine yes+skip into yes pool for display (skip pool removed from UI)
+  [...skYes2,...skSkip2].forEach(c=>yp.appendChild(makeSP2Card(c,'yes')));
   skNo2.forEach(c=>np.appendChild(makeSP2Card(c,'no')));
   const total=sk2Best.length+sk2Weak.length;
-  document.getElementById('sp2-hint').textContent=total===0?'點選下方牌卡加入框框，或拖曳進去；先放著的也可以補選':`已選：最擅長 ${sk2Best.length} / 7，最不擅長 ${sk2Weak.length} / 3`;
+  document.getElementById('sp2-hint').textContent=total===0
+    ?'點選下方牌卡加入，或拖曳進上方框框；可拖曳排列順序'
+    :`已選：最擅長 ${sk2Best.length} / 7，最不擅長 ${sk2Weak.length} / 3`;
   document.getElementById('sp2-done').style.display=total>0?'':'none';
 }
 function sp2Remove(slot,id){
@@ -1312,11 +1496,12 @@ function showSkillResult(){
   const catChip=c=>{const m=CAT_META[c.cat];return `<span class="chip" style="background:${m.bg};color:${m.text}">${c.label}</span>`;};
   let html='';
   html+=`<div class="res-section-title" style="color:#1D9E75">✦ 最擅長（${sk2Best.length} 項）</div>`;
-  const catChipClickable=c=>{const m=CAT_META[c.cat];return `<span class="chip sk-res-chip" style="background:${m.bg};color:${m.text};cursor:pointer" onclick="openSkillModal(SKILLS2.find(x=>x.id===${c.id}))">${c.label} ↗</span>`;};
-  html+=`<div class="sk-res-chips">${sk2Best.map(catChipClickable).join('')||'<span style="font-size:12px;color:#888">未選</span>'}</div>`;
+  const skResCard=c=>{const m=CAT_META[c.cat];return `<div class="res-card" style="background:${m.bg};border-color:${m.border};cursor:pointer" onclick="openSkillModal(SKILLS2.find(x=>x.id===${c.id}))"><span style="font-size:9px;font-weight:600;color:${m.text}">${m.label}</span><span style="font-size:11px;font-weight:500;color:#1a1a18;line-height:1.3;word-break:break-all;display:block;width:100%;text-align:center">${c.label}</span><span style="font-size:9px;color:${m.text}">詳情 ↗</span></div>`;};
+  html+=`<div class="res-grid">${sk2Best.map(skResCard).join('')||'<span style="font-size:12px;color:#888">未選</span>'}</div>`;
   html+=`<div class="res-section-title" style="color:#D85A30;margin-top:.75rem">✕ 最不擅長（${sk2Weak.length} 項）</div>`;
-  html+=`<div class="sk-res-chips">${sk2Weak.map(catChipClickable).join('')||'<span style="font-size:12px;color:#888">未選</span>'}</div>`;
+  html+=`<div class="res-grid">${sk2Weak.map(skResCard).join('')||'<span style="font-size:12px;color:#888">未選</span>'}</div>`;
   document.getElementById('sk-res-body').innerHTML=html;
+  _resultPrev='s-skill-pick';
   go('s-skill-result');
 }
 
@@ -1359,15 +1544,21 @@ function vsSort(zone){
   vsSorted[vsIdx]=zone;
   document.querySelectorAll('.hb-sort-btn').forEach(b=>b.classList.remove('selected'));
   const map={hi:'.hb-sim',mid:'.hb-neu',lo:'.hb-dif'};document.querySelector(map[zone])?.classList.add('selected');
-  setTimeout(()=>{
-    const allSorted=Object.keys(vsSorted).length>=VALUES.length;
-    if(allSorted){vsIdx=VALUES.length;vsSortLock=false;go('s-value-pick');}
-    else if(vsIdx<VALUES.length-1){vsIdx++;renderVS();window.scrollTo(0,0);vsSortLock=false;}
-    else{vsSortLock=false;}
-  },300);
+  const allSorted=Object.keys(vsSorted).length>=VALUES.length;
+  if(allSorted){vsIdx=VALUES.length;vsSortLock=false;go('s-value-pick');}
+  else if(vsIdx<VALUES.length-1){
+    setTimeout(()=>{vsIdx++;renderVS();window.scrollTo(0,0);vsSortLock=false;},80);
+  } else{vsSortLock=false;}
 }
 function vsNext(){if(vsIdx<VALUES.length-1){vsIdx++;renderVS();window.scrollTo(0,0);}}
-function vsPrev(){if(vsIdx>0){vsIdx--;document.getElementById('vs-sort-btns').style.display='';renderVS();window.scrollTo(0,0);}}
+function vsPrev(){
+  if(vsIdx>0){
+    vsIdx--;
+    delete vsSorted[vsIdx]; // clear so user can re-choose
+    document.getElementById('vs-sort-btns').style.display='';
+    renderVS();window.scrollTo(0,0);
+  }
+}
 
 // ═══════════════════════════════════════════
 // VALUE PICK
@@ -1447,9 +1638,9 @@ function showResult(deck){
     const rows=[];for(let i=0;i<ptRank.length;i+=5){rows.push(ptRank.slice(i,i+5));}
     const rowsHtml=rows.map((row,ri)=>{
       const cols=row.map((c,ci)=>{const idx=ri*5+ci;const color=getHollandColor(c.holland);
-        return `<div style="background:#fff;border:1.5px solid ${color};border-top:3px solid ${color};border-radius:10px;padding:8px 6px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-align:center;min-height:72px;flex:1"><span style="font-size:9px;font-weight:700;color:${color};background:${color}1a;border-radius:4px;padding:1px 5px">${c.holland}</span><span style="font-size:11px;font-weight:500;color:#1a1a18;line-height:1.4;word-break:break-all;display:block;width:100%">${c.label}</span></div>`;
+        return `<div class="res-card" style="background:#fff;border-color:${color};border-top:3px solid ${color}"><span style="font-size:9px;font-weight:700;color:${color};background:${color}1a;border-radius:4px;padding:1px 5px">${c.holland}</span><span style="font-size:11px;font-weight:500;color:#1a1a18;line-height:1.4;word-break:break-all;display:block;width:100%">${c.label}</span></div>`;
       }).join('');
-      return `<div style="display:flex;gap:6px;margin-bottom:6px">${cols}</div>`;
+      return `<div class="res-grid" style="margin-bottom:8px">${cols}</div>`;
     }).join('');
     html=`<div>${rowsHtml}</div>`;
   } else if(deck==='value'||deck==='value-work'){
@@ -1458,13 +1649,18 @@ function showResult(deck){
     const rows=[];for(let i=0;i<rankList.length;i+=5){rows.push(rankList.slice(i,i+5));}
     const rowsHtml=rows.map((row,ri)=>{
       const cols=row.map((c,ci)=>{const idx=ri*5+ci;const info=c.cat&&VALUE_CATS[c.cat]?VALUE_CATS[c.cat]:null;const clr=info?info.color:'#888';
-        return `<div style="background:#fff;border:1.5px solid ${clr};border-top:3px solid ${clr};border-radius:10px;padding:8px 6px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-align:center;min-height:72px;flex:1"><span style="font-size:9px;font-weight:700;color:${clr};background:${clr}1a;border-radius:4px;padding:1px 5px">${idx+1}</span><span style="font-size:11px;font-weight:500;color:#1a1a18;line-height:1.4;word-break:break-all;display:block;width:100%">${c.label}</span></div>`;
+        return `<div class="res-card" style="background:#fff;border-color:${clr};border-top:3px solid ${clr}"><span style="font-size:9px;font-weight:700;color:${clr};background:${clr}1a;border-radius:4px;padding:1px 5px">${idx+1}</span><span style="font-size:11px;font-weight:500;color:#1a1a18;line-height:1.4;word-break:break-all;display:block;width:100%">${c.label}</span></div>`;
       }).join('');
-      return `<div style="display:flex;gap:6px;margin-bottom:6px">${cols}</div>`;
+      return `<div class="res-grid" style="margin-bottom:8px">${cols}</div>`;
     }).join('');
     html=`<div>${rowsHtml}</div>`;
   }
   document.getElementById('res-body').innerHTML=html;
+  // track which page to go back to
+  if(deck==='holland')          _resultPrev='s-holland-browse';
+  else if(deck==='passion')     _resultPrev='s-passion-pick';
+  else if(deck==='value')       _resultPrev='s-value-pick';
+  else if(deck==='value-work')  _resultPrev='s-value-work-pick';
   const backBtn=document.getElementById('res-back-pick');
   if(deck==='passion'){backBtn.style.display='';backBtn.textContent='← 重新排序';backBtn.onclick=()=>go('s-passion-pick');}
   else if(deck==='value'){backBtn.style.display='';backBtn.textContent='← 重新排序';backBtn.onclick=()=>go('s-value-pick');}
@@ -1493,7 +1689,7 @@ function closeModal(e){if(e.target===document.getElementById('card-modal'))close
 // ═══════════════════════════════════════════
 const VALUES_WORK = VALUES.filter(v => v.cat === 'work');
 
-let vwsSorted={}, vwsIdx=0, vwsSortLock=false, vwpRank=[], vwpDragId=null;
+let vwsSorted={}, vwsIdx=0, vwsSortLock=false;
 
 function initVWS(){
   vwsSorted={};vwsIdx=0;vwsSortLock=false;
@@ -1532,14 +1728,21 @@ function vwsSort(zone){
   document.querySelectorAll('#vws-sort-btns .hb-sort-btn').forEach(b=>b.classList.remove('selected'));
   const map={hi:'.hb-sim',mid:'.hb-neu',lo:'.hb-dif'};
   document.querySelector('#vws-sort-btns '+map[zone])?.classList.add('selected');
-  setTimeout(()=>{
-    if(Object.keys(vwsSorted).length>=VALUES_WORK.length){vwsIdx=VALUES_WORK.length;vwsSortLock=false;go('s-value-work-pick');}
-    else if(vwsIdx<VALUES_WORK.length-1){vwsIdx++;renderVWS();window.scrollTo(0,0);vwsSortLock=false;}
-    else{vwsSortLock=false;}
-  },300);
+  const allSorted=Object.keys(vwsSorted).length>=VALUES_WORK.length;
+  if(allSorted){vwsIdx=VALUES_WORK.length;vwsSortLock=false;go('s-value-work-pick');}
+  else if(vwsIdx<VALUES_WORK.length-1){
+    setTimeout(()=>{vwsIdx++;renderVWS();window.scrollTo(0,0);vwsSortLock=false;},80);
+  } else{vwsSortLock=false;}
 }
 function vwsNext(){if(vwsIdx<VALUES_WORK.length-1){vwsIdx++;renderVWS();window.scrollTo(0,0);}}
-function vwsPrev(){if(vwsIdx>0){vwsIdx--;document.getElementById('vws-sort-btns').style.display='';renderVWS();window.scrollTo(0,0);}}
+function vwsPrev(){
+  if(vwsIdx>0){
+    vwsIdx--;
+    delete vwsSorted[vwsIdx]; // clear so user can re-choose
+    document.getElementById('vws-sort-btns').style.display='';
+    renderVWS();window.scrollTo(0,0);
+  }
+}
 
 function initVWP(){
   vwpRank=[];
