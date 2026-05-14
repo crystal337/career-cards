@@ -129,7 +129,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang TC','Micr
 
 /* Holland Browse */
 .hb-sort-row{background:#f8f7f4;border-radius:12px;padding:1rem;margin-top:1rem}
-.hb-sort-btn{padding:10px 20px;border-radius:10px;font-size:13px;font-weight:500;cursor:pointer;border:1.5px solid;transition:all .15s}
+.hb-sort-btn{padding:10px 0;border-radius:10px;font-size:13px;font-weight:500;cursor:pointer;border:1.5px solid;transition:all .15s;flex:1;text-align:center}
 .hb-sim{background:#E1F5EE;color:#0F6E56;border-color:#5DCAA5}.hb-sim:hover{background:#c0edde}
 .hb-neu{background:#f1efe8;color:#5F5E5A;border-color:#B4B2A9}.hb-neu:hover{background:#e0ddd4}
 .hb-dif{background:#FAECE7;color:#993C1D;border-color:#F0997B}.hb-dif:hover{background:#f5d4c8}
@@ -325,7 +325,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang TC','Micr
     <div id="hb-card" class="vcard" style="min-height:260px;align-items:flex-start;text-align:left;flex-direction:column;padding:1.25rem"></div>
     <div id="hb-sort-btns" style="background:#f8f7f4;border-radius:12px;padding:1rem;margin-bottom:1rem">
       <div style="font-size:12px;font-weight:500;color:#888;margin-bottom:10px;text-align:center">這張牌卡和你的描述有多相似？</div>
-      <div style="display:flex;gap:10px;justify-content:center">
+      <div style="display:flex;gap:8px">
         <button class="hb-sort-btn hb-dif" onclick="hbSwipe('dif')">← 不相似</button>
         <button class="hb-sort-btn hb-neu" onclick="hbSwipe('neu')">普通</button>
         <button class="hb-sort-btn hb-sim" onclick="hbSwipe('sim')">相似 →</button>
@@ -354,7 +354,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang TC','Micr
     <div id="pt-card" class="vcard" style="min-height:200px;align-items:flex-start;text-align:left;flex-direction:column;padding:1.25rem"></div>
     <div style="background:#f8f7f4;border-radius:12px;padding:1rem;margin-bottom:1rem">
       <div style="font-size:12px;font-weight:500;color:#888;margin-bottom:10px;text-align:center">這個職位你喜歡嗎？</div>
-      <div style="display:flex;gap:10px;justify-content:center">
+      <div style="display:flex;gap:8px">
         <button class="hb-sort-btn hb-dif" onclick="ptSwipe('no')">← 不喜歡</button>
         <button class="hb-sort-btn hb-neu" onclick="ptSwipe('mid')">普通</button>
         <button class="hb-sort-btn hb-sim" onclick="ptSwipe('yes')">喜歡 →</button>
@@ -383,7 +383,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang TC','Micr
         <div class="pp-pool-grid" id="pp-pool"></div>
       </div>
     </div>
-    <div class="action-row">
+    <div class="action-row-sticky">
       <button class="btn" onclick="go('s-passion-tinder')">← 重新滑</button>
       <button class="btn btn-primary" id="pp-done" onclick="showResult('passion')" style="display:none">查看結果 →</button>
     </div>
@@ -424,7 +424,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang TC','Micr
     <div id="sk-card" class="vcard" style="min-height:220px;align-items:flex-start;text-align:left;flex-direction:column;padding:1.25rem"></div>
     <div style="background:#f8f7f4;border-radius:12px;padding:1rem;margin-bottom:1rem">
       <div style="font-size:12px;font-weight:500;color:#888;margin-bottom:10px;text-align:center">這個職能你的程度如何？</div>
-      <div style="display:flex;gap:10px;justify-content:center">
+      <div style="display:flex;gap:8px">
         <button class="hb-sort-btn hb-dif" onclick="skSwipe('no')">← 不擅長</button>
         <button class="hb-sort-btn hb-neu" onclick="skSwipe('skip')">先放著</button>
         <button class="hb-sort-btn hb-sim" onclick="skSwipe('yes')">擅長 →</button>
@@ -471,7 +471,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang TC','Micr
       </div>
     </div>
 
-    <div class="action-row">
+    <div class="action-row-sticky">
       <button class="btn" onclick="go('s-skill-tinder')">← 重新滑</button>
       <button class="btn btn-primary" id="sp2-done" onclick="showSkillResult()" style="display:none">查看結果 →</button>
     </div>
@@ -501,7 +501,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang TC','Micr
     <div id="vs-card" class="vcard"></div>
     <div id="vs-sort-btns" style="background:#f8f7f4;border-radius:12px;padding:1rem;margin-bottom:1rem">
       <div style="font-size:12px;font-weight:500;color:#888;margin-bottom:10px;text-align:center">這個價值觀對你有多重要？</div>
-      <div style="display:flex;gap:10px;justify-content:center">
+      <div style="display:flex;gap:8px">
         <button class="hb-sort-btn hb-dif" onclick="vsSort('lo')">← 不重視</button>
         <button class="hb-sort-btn hb-neu" onclick="vsSort('mid')">普通</button>
         <button class="hb-sort-btn hb-sim" onclick="vsSort('hi')">重視 →</button>
@@ -535,7 +535,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang TC','Micr
         </div>
       </div>
     </div>
-    <div class="action-row">
+    <div class="action-row-sticky">
       <button class="btn" onclick="go('s-value-sort')">← 重新分類</button>
       <button class="btn btn-primary" id="vp-done" onclick="showResult('value')" style="display:none">查看結果 →</button>
     </div>
@@ -554,7 +554,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang TC','Micr
     <div id="vws-card" class="vcard"></div>
     <div id="vws-sort-btns" style="background:#f8f7f4;border-radius:12px;padding:1rem;margin-bottom:1rem">
       <div style="font-size:12px;font-weight:500;color:#888;margin-bottom:10px;text-align:center">這個價值觀對你有多重要？</div>
-      <div style="display:flex;gap:10px;justify-content:center">
+      <div style="display:flex;gap:8px">
         <button class="hb-sort-btn hb-dif" onclick="vwsSort('lo')">← 不重視</button>
         <button class="hb-sort-btn hb-neu" onclick="vwsSort('mid')">普通</button>
         <button class="hb-sort-btn hb-sim" onclick="vwsSort('hi')">重視 →</button>
@@ -588,7 +588,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang TC','Micr
         </div>
       </div>
     </div>
-    <div class="action-row">
+    <div class="action-row-sticky">
       <button class="btn" onclick="go('s-value-work-sort')">← 重新分類</button>
       <button class="btn btn-primary" id="vwp-done" onclick="showResult('value-work')" style="display:none">查看結果 →</button>
     </div>
